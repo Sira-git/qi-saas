@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一网协同 - 原始数据列表</title>
+<style>
+:root { --primary: #0052D9; --bg: #F5F7FA; --card-bg: #fff; --text: #1A1A1A; --border: #E8E8E8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 22px; font-weight: 600; }
+.header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+.back-link { display: inline-block; margin-bottom: 16px; color: #0052D9; text-decoration: none; font-size: 14px; }
+.back-link:hover { text-decoration: underline; }
+
+/* 标签页样式 */
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #E8E8E8; }
+.tab-btn { padding: 12px 24px; border: none; background: transparent; font-size: 15px; font-weight: 500; color: #666; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+.tab-btn:hover { color: #0052D9; }
+.tab-btn.active { color: #0052D9; border-bottom-color: #0052D9; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.data-item { background: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 10px; border: 1px solid var(--border); }
+.data-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 4px; }
+.data-meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+.data-summary { font-size: 13px; color: #666; line-height: 1.5; max-height: 4.5em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.count-badge { display: inline-block; font-size: 12px; color: #fff; background: #0052D9; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
+.empty { color: #999; font-size: 13px; padding: 16px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="report-一网协同.html" class="back-link">&larr; 返回报告</a>
+<div class="header">
+<h1>一网协同 - 原始数据列表</h1>
+<p>本页面展示该领域半年内收集的全部代表性原始数据</p>
+</div>
+
+<!-- 标签页导航 -->
+<div class="tabs">
+<button class="tab-btn active" data-tab="policy" onclick="switchTab('policy')">政策资料合集 <span class="count-badge">6条</span></button>
+<button class="tab-btn" data-tab="industry" onclick="switchTab('industry')">行业资料合集 <span class="count-badge">3条</span></button>
+<button class="tab-btn" data-tab="competitor" onclick="switchTab('competitor')">竞品资料合集 <span class="count-badge">32条</span></button>
+</div>
+
+<!-- 标签页内容 -->
+<div class="tab-content active" id="tab-policy">
+<div class="data-item"><div class="data-title">天津市深化智慧城市建设 推进城市治理和数字化转型总体方案</div><div class="data-meta">2026-01-23 | 天津市数据局</div><div class="data-summary">构建“1183”智慧城市建设总体架构，即打造1个数据基础底座，建设1个城市“智管中心”，部署8项重点任务，健全3大保障体系；到2027年，高水平建成并运营一体化数据平台和城市“智管中心”，“高效处置一件事”覆盖城市运行重点事件，“高效办成一件事”覆盖高频民生事项；到2030年底，实现城市治理数字化全面突破，形成敏捷高效、韧性安全的现代化城市治理新格局。</div></div>
+<div class="data-item"><div class="data-title">济南市大数据局2026年度工作计划</div><div class="data-meta">2026-03-31 | 济南市大数据局</div><div class="data-summary">以“人工智能+”和“数据要素×”为双轮驱动，持续提升数字政府建设水平；优化“数智公务员”一体化管理服务平台，精简办文、办会、办事流程；持续优化政务服务“一网通办”总门户，拓展“一件事”集成服务场景，迭代升级“爱山东”济南分厅70个民生“关键小事”；升级“泉心泉意”政务服务大模型，新增6项以上智能助手应用场景。</div></div>
+<div class="data-item"><div class="data-title">兰州市优化营商环境创一流行动方案</div><div class="data-meta">2026-03-01 | 兰州市发展改革委</div><div class="data-summary">实施政务智服工程，打造高效便捷的政务环境；加强政务服务“三化”建设，打造“综合+专业+智慧+移动”服务矩阵；攻坚政务平台整合升级，涉企高频服务事项网上可办率达100%，全程网办率达98%；促进公共数据互联共享，打造“数据要素×”应用典型示范场景，实现省市公共数据授权运营平台互联互通；深化政务服务“好差评”制度。</div></div>
+<div class="data-item"><div class="data-title">甘肃省数字政府建设相关政策内容</div><div class="data-meta">2026-04-29 | 甘肃省人民政府办公厅</div><div class="data-summary">提出高质量推进数字政府建设，加快省级部门、市州自建业务系统与全省一体化政务服务平台深度对接，提升“一网通办”水平，创新本地化特色“一件事”，推进城市智慧高效治理项目建设，提升城市数字化治理能力水平。</div></div>
+<div class="data-item"><div class="data-title">数智济南建设2026年工作要点</div><div class="data-meta">2026-06-18 | 济南市大数据局</div><div class="data-summary">组建数智政务联合创新中心，统筹推进政务领域人工智能平台建设、资源整合、场景应用；统筹建设全市政务知识库管理体系，制定知识构建、检索、管理与安全技术标准；深化机关办会数智化转型，优化数智会务系统；升级“泉心泉意”政务服务大模型，2026年新增6项以上智能助手应用场景；深化“一网通办”改革，拓展“一件事”集成服务场景，迭代升级“爱山东”济南分厅70个民生“关键小事”。</div></div>
+<div class="data-item"><div class="data-title">江苏省数据局关于打造高效便捷政务环境相关推进举措</div><div class="data-meta">2026-06-05 | 江苏省人民政府</div><div class="data-summary">持续深化政务服务集成创新，推动27个“高效办成一件事”全部上线运行，“苏服办”注册用户超1.55亿，政务服务可网办率超过98%，加快推进全省一体化数字资源底座“苏政源”建设，制定全国首部省级层面热线地方性法规《江苏省12345热线条例》。</div></div>
+
+</div>
+
+<div class="tab-content" id="tab-industry">
+<div class="data-item"><div class="data-title">《2026年中国信创产业全景图谱》发布：产业规模预计突破1.8万亿元</div><div class="data-meta">2026-01-08 | 行业媒体</div><div class="data-summary">2026年被定位为信创市场关键承上启下之年。根据预测，2026年信创产业规模预计突破1.8万亿元，2023-2026年复合增长率28.5%。增长质量显著提高，去Vmware化、去Oracle化从成本考量变为战略必然。应用软件中，ERP&amp;OA、协同办公、大模型应用首次作为独立大类出现。</div></div>
+<div class="data-item"><div class="data-title">智研咨询：2024年中国协同管理软件市场规模达102.33亿元，2026年预计持续增长</div><div class="data-meta">2026-02-03 | 行业媒体</div><div class="data-summary">中国协同管理软件已从行政效率工具升级为智能转型核心平台。2024年市场规模达102.33亿元，同比增长17.58%。未来趋势包括智能驱动（AI智能体嵌入办公场景）、生态互联（突破企业边界连接产业链）、云原生与低代码平台等。OA背景厂商在信创适配、流程管控、集成性方面具有优势。</div></div>
+<div class="data-item"><div class="data-title">信创安全市场：2026年上半年悬镜安全以62.3%新增市场份额登顶</div><div class="data-meta">2026-05-06 | 行业媒体</div><div class="data-summary">2026年上半年信创产业正式进入安全深水区。当核心系统完成向国产化架构的迁移，供应链安全成为信创生态的最后一块拼图。在2026年上半年党政及关基行业软件供应链安全审查专项招标中，悬镜安全以62.3%的中标金额占比强势领跑，在党政信创领域的渗透率高达69.6%。</div></div>
+
+</div>
+
+<div class="tab-content" id="tab-competitor">
+<div class="data-item"><div class="data-title">重磅发布！南威GovClaw正式上线打造政务专属AI Agent OS</div><div class="data-meta">2026-03-20 | 南威软件</div><div class="data-summary">南威软件正式发布GovClaw政务专属AI Agent OS及首款落地应用OAClaw政务协同版。GovClaw内置十大安全机制，首发50+原子技能，覆盖流程通用、收文管理、发文管理、出差管理、请假管理、会议协同等十大业务模块，全栈国产化适配。</div></div>
+<div class="data-item"><div class="data-title">AI智能体+信创+年报增长泛微网络触及涨停</div><div class="data-meta">2026-03-31 | 泛微</div><div class="data-summary">据2025年年度报告，泛微推出大模型+小模型+智能体架构的泛微数智大脑Xiaoe.AI，覆盖全业务场景；E10平台实现全栈信创适配，已交付众多党政机关及央国企数字化项目，并联合华为推出DeepSeek&amp;Xiaoe.AI数智办公一体机国产化方案。2025年归母净利2.89亿元，同比增长42.25%。</div></div>
+<div class="data-item"><div class="data-title">智新品·绘政务·赢中枢——2026致远互联生态伙伴大会政务分论坛成功举办</div><div class="data-meta">2026-03-24 | 致远互联</div><div class="data-summary">致远互联生态伙伴大会政务分论坛在合肥举办。会上正式发布更懂数智机关的一站式AI助手问办通，并宣布2026年致远政务战略主张：ALL IN AI，通过产品智能化改造、开箱即用智能体（基于CoMi智能中台推出20+款政务场景智能体）、双模定制三条路径深化产品方案。</div></div>
+<div class="data-item"><div class="data-title">蓝凌输了！153万元，泛微中标信创OA大单</div><div class="data-meta">2026-03-10 | 蓝凌</div><div class="data-summary">2026年3月9日，中信保诚人寿保险有限公司办公平台信创国产化项目中标结果公示，泛微网络中标（153万元），蓝凌软件位列第二中标候选人，北京慧点科技为第三。</div></div>
+<div class="data-item"><div class="data-title">广东石油化工学院办公自动化（OA）系统信创项目的中标公告</div><div class="data-meta">2026-03-18 | 蓝凌</div><div class="data-summary">广东石油化工学院OA系统信创项目中标公告中，蓝凌软件位列第二中标候选人（综合得分89.06），中国移动通信集团广东有限公司茂名分公司为第一中标候选人（91.16）。项目包括办公自动化系统信创适配改造。</div></div>
+<div class="data-item"><div class="data-title">钉钉发布AI原生工作平台“悟空”，让AI从“助手”变成“员工”</div><div class="data-meta">2026-03-22 | 钉钉</div><div class="data-summary">钉钉发布全球首个企业级AI原生工作平台“悟空”，重写底层代码实现全面CLI化改造，让AI Agent能够原生操作钉钉上千项能力，实现“沟通即执行”，覆盖政务、企业等多场景，支持私有化部署满足合规需求。</div></div>
+<div class="data-item"><div class="data-title">一网通办一网统管一网协同：2026政务服务五大跃升</div><div class="data-meta">2026-04-13 | 致远互联</div><div class="data-summary">文章阐述一网通办、一网统管、一网协同的融合趋势。致远互联定位为AI-COP智能运营中枢服务商，产品包含G6/G9政务产品线，已完成DeepSeek-V4大模型适配。赛迪顾问2026年数据显示其AI协同运营平台市占率28.1%、智能公文管理市占率25.4%，均为全国第一。</div></div>
+<div class="data-item"><div class="data-title">致远互联亮相2026数字中国建设峰会，发布行业数字员工平台</div><div class="data-meta">2026-04-30 | 致远互联</div><div class="data-summary">致远互联亮相2026数字中国建设峰会，携手中国电信发布行业数字员工平台及中小企业信息化智能中枢，依托智能运营中枢核心能力，打造具备感知、分析、决策、执行能力的政务“数字大脑”，覆盖政务协同、项目审批、国资监管等场景。</div></div>
+<div class="data-item"><div class="data-title">国泰新点软件2025年年度报告摘要，深化政务AI与数据要素布局</div><div class="data-meta">2026-04-11 | 国泰新点</div><div class="data-summary">国泰新点软件2025年年报披露，一网通办业务从能办向“好办、易办、智办”全面升级，政务热线通过大模型+数据+运营实现提效；一网协同业务推出智能公文、会议管理、知识库助手等AI应用；数据要素业务推进省级数据目录治理和“数字资源一本帐”智能体建设，探索政务数据运营商业化路径。</div></div>
+<div class="data-item"><div class="data-title">360智语连续两年入选全国“人工智能+”行动创新案例TOP100</div><div class="data-meta">2026-04-09 | 360智语</div><div class="data-summary">360智语凭借政务AI数据治理项目入选2026全国企业“人工智能+”行动创新案例TOP100，此前曾以地级市人工智能服务底座项目入选，实现从AI服务底座搭建到政务场景深度赋能的进阶，聚焦政务数据治理、智能公文、智能客服等场景。</div></div>
+<div class="data-item"><div class="data-title">南威软件两连板，智算运营相关AI业务占比不足1%</div><div class="data-meta">2026-05-10 | 南威软件</div><div class="data-summary">公司持续重仓AI赛道，2025年研发总投入约1.16亿元，研发费率升至13.82%。2026年3月正式发布GovClaw政务专属AI Agent OS及OAClaw政务协同版。公司公告称智算运营相关AI业务收入不足1%，对当期业绩不构成重大影响。</div></div>
+<div class="data-item"><div class="data-title">2026年最佳客服工单管理软件排名：泛微·睦客邻实现客服办公一体化</div><div class="data-meta">2026-05-09 | 泛微</div><div class="data-summary">泛微·睦客邻作为新一代客服管理系统，实现客服办公、流程审批、数据互通一体化，复杂客户问题可一键发起跨部门工单，联动技术、研发、销售等部门协同处理。</div></div>
+<div class="data-item"><div class="data-title">泛微网络中标：兴云公司及所属企业协同办公系统运行维护服务项目</div><div class="data-meta">2026-05-22 | 泛微</div><div class="data-summary">2026年5月20日，泛微网络科技股份有限公司中标云南兴云投资有限公司协同办公系统运行维护服务项目，中标金额5.6万元，服务期2026-2029年度。</div></div>
+<div class="data-item"><div class="data-title">致远互联中标：北京市2026年电子公文系统维护项目</div><div class="data-meta">2026-05-24 | 致远互联</div><div class="data-summary">2026年5月21日，北京致远互联软件股份有限公司中标北京市城市管理委员会2026年电子公文系统维护项目，中标金额37.9万元。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技聚焦大模型与智能体落地实践，发布鲸智MaaS平台</div><div class="data-meta">2026-05-11 | 浩鲸科技</div><div class="data-summary">浩鲸科技发布鲸智MaaS平台，整合算力调度、数据治理、模型开发、推理部署全链路能力，智能体开发平台支持多模式编排，推出鲸智慧笔、大模型知识中心等AI工具，已在政务、电信、能源等多行业实现规模化落地。</div></div>
+<div class="data-item"><div class="data-title">2026最新AI榜单：泛微300+场景能做什么？Top5推荐</div><div class="data-meta">2026-06-18 | 泛微</div><div class="data-summary">2026年6月18日，泛微举办组织的AI范式·数字员工与流程自动AI新生主题大会，发布300+AI应用场景，基于数智大脑Xiaoe.AI核心，展示人+岗位+AI新组织模式。大会演示了数字员工从线索到回款的全程自动协同，调用超过20个数字员工及智能体，覆盖销售、财务、人事等岗位，实现7乘24小时在线响应。</div></div>
+<div class="data-item"><div class="data-title">泛微网络：公司已推出以大模型+小模型+智能体为架构的泛微数智大脑 Xiaoe.AI</div><div class="data-meta">2026-06-22 | 泛微</div><div class="data-summary">泛微网络在投资者互动平台表示，已推出以大模型+小模型+智能体为架构的泛微数智大脑Xiaoe.AI，为业务系统提供智能服务基座。通过通用大模型实现基础推理能力，叠加行业专用小模型（如票据识别、意图识别模型）提升专业度，配合智能体实现业务场景化处理，帮助用户以自然语言对话实现查找资料、语音办理事务等日常工作。</div></div>
+<div class="data-item"><div class="data-title">泛微Xiaoe.AI十大场景评价，优缺点排名Top1</div><div class="data-meta">2026-06-25 | 泛微</div><div class="data-summary">2026年6月，泛微网络于上海举办泛微·数智大脑Xiaoe.AI体验大会，超过千位企业数字化负责人参与。泛微正式推出基于大模型+小模型+智能体构建的数智大脑Xiaoe.AI，引发行业关注。与会者体验了市场、销售、合同、采购等十余种数智化业务场景，每个场景达成全程数智化运营。平台自带50+智能体服务及100+智能业务组件，支持公有云、私有云和混合云部署。</div></div>
+<div class="data-item"><div class="data-title">泛微中标某央企协同办公系统升级项目</div><div class="data-meta">2026-06-28 | 泛微</div><div class="data-summary">泛微网络成功中标某大型央企协同办公系统升级项目，将基于Xiaoe.AI数智大脑为央企提供智能公文、智能审批、智能会议等AI协同办公能力，助力央企数字化转型和信创替代。</div></div>
+<div class="data-item"><div class="data-title">泛微亮相2026鲲鹏昇腾轻量化场景方案发布会，联合发布AI智能办公一体化方案</div><div class="data-meta">2026-06-24 | 泛微</div><div class="data-summary">泛微受邀参加2026鲲鹏昇腾轻量化场景方案发布会，联合华为发布AI智能办公一体化方案，融合数智大脑xiaoe.ai与鲲鹏、昇腾安全可靠算力底座，推出高安全、易落地的AI办公与业务一体化方案，为政企数智协同转型提供创新路径，覆盖政务、金融、制造等领域。</div></div>
+<div class="data-item"><div class="data-title">致远互联携多家用户共获2026金i奖，AI-COP赋能千行百业交出新质答卷</div><div class="data-meta">2026-06-29 | 致远互联</div><div class="data-summary">致远互联凭借AI-COP智能协同运营中枢获管理软件行业2026智能运营价值创新奖，其四大客户案例（豫光集团、贵州磷化、中加基金、中国牧工商）全部获奖。文章重点介绍了致远互联平台+场景共创模式，以AI-COP为底座深入客户业务一线，实现AI能力与行业Know-how深度融合。</div></div>
+<div class="data-item"><div class="data-title">2026最新科普：什么是信创协同，致远互联信创办公方案落地指南</div><div class="data-meta">2026-06-25 | 致远互联</div><div class="data-summary">2026年信创协同已从基础替代进入深度应用阶段，致远互联基于AI-COP协同运营平台打造全栈信创解决方案，覆盖公文管理、流程审批、移动办公等全场景，已完成从国产芯片、操作系统、数据库到中间件的全栈适配，通过等保2.0三级、分保与公文国标测评。</div></div>
+<div class="data-item"><div class="data-title">致远互联中标中建集团OA信创项目</div><div class="data-meta">2026-06-29 | 致远互联</div><div class="data-summary">致远互联成功中标中国建筑集团OA信创项目，为其提供全栈信创协同办公解决方案，覆盖公文管理、流程审批、移动办公等全场景，助力央企信创替代加速落地。</div></div>
+<div class="data-item"><div class="data-title">致远互联中标广东荣军优抚医院协同办公项目</div><div class="data-meta">2026-06-24 | 致远互联</div><div class="data-summary">致远互联中标广东荣军优抚医院协同办公系统建设项目，为医疗事业单位提供信创适配的协同办公解决方案，涵盖公文流转、会议管理、移动审批等核心模块。</div></div>
+<div class="data-item"><div class="data-title">2026年信创OA怎么选？蓝凌深度解析</div><div class="data-meta">2026-06-30 | 蓝凌</div><div class="data-summary">蓝凌在信创适配方面投入较大，产品全面通过信创适配认证，入选国家信创产业目录，支持国产主流软硬件深度适配。其优势在于云原生低代码平台、交付模块化时间短、知识管理集成度高、流程扩展灵活，且与钉钉EKP深度绑定，在金融、高校、知识密集型国企领域具有竞争力。</div></div>
+<div class="data-item"><div class="data-title">蓝凌中标广东医科大学网上办事大厅项目</div><div class="data-meta">2026-06-23 | 蓝凌</div><div class="data-summary">蓝凌软件中标广东医科大学网上办事大厅建设项目，将为高校提供一网通办、协同办公、信创适配等一体化解决方案，助力高校数字化转型和政务服务能力提升。</div></div>
+<div class="data-item"><div class="data-title">蓝凌携手华为云升级AI+KM方案，加速企业级智能体落地</div><div class="data-meta">2026-06-12 | 蓝凌</div><div class="data-summary">蓝凌智能携手华为云发布AI+KM融合方案，提出“长脑、长手、成人”三重进化路径，搭建企业知识大脑，将AI能力嵌入采购、行政等核心业务流程，打造“一件事”全链路智能闭环，赋能政务、央国企等组织AI进化。</div></div>
+<div class="data-item"><div class="data-title">蓝信发布2026全栈AI新品，打造100%国产化政企智能办公新范式</div><div class="data-meta">2026-06-03 | 蓝信</div><div class="data-summary">蓝信发布三款核心AI产品：LanEcho听蓝AI录音卡、LanSphere蓝域智能体平台、KnowAct知行AI超级助理。同时开源官方CLI及Skills能力接口，并联合AI产业链核心力量成立政企智能办公生态联盟，发布全栈国产化政企智能办公生态联合解决方案，实现从底层芯片、大模型到上层应用的100%国产自主可控。</div></div>
+<div class="data-item"><div class="data-title">蓝信通过CMMI5认证，研发能力获国际认可</div><div class="data-meta">2026-06-29 | 蓝信</div><div class="data-summary">蓝信顺利通过CMMI5级认证，标志着其在软件研发、项目管理、过程改进等方面达到国际领先水平。蓝信将持续以高标准的研发管理体系，为政企客户提供更优质的智能办公产品与服务。</div></div>
+<div class="data-item"><div class="data-title">蓝信亮相2026天津智博会，展示全栈AI办公新品</div><div class="data-meta">2026-06-12 | 蓝信</div><div class="data-summary">蓝信携全栈AI新品亮相2026天津智博会，展示LanSphere蓝域智能体平台、KnowAct知行AI超级助理等产品，现场演示智能公文写作、AI会议纪要、智能审批等政务办公场景，吸引众多政府和企业客户关注。</div></div>
+<div class="data-item"><div class="data-title">蓝信发布2026全栈AI新品，打造100%国产化政企智能办公新范式</div><div class="data-meta">2026-06-04 | 蓝信</div><div class="data-summary">蓝信2026 AI新品发布会发布听蓝AI录音卡、蓝域智能体平台、知行AI超级助理三款原生AI产品，发起成立政企智能办公生态联盟，以全链路、国产化、高安全属性的智能办公体系，定义政企AI办公新范式，服务各级党政机关、企事业单位。</div></div>
+<div class="data-item"><div class="data-title">企业微信发布5.0.9版本，AI助力业务经营与办公提效</div><div class="data-meta">2026-06-23 | 企业微信</div><div class="data-summary">企业微信5.0.9版本发布，上线AI服务总结、智能助理“大圆”、智能表格、智能文档等功能，支持政务版专属部署，为政府机构提供专属通讯办公工具，保障数字安全的前提下开展网格员基层治理、政务服务等工作。</div></div>
+
+</div>
+
+</div>
+
+<script>
+// 标签页切换
+function switchTab(tabName) {
+  // 隐藏所有标签内容
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) {
+    contents[i].classList.remove('active');
+  }
+  // 移除所有标签按钮的激活状态
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  // 显示选中的标签内容
+  document.getElementById('tab-' + tabName).classList.add('active');
+  // 激活选中的标签按钮
+  var activeBtn = document.querySelector('.tab-btn[data-tab="' + tabName + '"]');
+  if (activeBtn) activeBtn.classList.add('active');
+}
+
+// 页面加载时读取URL参数，自动选中对应标签
+window.addEventListener('DOMContentLoaded', function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var type = urlParams.get('type');
+  if (type && ['policy', 'industry', 'competitor'].indexOf(type) !== -1) {
+    switchTab(type);
+  }
+});
+</script>
+</body>
+</html>

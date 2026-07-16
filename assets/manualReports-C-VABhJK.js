@@ -1,0 +1,1 @@
+const r="qi_manual_reports_v1",e=()=>{try{const t=JSON.parse(localStorage.getItem(r)||"[]");return Array.isArray(t)?t:[]}catch{return[]}},o=t=>{const a=e();localStorage.setItem(r,JSON.stringify([t,...a.filter(s=>s.id!==t.id)]))};export{e as l,o as s};

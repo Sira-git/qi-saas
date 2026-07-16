@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数据要素 - 原始数据列表</title>
+<style>
+:root { --primary: #0052D9; --bg: #F5F7FA; --card-bg: #fff; --text: #1A1A1A; --border: #E8E8E8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 22px; font-weight: 600; }
+.header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+.back-link { display: inline-block; margin-bottom: 16px; color: #0052D9; text-decoration: none; font-size: 14px; }
+.back-link:hover { text-decoration: underline; }
+
+/* 标签页样式 */
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #E8E8E8; }
+.tab-btn { padding: 12px 24px; border: none; background: transparent; font-size: 15px; font-weight: 500; color: #666; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+.tab-btn:hover { color: #0052D9; }
+.tab-btn.active { color: #0052D9; border-bottom-color: #0052D9; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.data-item { background: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 10px; border: 1px solid var(--border); }
+.data-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 4px; }
+.data-meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+.data-summary { font-size: 13px; color: #666; line-height: 1.5; max-height: 4.5em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.count-badge { display: inline-block; font-size: 12px; color: #fff; background: #0052D9; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
+.empty { color: #999; font-size: 13px; padding: 16px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="report-数据要素.html" class="back-link">&larr; 返回报告</a>
+<div class="header">
+<h1>数据要素 - 原始数据列表</h1>
+<p>本页面展示该领域半年内收集的全部代表性原始数据</p>
+</div>
+
+<!-- 标签页导航 -->
+<div class="tabs">
+<button class="tab-btn active" data-tab="policy" onclick="switchTab('policy')">政策资料合集 <span class="count-badge">20条</span></button>
+<button class="tab-btn" data-tab="industry" onclick="switchTab('industry')">行业资料合集 <span class="count-badge">1条</span></button>
+<button class="tab-btn" data-tab="competitor" onclick="switchTab('competitor')">竞品资料合集 <span class="count-badge">18条</span></button>
+</div>
+
+<!-- 标签页内容 -->
+<div class="tab-content active" id="tab-policy">
+<div class="data-item"><div class="data-title">天津市深化智慧城市建设 推进城市治理和数字化转型总体方案</div><div class="data-meta">2026-01-23 | 天津市数据局</div><div class="data-summary">构建“1183”智慧城市建设总体架构，即打造1个数据基础底座，建设1个城市“智管中心”，部署8项重点任务，健全3大保障体系；到2027年，高水平建成并运营一体化数据平台和城市“智管中心”，“高效处置一件事”覆盖城市运行重点事件，“高效办成一件事”覆盖高频民生事项；到2030年底，实现城市治理数字化全面突破，形成敏捷高效、韧性安全的现代化城市治理新格局。</div></div>
+<div class="data-item"><div class="data-title">天津市深化智慧城市建设 推进城市治理和数字化转型总体方案</div><div class="data-meta">2026-01-22 | 天津市数据局</div><div class="data-summary">强调充分发挥数据要素价值和人工智能创新引擎作用，明确“统一规划设计、统一基础平台、统一标准规范、统一建设运维”的建设原则，到2027年高水平建成一体化数据平台和城市“智管中心”，“高效办成一件事”覆盖高频民生事项。</div></div>
+<div class="data-item"><div class="data-title">四川省关于支持数字经济高质量发展的若干政策措施</div><div class="data-meta">2026-01-09 | 四川省人民政府相关部门</div><div class="data-summary">提出实施数字产业集群发展工程，聚焦人工智能大模型、数据标注、数据流通、数据安全等细分领域，加大对数字经济创新型企业支持力度，安排资金对相关企业给予奖补，加快推进全省数字经济高质量发展。</div></div>
+<div class="data-item"><div class="data-title">黑龙江省“人工智能+”政务深化应用工作方案</div><div class="data-meta">2026-02-25 | 黑龙江省政务服务数据管理局</div><div class="data-summary">聚焦政务数据从“汇数”到“智用”的转变，推进政务智能体建设，创新政务数据目录“五级三十同”编制标准，构建数据目录知识图谱，以100个智能体应用场景为“小切口”，推动政务数据汇聚治理，构建高质量数据集和知识库。</div></div>
+<div class="data-item"><div class="data-title">2026年河北省数据和政务服务系统工作会议召开</div><div class="data-meta">2026-02-24 | 河北省数据和政务服务局</div><div class="data-summary">2026年河北将系统推进数据要素市场化配置改革，持续扩大高质量公共数据供给，推动海量数据优势加快转化为发展竞争优势；全面开展公共数据授权运营，制定场景审核、收益分配等制度，支持开发易落地数据产品；建设省级数据产权登记平台，探索登记凭证在金融、税务等领域的应用；打造“人工智能+政务”场景，提升行政效能；国务院部署的“高效办成一件事”重点事项将全部在河北省落地，并向“一类事”升级。</div></div>
+<div class="data-item"><div class="data-title">国家数据局等部门关于培育数据流通服务机构 加快推进数据要素市场化价值化的意见</div><div class="data-meta">2026-02-09 | 国家数据局、工业和信息化部、公安部、中国证监会</div><div class="data-summary">为进一步明晰数据流通服务机构功能定位，提升数据流通交易服务效能，释放数据要素价值，加快繁荣数据市场生态，提出相关意见。到2029年底，培育一批功能完备、治理规范、竞争力强的龙头数据流通服务机构，构建统一规范、互联互通、安全可控的数据流通服务体系，数据要素市场化价值化水平显著提升，为建设全国一体化数据市场提供有力支撑。</div></div>
+<div class="data-item"><div class="data-title">长三角政务服务“一网通办”相关合作规定</div><div class="data-meta">2026-03-26 | 浙江省人民政府相关部门</div><div class="data-summary">明确与上海、江苏、安徽集约建设长三角政务服务“一网通办”线上平台，强化长三角政务数据共享协调机制，安全稳妥有序推进人工智能等数智技术在长三角政务服务“一网通办”中的应用，加强高质量数据集和语料库、可信知识库建设。</div></div>
+<div class="data-item"><div class="data-title">汤飞帆:敢闯敢干推动数字政府2.0建设走向纵深</div><div class="data-meta">2026-03-18 | 宁波市数据局</div><div class="data-summary">宁波以智能化场景应用为牵引，抓住国家垂类大模型试点机遇，推动大模型技术与政务场景深度融合；以数据要素价值化为核心，规范有序推动公共数据开放与授权运营，推进国家数据产业集聚区建设试点；以普惠化数字服务为重点，深化“高效办成一件事”改革，迭代优化浙里办宁波频道；以一体化底座建设为支撑，推进城市可信数据空间建设、城市智能中枢建设。</div></div>
+<div class="data-item"><div class="data-title">吉林省公共数据资源登记管理实施细则(试行)</div><div class="data-meta">2026-03-13 | 吉林省政务服务和数字化建设管理局</div><div class="data-summary">为贯彻落实国家关于公共数据资源登记管理相关部署要求，推动吉林省公共数据资源授权运营规范开展，加快数据资源标准化、规范化建设，更好释放公共数据资源要素价值，制定本实施细则，明确了公共数据资源登记的主体、流程、管理等要求。</div></div>
+<div class="data-item"><div class="data-title">苏州市数据局2025年工作总结和2026年工作计划</div><div class="data-meta">2026-03-01 | 苏州市数据局</div><div class="data-summary">2026年苏州将深化数智化改革，出台“十五五”数字苏州建设专项规划，统筹推进数字政府、数字经济、数字社会建设；深化数据要素市场化配置改革，高标准运营国家数据发展研究院高质量数据集实验室，深化公共数据开发利用；常态化推进“高效办成一件事”改革，优化企业综合服务线上平台功能；加快“人工智能+”城市建设，打造数智化应用推广场景。</div></div>
+<div class="data-item"><div class="data-title">兰州市优化营商环境创一流行动方案</div><div class="data-meta">2026-03-01 | 兰州市发展改革委</div><div class="data-summary">实施政务智服工程，打造高效便捷的政务环境；加强政务服务“三化”建设，打造“综合+专业+智慧+移动”服务矩阵；攻坚政务平台整合升级，涉企高频服务事项网上可办率达100%，全程网办率达98%；促进公共数据互联共享，打造“数据要素×”应用典型示范场景，实现省市公共数据授权运营平台互联互通；深化政务服务“好差评”制度。</div></div>
+<div class="data-item"><div class="data-title">广西壮族自治区国民经济和社会发展第十五个五年规划纲要</div><div class="data-meta">2026-04-27 | 广西壮族自治区人民政府</div><div class="data-summary">提出培育跨境数据交易市场，建设面向东盟的人工智能数据标注基地，推动数据确权、定价和交易标准化，规范实施数据资产评估，探索数据资产入表新路径，推进投资审批“一网通办”，大力发展人工智能，深入推进数智广西建设。</div></div>
+<div class="data-item"><div class="data-title">全方位打造数智强省，河南出台18条举措</div><div class="data-meta">2026-05-23 | 河南省人民政府办公厅</div><div class="data-summary">推进数字（智）河南建设，全方位打造数智强省；加快推动数据要素市场化配置改革，大力推进数字产业发展，全方位促进数实深度融合；推进开发区数字化转型平台建设，鼓励发放“数字化转型服务券”；深化“一网通办”改革，推进政务服务数智化升级；打造“人工智能+政务”场景，提升行政效能。</div></div>
+<div class="data-item"><div class="data-title">河南省推进数字经济高质量发展若干政策措施</div><div class="data-meta">2026-05-23 | 河南省人民政府办公厅</div><div class="data-summary">提出深入实施“人工智能+”行动，谋划建设人工智能重大应用场景，持续实施“数据要素×”行动，全域推进城市数字化转型，支持有条件的地方申请开展国家试点，鼓励各地统筹利用各类资金，布局建设城市数字化共性基础设施。</div></div>
+<div class="data-item"><div class="data-title">2026年数字经济发展工作要点</div><div class="data-meta">2026-05-20 | 国家数据局</div><div class="data-summary">对2026年推进数字经济高质量发展重点工作作出部署，提出8个方面重点任务，包括深化数据要素市场化配置改革、强化数据赋能人工智能发展、提升数字化治理与服务能力等，明确提出推进数字经济促进法立法进程，持续推进数据安全管理。</div></div>
+<div class="data-item"><div class="data-title">郑州市公共数据资源授权运营管理办法（试行）</div><div class="data-meta">2026-05-15 | 郑州市人民政府办公室</div><div class="data-summary">构建“统一授权、平台承载、市场开发、规范运营、全程监管、安全可控”的全链条公共数据授权运营体系；实行市政府统一整体授权运营机制，由市数据主管部门统筹全市公共数据授权运营工作，各行业主管部门负责本行业数据汇聚、目录编制和数据质量管控，鼓励市场主体参与公共数据二次开发，平衡公共属性与市场化发展需求。</div></div>
+<div class="data-item"><div class="data-title">杭州市数据资源管理局关于市政协十二届四次会议409号提案的办理意见</div><div class="data-meta">2026-06-23 | 杭州市数据资源管理局</div><div class="data-summary">杭州建成全国首个政务垂域模型训练场，构建覆盖“数据管理、模型训练、推理应用”的全生命周期标准规范体系，打造“知识数据、模型训练、智能编排、模型评测、应用发布、模型安全”六大能力中心，形成“拎数入场、提智赋能”的模型训练生产路径，同时探索高质量、多模态、跨领域的语料供给体系，激活政务数据价值释放。</div></div>
+<div class="data-item"><div class="data-title">数智济南建设2026年工作要点</div><div class="data-meta">2026-06-18 | 济南市大数据局</div><div class="data-summary">组建数智政务联合创新中心，统筹推进政务领域人工智能平台建设、资源整合、场景应用；统筹建设全市政务知识库管理体系，制定知识构建、检索、管理与安全技术标准；深化机关办会数智化转型，优化数智会务系统；升级“泉心泉意”政务服务大模型，2026年新增6项以上智能助手应用场景；深化“一网通办”改革，拓展“一件事”集成服务场景，迭代升级“爱山东”济南分厅70个民生“关键小事”。</div></div>
+<div class="data-item"><div class="data-title">住房城乡建设部 国家数据局关于全面建立房屋建筑统一代码制度的通知</div><div class="data-meta">2026-06-17 | 住房和城乡建设部、国家数据局</div><div class="data-summary">要求各级住房城乡建设部门结合实际建设完善赋码功能，按照统一标准编制房屋建筑统一代码，健全数据汇聚管理机制，构建包含统一代码、房屋建筑属性和空间数据信息的部、省、市房屋建筑和市政基础设施基础信息库，实现数据互联互通。</div></div>
+<div class="data-item"><div class="data-title">中共陕西省委办公厅 陕西省人民政府办公厅关于加快公共数据资源开发利用的实施意见</div><div class="data-meta">2026-06-10 | 中共陕西省委办公厅、陕西省人民政府办公厅</div><div class="data-summary">提出扩大数据资源供给，统筹建立全省一体化政务数据平台体系，推进“全量编目、按需共享、安全管控”，开展公共数据资源授权运营，优先在信用、文旅、测绘、气象等行业开展授权运营，推进典型用数场景建设。</div></div>
+
+</div>
+
+<div class="tab-content" id="tab-industry">
+<div class="data-item"><div class="data-title">2026年定位为数据要素价值释放年，政策密集出台</div><div class="data-meta">2026-03-12 | 行业媒体</div><div class="data-summary">2026年2月密集出台的数据要素政策文件，标志着我国数据要素市场化配置改革进入纵深推进、全面落地的关键阶段。国家数据局等四部门发布《关于培育数据流通服务机构加快推进数据要素市场化价值化的意见》，首次明确培育三类数据流通服务机构。多地完成数据资产登记与入表，标志着数据要素市场化配置进入实质落地阶段。</div></div>
+
+</div>
+
+<div class="tab-content" id="tab-competitor">
+<div class="data-item"><div class="data-title">首批！新点软件入选江苏省入库培育数据企业名单</div><div class="data-meta">2026-01-16 | 国泰新点</div><div class="data-summary">新点软件凭借在数据领域的深厚积累与综合技术实力，入选江苏省第一批入库培育数据企业名单，获评数据应用、数据技术培育资质，获得省级权威认可。</div></div>
+<div class="data-item"><div class="data-title">浪潮软件中标青岛市大数据服务平台迁移项目，助力智慧城市建设</div><div class="data-meta">2026-02-11 | 浪潮软件</div><div class="data-summary">浪潮软件成功中标青岛市大数据发展管理局青岛网上办事服务平台适配迁移项目，中标金额229500元，项目旨在通过对青岛网上办事服务平台的适配与迁移，提升市民的办事效率与政务服务体验，助力智慧城市建设。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技与上海数据集团、阿里云深化战略合作，聚焦数据要素与AI大模型</div><div class="data-meta">2026-03-13 | 浩鲸科技</div><div class="data-summary">浩鲸科技与上海数据集团、阿里云围绕数据要素建设、AI大模型技术创新等核心议题深化战略合作，浩鲸科技凭借二十余年政企服务经验，深度参与智慧城市、公共数据授权运营等项目，成为连接技术与场景的关键数智化全栈能力提供商。</div></div>
+<div class="data-item"><div class="data-title">开普云：2025年年度报告</div><div class="data-meta">2026-04-24 | 开普云</div><div class="data-summary">报告回顾2025年业务：AI大模型与算力业务收入大幅增长，发布开悟智核智能体一体机，政务大数据覆盖80%以上省级政府。在政务领域以开悟行业大模型赋能政策查询与解读、政务智能数字人等应用，推出新一代AI内容安全风控产品鸠摩智。</div></div>
+<div class="data-item"><div class="data-title">浪潮软件：2026年度提质增效重回报行动方案</div><div class="data-meta">2026-04-30 | 浪潮软件</div><div class="data-summary">公司作为国内领先的数字政府方案与服务提供商，已形成涵盖一网通办、一网统管、一网监管、政府数脑等于一体的政府数字化转型全面解决方案，客户覆盖全国29个省份135个地市、800多个区县。IDC报告显示公司位居中国数字政府IT解决方案市场份额及增速双第一。</div></div>
+<div class="data-item"><div class="data-title">再上榜！360智语连续两年入选全国企业人工智能+行动创新案例TOP100</div><div class="data-meta">2026-04-09 | 360智语</div><div class="data-summary">360智语凭借与大庆华术合作的政务AI数据治理项目入选。该项目针对政务数据治理中的系统孤岛、调用低效、服务滞后痛点，通过AI实现场景化数据标注、智能分析挖掘，落地惠企政策推送（匹配准确率95%+）、扫码执法监控、智能数据调用三大场景。</div></div>
+<div class="data-item"><div class="data-title">360智语连续两年入选全国“人工智能+”行动创新案例TOP100</div><div class="data-meta">2026-04-09 | 360智语</div><div class="data-summary">360智语凭借政务AI数据治理项目入选2026全国企业“人工智能+”行动创新案例TOP100，此前曾以地级市人工智能服务底座项目入选，实现从AI服务底座搭建到政务场景深度赋能的进阶，聚焦政务数据治理、智能公文、智能客服等场景。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技受邀参加2026年中国移动中资出海数智赋能合作会议</div><div class="data-meta">2026-04-07 | 浩鲸科技</div><div class="data-summary">浩鲸科技与中移国际保持深度战略协同，携手共建全球云联盟，在云网、AI、算力、数据中心等核心领域展开全方位合作。公司LPC方案已在沙特、印尼、南非等多国落地，并演进至主权AI智算云。</div></div>
+<div class="data-item"><div class="data-title">国泰新点软件2025年年度报告摘要，深化政务AI与数据要素布局</div><div class="data-meta">2026-04-11 | 国泰新点</div><div class="data-summary">国泰新点软件2025年年报披露，一网通办业务从能办向“好办、易办、智办”全面升级，政务热线通过大模型+数据+运营实现提效；一网协同业务推出智能公文、会议管理、知识库助手等AI应用；数据要素业务推进省级数据目录治理和“数字资源一本帐”智能体建设，探索政务数据运营商业化路径。</div></div>
+<div class="data-item"><div class="data-title">2026年5月上半月数据入表招投标信息</div><div class="data-meta">2026-05-06 | 浪潮软件</div><div class="data-summary">2026年5月6日，浪潮软件股份有限公司政府信息化事业部发布数据入表相关招标，招标金额115万元，涉及数据要素领域。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技聚焦大模型与智能体落地实践，发布鲸智MaaS平台</div><div class="data-meta">2026-05-11 | 浩鲸科技</div><div class="data-summary">浩鲸科技发布鲸智MaaS平台，整合算力调度、数据治理、模型开发、推理部署全链路能力，智能体开发平台支持多模式编排，推出鲸智慧笔、大模型知识中心等AI工具，已在政务、电信、能源等多行业实现规模化落地。</div></div>
+<div class="data-item"><div class="data-title">浪潮软件连中多项政务数字化项目</div><div class="data-meta">2026-06-25 | 浪潮软件</div><div class="data-summary">2026年6月22日至24日，浪潮软件股份有限公司密集披露多项政企数字化项目中标信息，覆盖民政、药监、商务等多个政务领域，累计中标金额超350万元。包括：山东省民政厅银龄智库平台新建项目（267.35万元）、国家药品监督管理局药品审评中心化学药生物等效性试验备案平台运维完善项目（32.3万元）、2026年宁夏商务数字化综合服务平台运维和优化升级服务项目（54.5万元）等。</div></div>
+<div class="data-item"><div class="data-title">吉林省政务服务和数字化建设服务中心政务信息化统一建设项目中标公告</div><div class="data-meta">2026-06-12 | 浪潮软件</div><div class="data-summary">依据吉林省财政厅政府采购投诉处理决定，原中标结果无效，采购人确定重新赋分后得分最高的浪潮软件股份有限公司为本包中标供应商。中标金额为359.8万元，项目为吉林省档案馆数字档案馆信息系统，服务期限3年（1年建设期，2年运行保障期）。</div></div>
+<div class="data-item"><div class="data-title">泛微Xiaoe.AI十大场景评价，优缺点排名Top1</div><div class="data-meta">2026-06-25 | 泛微</div><div class="data-summary">2026年6月，泛微网络于上海举办泛微·数智大脑Xiaoe.AI体验大会，超过千位企业数字化负责人参与。泛微正式推出基于大模型+小模型+智能体构建的数智大脑Xiaoe.AI，引发行业关注。与会者体验了市场、销售、合同、采购等十余种数智化业务场景，每个场景达成全程数智化运营。平台自带50+智能体服务及100+智能业务组件，支持公有云、私有云和混合云部署。</div></div>
+<div class="data-item"><div class="data-title">国内首家！浩鲸科技鲸智大模型Token运营平台获信通院双认证</div><div class="data-meta">2026-06-18 | 浩鲸科技</div><div class="data-summary">浩鲸科技鲸智大模型Token运营平台获中国信通院双认证，将多年来在通信、政务、能源等行业沉淀融入标准。平台构建了接入、管控、安全、运营四位一体的企业级Token全生命周期智能管理架构，已落地广东、宁夏等地通信、政务、能源各类场景，支撑客户实现AI资源的高效管控和价值释放。</div></div>
+<div class="data-item"><div class="data-title">聚焦Token精细化运营，浩鲸科技重塑AI商业价值</div><div class="data-meta">2026-06-26 | 浩鲸科技</div><div class="data-summary">浩鲸科技依托20年电信、政务、能源等行业数字化经验、200+场景Agent实践及全球渠道优势，构建完整的Token运营体系，集成全球算力统一纳管调度、模型训练推理、Token全生命周期管理、行业垂直模型应用四大核心能力。该平台已作为国内首个平台通过中国信通院·可信AI-Token服务评估认证。</div></div>
+<div class="data-item"><div class="data-title">360智语发布政企安全大模型，聚焦政务数据安全治理</div><div class="data-meta">2026-06-15 | 360智语</div><div class="data-summary">360智语发布政企安全大模型360-SecGPT，聚焦政务数据安全治理、敏感信息识别、合规风险检测等场景。模型已通过国家网络安全等级保护三级认证，支持私有化部署和信创环境适配。</div></div>
+<div class="data-item"><div class="data-title">开普云发布开悟数据治理平台3.0，聚焦公共数据运营</div><div class="data-meta">2026-06-10 | 开普云</div><div class="data-summary">开普云发布开悟数据治理平台3.0，新增公共数据资产目录、数据质量评估、数据授权运营等模块，支持数据要素市场化配置。平台已在广东、浙江等地公共数据运营项目中落地。</div></div>
+
+</div>
+
+</div>
+
+<script>
+// 标签页切换
+function switchTab(tabName) {
+  // 隐藏所有标签内容
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) {
+    contents[i].classList.remove('active');
+  }
+  // 移除所有标签按钮的激活状态
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  // 显示选中的标签内容
+  document.getElementById('tab-' + tabName).classList.add('active');
+  // 激活选中的标签按钮
+  var activeBtn = document.querySelector('.tab-btn[data-tab="' + tabName + '"]');
+  if (activeBtn) activeBtn.classList.add('active');
+}
+
+// 页面加载时读取URL参数，自动选中对应标签
+window.addEventListener('DOMContentLoaded', function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var type = urlParams.get('type');
+  if (type && ['policy', 'industry', 'competitor'].indexOf(type) !== -1) {
+    switchTab(type);
+  }
+});
+</script>
+</body>
+</html>

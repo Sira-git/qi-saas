@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大汉软件 · 人工智能 半年度战略监测报告</title>
+<style>
+:root { --primary: #0052D9; --primary-light: #E8F0FE; --secondary: #00A870; --danger: #FF6B6B; --bg: #F5F7FA; --card-bg: #fff; --text: #1A1A1A; --text-secondary: #666; --border: #E8E8E8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding: 20px; }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section { margin-bottom: 32px; }
+.section > h2 { font-size:20px; font-weight:600; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--primary-light); color: #0052D9; }
+
+/* 卡片 */
+.card { background:var(--card-bg); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+.card h3 { font-size:16px; margin:0 0 16px; color:var(--primary); font-weight:600; }
+
+/* 图表 */
+.chart-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin:16px 0; }
+.chart-box { background:#FAFBFC; border:1px solid var(--border); border-radius:10px; padding:16px; }
+.chart-title { font-size:13px; font-weight:600; color:var(--text-secondary); margin-bottom:10px; }
+
+/* 横向条形图 */
+.bar-row { display:flex; align-items:center; gap:10px; margin:6px 0; font-size:13px; }
+.bar-label { width:100px; text-align:right; color:var(--text-secondary); flex-shrink:0; }
+.bar-track { flex:1; height:8px; background:#eee; border-radius:4px; overflow:hidden; }
+.bar-fill { height:100%; background:var(--primary); border-radius:4px; }
+.bar-value { width:40px; text-align:right; font-size:12px; color:var(--text-secondary); }
+
+/* 来源标注 */
+.source-ref { display:inline-block; font-size:11px; color:#888; background:#f0f0f0; border-radius:4px; padding:2px 6px; margin-top:8px; }
+
+/* PESTEL 六宫格 */
+.pestel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+.pestel-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; transition: all 0.2s; }
+.pestel-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--primary); }
+.pestel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.pestel-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; color: #fff; }
+.pestel-icon.p { background: #0052D9; }
+.pestel-icon.e { background: #00A870; }
+.pestel-icon.s { background: #FF6B6B; }
+.pestel-icon.t { background: #722ED1; }
+.pestel-icon.e2 { background: #13C2C2; }
+.pestel-icon.l { background: #FA8C16; }
+.pestel-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.pestel-subtitle { font-size: 11px; color: #999; }
+.pestel-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+.pestel-body h5 { font-size: 12px; color: #333; margin: 8px 0 4px; font-weight: 600; }
+.pestel-body p { margin-bottom: 6px; }
+.pestel-body ul { margin-left: 14px; margin-bottom: 6px; }
+.pestel-body li { margin-bottom: 3px; }
+
+/* 交叉影响表格 */
+.cross-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+.cross-table thead { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: #fff; }
+.cross-table th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+.cross-table td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; color: #444; vertical-align: top; }
+.cross-table tbody tr:hover { background: #f8f9fa; }
+.cross-table td:first-child { font-weight: 600; color: var(--primary); width: 100px; }
+.arrow-up { color: #00A870; font-weight: 600; }
+.arrow-down { color: #FF6B6B; font-weight: 600; }
+
+/* SWOT 四象限 */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.swot-card { background: #fff; border-radius: 10px; padding: 16px; }
+.swot-card.s { border: 2px solid #0052D9; border-top: 4px solid #0052D9; }
+.swot-card.w { border: 2px solid #FF6B6B; border-top: 4px solid #FF6B6B; }
+.swot-card.o { border: 2px solid #00A870; border-top: 4px solid #00A870; }
+.swot-card.t { border: 2px solid #c62828; border-top: 4px solid #c62828; }
+.swot-card h4 { font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.swot-card h4 .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: #fff; font-weight: 600; }
+.swot-card.s h4 .badge { background: #0052D9; }
+.swot-card.w h4 .badge { background: #FF6B6B; }
+.swot-card.o h4 .badge { background: #00A870; }
+.swot-card.t h4 .badge { background: #c62828; }
+.swot-card ul { padding-left: 16px; font-size: 13px; color: #444; }
+.swot-card li { margin-bottom: 6px; line-height: 1.5; }
+
+.swot-derivation { background: #f5f7fa; border-radius: 12px; padding: 24px; margin-top: 16px; }
+.swot-derivation h4 { font-size: 16px; color: #333; margin-bottom: 20px; font-weight: 600; }
+.derivation-item { display: flex; gap: 16px; margin-bottom: 14px; padding: 18px 20px; border-radius: 10px; background: #fff; align-items: flex-start; }
+.derivation-item:last-child { margin-bottom: 0; }
+.derivation-item.so { border-left: 4px solid #52c41a; }
+.derivation-item.wo { border-left: 4px solid #1890ff; }
+.derivation-item.st { border-left: 4px solid #fa8c16; }
+.derivation-item.wt { border-left: 4px solid #f5222d; }
+.derivation-label { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.derivation-item.so .derivation-label { background: #52c41a; }
+.derivation-item.wo .derivation-label { background: #1890ff; }
+.derivation-item.st .derivation-label { background: #fa8c16; }
+.derivation-item.wt .derivation-label { background: #f5222d; }
+.derivation-text { flex: 1; font-size: 13px; color: #666; line-height: 1.8; }
+.derivation-text h5 { font-size: 14px; color: #333; margin: 0 0 8px 0; font-weight: 600; }
+
+/* 市场机会表格 */
+.opp-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+.opp-table thead { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: #fff; }
+.opp-table th { padding: 12px 10px; text-align: left; font-weight: 600; font-size: 12px; }
+.opp-table td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; color: #444; vertical-align: top; font-size: 12px; }
+.opp-table tbody tr:hover { background: #f8f9fa; }
+.opp-table td:first-child { font-weight: 700; color: var(--primary); text-align: center; width: 40px; font-size: 16px; }
+.opp-rank-1 { background: #f0f7ff; }
+.opp-rank-2 { background: #f8f9fa; }
+.opp-rank-3 { background: #fff; }
+.opp-score { font-weight: 600; color: var(--primary); font-size: 14px; }
+.opp-bar-track { width: 80px; height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
+.opp-bar-fill { height: 100%; border-radius: 3px; }
+.opp-bar-fill.high { background: #00A870; width: 85%; }
+.opp-bar-fill.mid { background: #0052D9; width: 60%; }
+.opp-bar-fill.low { background: #888; width: 40%; }
+.opp-note { background: #f8f9fa; padding: 12px 16px; border-radius: 8px; margin-top: 12px; font-size: 12px; color: #666; }
+
+/* 分析内容 */
+.analysis-content { margin-top: 16px; }
+.analysis-content .dim-block { background: #FAFBFC; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+.analysis-content .dim-block h4 { font-size: 14px; font-weight: 600; color: var(--primary); margin: 0 0 10px 0; padding-bottom: 8px; border-bottom: 1px solid var(--primary-light); }
+.analysis-content .dim-block p { font-size: 13px; color: #444; line-height: 1.8; margin: 0; }
+.analysis-content .dim-block strong { color: var(--primary); }
+
+/* 趋势分析区域头部 */
+.trend-section-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 0; padding-bottom: 10px; border-bottom: 2px solid var(--primary-light); }
+.trend-section-header h2 { margin: 0; padding: 0; border-bottom: none; }
+
+/* 趋势分析标签栏 */
+.trend-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.trend-btn { padding: 8px 20px; border: 2px solid var(--border); border-radius: 20px; background: var(--card-bg); color: var(--text-secondary); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+.trend-btn:hover { border-color: var(--primary); color: var(--primary); }
+.trend-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 2px 8px rgba(0,82,217,0.25); }
+.trend-panel { display: none; animation: fadeIn 0.35s ease; }
+.trend-panel.active { display: block; }
+
+/* 来源标签 */
+.source-tag { display: inline-block; font-size: 11px; color: #0052D9; background: #E8F0FE; border-radius: 4px; padding: 2px 8px; margin-left: 6px; cursor: pointer; transition: all 0.2s; }
+.source-tag:hover { background: #0052D9; color: #fff; }
+
+/* 来源浮窗 */
+.source-popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 1000; justify-content: center; align-items: center; }
+.source-popup-overlay.active { display: flex; }
+.source-popup { background: #fff; border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,0.15); animation: popupIn 0.25s ease; }
+@keyframes popupIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.source-popup-header { padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.source-popup-header h3 { font-size: 16px; color: #333; margin: 0; }
+.source-popup-close { width: 28px; height: 28px; border-radius: 50%; border: none; background: #f0f0f0; color: #666; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.source-popup-close:hover { background: #e0e0e0; }
+.source-popup-body { padding: 20px; }
+.source-popup-intro { font-size: 13px; color: #666; margin-bottom: 16px; padding: 12px; background: #f5f7fa; border-radius: 8px; line-height: 1.6; }
+.source-popup-intro strong { color: #0052D9; }
+.source-sample-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed #eee; }
+.source-sample-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.source-sample-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 4px; }
+.source-sample-summary { font-size: 12px; color: #666; line-height: 1.5; max-height: 4.5em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.source-sample-meta { font-size: 11px; color: #999; margin-top: 4px; }
+.source-popup-footer { padding: 12px 20px 20px; }
+.source-popup-btn { display: inline-block; padding: 8px 16px; background: #0052D9; color: #fff; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500; transition: all 0.2s; }
+.source-popup-btn:hover { background: #003BB5; }
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .chart-row { grid-template-columns: 1fr; }
+  .pestel-grid { grid-template-columns: 1fr; }
+  .swot-grid { grid-template-columns: 1fr; }
+  .trend-nav { gap: 6px; }
+  .trend-btn { padding: 6px 14px; font-size: 13px; }
+}
+
+/* ===== 内嵌数据列表遮罩 ===== */
+.data-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.data-overlay.show {
+  display: flex;
+}
+.data-overlay-inner {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1200px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+.data-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-shrink: 0;
+}
+.data-overlay-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+.data-overlay-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f5f5f5;
+  color: #666;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.data-overlay-close:hover {
+  background: #e8e8e8;
+  color: #333;
+}
+.data-overlay-body {
+  flex: 1;
+  overflow: hidden;
+}
+.data-overlay-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<section class="section">
+  <div class="trend-section-header">
+    <h2>半年度趋势分析</h2>
+    <div class="trend-nav">
+      <button class="trend-btn active" data-target="trend-policy" onclick="switchTrend(this,'trend-policy')">政策动态</button>
+      <button class="trend-btn" data-target="trend-industry" onclick="switchTrend(this,'trend-industry')">行业洞察</button>
+      <button class="trend-btn" data-target="trend-competitor" onclick="switchTrend(this,'trend-competitor')">竞品追踪</button>
+    </div>
+  </div>
+
+  <div class="trend-panel active" id="trend-policy">
+    <div class="card">
+      <h3>政策动态</h3>
+      <div class="chart-row">
+        <div class="chart-box">
+          <div class="chart-title">政策月度趋势</div>
+          <svg width="100%" height="220" viewBox="0 0 600 220" style="overflow:visible;">
+  <defs>
+    <linearGradient id="areaGrad-0052D9-4388157888" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0052D9" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0052D9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="40" y1="180.0" x2="560" y2="180.0" stroke="#eee" stroke-width="1"/><text x="35" y="183.0" font-size="9" fill="#aaa" text-anchor="end">0</text><line x1="40" y1="156.7" x2="560" y2="156.7" stroke="#eee" stroke-width="1"/><text x="35" y="159.7" font-size="9" fill="#aaa" text-anchor="end">1</text><line x1="40" y1="133.3" x2="560" y2="133.3" stroke="#eee" stroke-width="1"/><text x="35" y="136.3" font-size="9" fill="#aaa" text-anchor="end">2</text><line x1="40" y1="110.0" x2="560" y2="110.0" stroke="#eee" stroke-width="1"/><text x="35" y="113.0" font-size="9" fill="#aaa" text-anchor="end">3</text><line x1="40" y1="86.7" x2="560" y2="86.7" stroke="#eee" stroke-width="1"/><text x="35" y="89.7" font-size="9" fill="#aaa" text-anchor="end">4</text>
+  <path d="M40.0,63.3 L144.0,86.7 L248.0,86.7 L352.0,110.0 L456.0,63.3 L560.0,133.3 L560.0,180.0 L40.0,180.0 Z" fill="url(#areaGrad-0052D9-4388157888)" stroke="none"/>
+  <path d="M40.0,63.3 L144.0,86.7 L248.0,86.7 L352.0,110.0 L456.0,63.3 L560.0,133.3" fill="none" stroke="#0052D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40.0" cy="63.3" r="3" fill="#0052D9" stroke="#fff" stroke-width="1.5"/><text x="40.0" y="55.3" font-size="10" fill="#666" text-anchor="middle">5</text><circle cx="144.0" cy="86.7" r="3" fill="#0052D9" stroke="#fff" stroke-width="1.5"/><text x="144.0" y="78.7" font-size="10" fill="#666" text-anchor="middle">4</text><circle cx="248.0" cy="86.7" r="3" fill="#0052D9" stroke="#fff" stroke-width="1.5"/><text x="248.0" y="78.7" font-size="10" fill="#666" text-anchor="middle">4</text><circle cx="352.0" cy="110.0" r="3" fill="#0052D9" stroke="#fff" stroke-width="1.5"/><text x="352.0" y="102.0" font-size="10" fill="#666" text-anchor="middle">3</text><circle cx="456.0" cy="63.3" r="3" fill="#0052D9" stroke="#fff" stroke-width="1.5"/><text x="456.0" y="55.3" font-size="10" fill="#666" text-anchor="middle">5</text><circle cx="560.0" cy="133.3" r="3" fill="#0052D9" stroke="#fff" stroke-width="1.5"/><text x="560.0" y="125.3" font-size="10" fill="#666" text-anchor="middle">2</text>
+  <text x="40.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-01</text><text x="144.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-02</text><text x="248.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-03</text><text x="352.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-04</text><text x="456.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-05</text><text x="560.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-06</text>
+</svg>
+        </div>
+        <div class="chart-box">
+          <div class="chart-title">政策区域分布（Top10）</div>
+          <div class="bar-row"><span class="bar-label">浙江</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#0052D9"></div></div><span class="bar-value">4</span></div>
+<div class="bar-row"><span class="bar-label">天津</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#0052D9"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">河北</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#0052D9"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">江苏</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#0052D9"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">山东</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#0052D9"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">国家</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#0052D9"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">河南</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#0052D9"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">北京</span><div class="bar-track"><div class="bar-fill" style="width:25.0%;background:#0052D9"></div></div><span class="bar-value">1</span></div>
+<div class="bar-row"><span class="bar-label">江西</span><div class="bar-track"><div class="bar-fill" style="width:25.0%;background:#0052D9"></div></div><span class="bar-value">1</span></div>
+<div class="bar-row"><span class="bar-label">四川</span><div class="bar-track"><div class="bar-fill" style="width:25.0%;background:#0052D9"></div></div><span class="bar-value">1</span></div>
+        </div>
+      </div>
+      <div class="analysis-content">
+<div class="dim-block"><h4>总体政策总量与层级分布</h4>
+<p>本半年度共监测到<strong>23条</strong>与人工智能领域相关政策，月均<strong>3.8条</strong>。
+从政策层级看，国家级政策<strong>2条</strong>（占比8.7%），地方级政策<strong>21条</strong>（占比91.3%）。
+地方级政策更为密集，说明该领域已进入落地实施和因地制宜推进的阶段，各地结合本地实际出台配套措施。
+</p></div>
+<div class="dim-block"><h4>政策月度波动与关键节点</h4>
+<p>政策发布呈<strong>整体下降</strong>态势。2026-01为政策发布高峰（5条），2026-06为低谷（2条）。
+环比增幅最大出现在2026-05（增加2条），
+环比降幅最大出现在2026-06（减少3条）。
+半年来政策活跃度有所回落，但仍有持续的政策跟进。
+</p></div>
+<div class="dim-block"><h4>重点赛道政策密度</h4>
+<p>人工智能领域半年内政策总量<strong>23条</strong>，属于中等政策密度赛道。
+区域分布上，浙江（4条）、天津（2条）、河北（2条）、江苏（2条）、山东（2条）等地政策密度最高，反映该领域存在区域示范效应或地方试点推进特征。
+<span class="source-tag" data-source="policy" data-dimension="重点赛道" data-samples="[{&quot;title&quot;: &quot;2026年河北省数据和政务服务系统工作会议召开&quot;, &quot;summary&quot;: &quot;2026年河北将系统推进数据要素市场化配置改革，持续扩大高质量公共数据供给，推动海量数据优势加快转化为发展竞争优势；全面开展公共数据授权运营，制定场景审核、收益分配等制度，支持开发易落地数据产品；建设省级数据产权登记平台，探索登记凭证在金融、税务等领域的应用；打造“人工智能+政务”场景，提升行政效能...&quot;, &quot;issuer&quot;: &quot;河北省数据和政务服务局&quot;, &quot;date&quot;: &quot;2026-02-24&quot;}, {&quot;title&quot;: &quot;甘肃省数字政府建设相关政策内容&quot;, &quot;summary&quot;: &quot;提出高质量推进数字政府建设，加快省级部门、市州自建业务系统与全省一体化政务服务平台深度对接，提升“一网通办”水平，创新本地化特色“一件事”，推进城市智慧高效治理项目建设，提升城市数字化治理能力水平。&quot;, &quot;issuer&quot;: &quot;甘肃省人民政府办公厅&quot;, &quot;date&quot;: &quot;2026-04-29&quot;}, {&quot;title&quot;: &quot;河南省推进数字经济高质量发展若干政策措施&quot;, &quot;summary&quot;: &quot;提出深入实施“人工智能+”行动，谋划建设人工智能重大应用场景，持续实施“数据要素×”行动，全域推进城市数字化转型，支持有条件的地方申请开展国家试点，鼓励各地统筹利用各类资金，布局建设城市数字化共性基础设施。&quot;, &quot;issuer&quot;: &quot;河南省人民政府办公厅&quot;, &quot;date&quot;: &quot;2026-05-23&quot;}, {&quot;title&quot;: &quot;数智济南建设2026年工作要点&quot;, &quot;summary&quot;: &quot;组建数智政务联合创新中心，统筹推进政务领域人工智能平台建设、资源整合、场景应用；统筹建设全市政务知识库管理体系，制定知识构建、检索、管理与安全技术标准；深化机关办会数智化转型，优化数智会务系统；升级“泉心泉意”政务服务大模型，2026年新增6项以上智能助手应用场景；深化“一网通办”改革，拓展“一件事...&quot;, &quot;issuer&quot;: &quot;济南市大数据局&quot;, &quot;date&quot;: &quot;2026-06-18&quot;}, {&quot;title&quot;: &quot;北京市全面深化“一网通办”推进政务服务数智化发展行动计划(2026—2027年)&quot;, &quot;summary&quot;: &quot;明确提出强化全市政务领域大模型顶层设计，搭建模型矩阵应用支撑、大模型数据中枢、大模型应用评测管理平台，整合政务服务、辅助决策等领域智慧体服务入口，加强数字政务高质量数据集建设，安全稳妥有序推进大模型在政务服务领域中的应用。&quot;, &quot;issuer&quot;: &quot;北京市人民政府办公厅&quot;, &quot;date&quot;: &quot;2026-01-29&quot;}]" onclick="openDimensionPopup(this)">[来源：政策资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>政策主题演化与聚焦方向</h4>
+<p>地方政策占比高，主题聚焦于落地实践、配套细则和试点创新，政策风向以应用场景拓展和区域特色为主。
+政策区域集中在浙江等地，显示该领域存在区域先行先试特征，可重点关注其经验复制机会。
+<span class="source-tag" data-source="policy" data-dimension="主题演化" data-samples="[{&quot;title&quot;: &quot;天津市深化智慧城市建设 推进城市治理和数字化转型总体方案&quot;, &quot;summary&quot;: &quot;构建“1183”智慧城市建设总体架构，即打造1个数据基础底座，建设1个城市“智管中心”，部署8项重点任务，健全3大保障体系；到2027年，高水平建成并运营一体化数据平台和城市“智管中心”，“高效处置一件事”覆盖城市运行重点事件，“高效办成一件事”覆盖高频民生事项；到2030年底，实现城市治理数字化全...&quot;, &quot;issuer&quot;: &quot;天津市数据局&quot;, &quot;date&quot;: &quot;2026-01-23&quot;}, {&quot;title&quot;: &quot;天津市深化智慧城市建设 推进城市治理和数字化转型总体方案&quot;, &quot;summary&quot;: &quot;强调充分发挥数据要素价值和人工智能创新引擎作用，明确“统一规划设计、统一基础平台、统一标准规范、统一建设运维”的建设原则，到2027年高水平建成一体化数据平台和城市“智管中心”，“高效办成一件事”覆盖高频民生事项。&quot;, &quot;issuer&quot;: &quot;天津市数据局&quot;, &quot;date&quot;: &quot;2026-01-22&quot;}, {&quot;title&quot;: &quot;济南市大数据局2026年度工作计划&quot;, &quot;summary&quot;: &quot;以“人工智能+”和“数据要素×”为双轮驱动，持续提升数字政府建设水平；优化“数智公务员”一体化管理服务平台，精简办文、办会、办事流程；持续优化政务服务“一网通办”总门户，拓展“一件事”集成服务场景，迭代升级“爱山东”济南分厅70个民生“关键小事”；升级“泉心泉意”政务服务大模型，新增6项以上智能助手...&quot;, &quot;issuer&quot;: &quot;济南市大数据局&quot;, &quot;date&quot;: &quot;2026-03-31&quot;}, {&quot;title&quot;: &quot;全方位打造数智强省，河南出台18条举措&quot;, &quot;summary&quot;: &quot;推进数字（智）河南建设，全方位打造数智强省；加快推动数据要素市场化配置改革，大力推进数字产业发展，全方位促进数实深度融合；推进开发区数字化转型平台建设，鼓励发放“数字化转型服务券”；深化“一网通办”改革，推进政务服务数智化升级；打造“人工智能+政务”场景，提升行政效能。&quot;, &quot;issuer&quot;: &quot;河南省人民政府办公厅&quot;, &quot;date&quot;: &quot;2026-05-23&quot;}, {&quot;title&quot;: &quot;数智济南建设2026年工作要点&quot;, &quot;summary&quot;: &quot;组建数智政务联合创新中心，统筹推进政务领域人工智能平台建设、资源整合、场景应用；统筹建设全市政务知识库管理体系，制定知识构建、检索、管理与安全技术标准；深化机关办会数智化转型，优化数智会务系统；升级“泉心泉意”政务服务大模型，2026年新增6项以上智能助手应用场景；深化“一网通办”改革，拓展“一件事...&quot;, &quot;issuer&quot;: &quot;济南市大数据局&quot;, &quot;date&quot;: &quot;2026-06-18&quot;}]" onclick="openDimensionPopup(this)">[来源：政策资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>政策连续性及预期风向</h4>
+<p>近3个月政策发布呈<strong>放缓</strong>趋势。政策节奏有所放缓，可能进入政策效果观察期或政策消化期，预计下半年将以执行落地为主。
+
+<span class="source-tag" data-source="policy" data-dimension="政策连续性" data-samples="[{&quot;title&quot;: &quot;北京市全面深化“一网通办”推进政务服务数智化发展行动计划(2026—2027年)&quot;, &quot;summary&quot;: &quot;明确提出强化全市政务领域大模型顶层设计，搭建模型矩阵应用支撑、大模型数据中枢、大模型应用评测管理平台，整合政务服务、辅助决策等领域智慧体服务入口，加强数字政务高质量数据集建设，安全稳妥有序推进大模型在政务服务领域中的应用。&quot;, &quot;issuer&quot;: &quot;北京市人民政府办公厅&quot;, &quot;date&quot;: &quot;2026-01-29&quot;}, {&quot;title&quot;: &quot;天津市深化智慧城市建设 推进城市治理和数字化转型总体方案&quot;, &quot;summary&quot;: &quot;构建“1183”智慧城市建设总体架构，即打造1个数据基础底座，建设1个城市“智管中心”，部署8项重点任务，健全3大保障体系；到2027年，高水平建成并运营一体化数据平台和城市“智管中心”，“高效处置一件事”覆盖城市运行重点事件，“高效办成一件事”覆盖高频民生事项；到2030年底，实现城市治理数字化全...&quot;, &quot;issuer&quot;: &quot;天津市数据局&quot;, &quot;date&quot;: &quot;2026-01-23&quot;}, {&quot;title&quot;: &quot;河北省推进“双盲”评审智慧升级 深化政务服务集成改革相关政策&quot;, &quot;summary&quot;: &quot;提出深化政务服务集成改革，以“高效办成一件事”改革为牵引，推行材料自动调用、智能预审等智慧服务，实施数据赋能“人工智能+”行动，谋划发布100个以上数据赋能“人工智能+”应用场景，深化京津冀晋“信用代证”改革。&quot;, &quot;issuer&quot;: &quot;河北省人民政府相关部门&quot;, &quot;date&quot;: &quot;2026-02-27&quot;}, {&quot;title&quot;: &quot;汤飞帆:敢闯敢干推动数字政府2.0建设走向纵深&quot;, &quot;summary&quot;: &quot;宁波以智能化场景应用为牵引，抓住国家垂类大模型试点机遇，推动大模型技术与政务场景深度融合；以数据要素价值化为核心，规范有序推动公共数据开放与授权运营，推进国家数据产业集聚区建设试点；以普惠化数字服务为重点，深化“高效办成一件事”改革，迭代优化浙里办宁波频道；以一体化底座建设为支撑，推进城市可信数据空...&quot;, &quot;issuer&quot;: &quot;宁波市数据局&quot;, &quot;date&quot;: &quot;2026-03-18&quot;}, {&quot;title&quot;: &quot;苏州市数据局2025年工作总结和2026年工作计划&quot;, &quot;summary&quot;: &quot;2026年苏州将深化数智化改革，出台“十五五”数字苏州建设专项规划，统筹推进数字政府、数字经济、数字社会建设；深化数据要素市场化配置改革，高标准运营国家数据发展研究院高质量数据集实验室，深化公共数据开发利用；常态化推进“高效办成一件事”改革，优化企业综合服务线上平台功能；加快“人工智能+”城市建设，...&quot;, &quot;issuer&quot;: &quot;苏州市数据局&quot;, &quot;date&quot;: &quot;2026-03-01&quot;}]" onclick="openDimensionPopup(this)">[来源：政策资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>政策窗口期与机遇风险</h4>
+<p><strong>机遇：</strong>地方政策活跃，为企业提供了区域市场切入机会，可通过参与地方试点项目建立标杆案例。
+
+<br><strong>风险：</strong>政策密集可能带来合规成本上升，需密切跟踪政策细则变化，确保产品和方案符合最新监管要求。
+<span class="source-tag" data-source="policy" data-dimension="政策窗口期" data-samples="[{&quot;title&quot;: &quot;汤飞帆:敢闯敢干推动数字政府2.0建设走向纵深&quot;, &quot;summary&quot;: &quot;宁波以智能化场景应用为牵引，抓住国家垂类大模型试点机遇，推动大模型技术与政务场景深度融合；以数据要素价值化为核心，规范有序推动公共数据开放与授权运营，推进国家数据产业集聚区建设试点；以普惠化数字服务为重点，深化“高效办成一件事”改革，迭代优化浙里办宁波频道；以一体化底座建设为支撑，推进城市可信数据空...&quot;, &quot;issuer&quot;: &quot;宁波市数据局&quot;, &quot;date&quot;: &quot;2026-03-18&quot;}, {&quot;title&quot;: &quot;河南省推进数字经济高质量发展若干政策措施&quot;, &quot;summary&quot;: &quot;提出深入实施“人工智能+”行动，谋划建设人工智能重大应用场景，持续实施“数据要素×”行动，全域推进城市数字化转型，支持有条件的地方申请开展国家试点，鼓励各地统筹利用各类资金，布局建设城市数字化共性基础设施。&quot;, &quot;issuer&quot;: &quot;河南省人民政府办公厅&quot;, &quot;date&quot;: &quot;2026-05-23&quot;}, {&quot;title&quot;: &quot;天津市深化智慧城市建设 推进城市治理和数字化转型总体方案&quot;, &quot;summary&quot;: &quot;强调充分发挥数据要素价值和人工智能创新引擎作用，明确“统一规划设计、统一基础平台、统一标准规范、统一建设运维”的建设原则，到2027年高水平建成一体化数据平台和城市“智管中心”，“高效办成一件事”覆盖高频民生事项。&quot;, &quot;issuer&quot;: &quot;天津市数据局&quot;, &quot;date&quot;: &quot;2026-01-22&quot;}, {&quot;title&quot;: &quot;四川省关于支持数字经济高质量发展的若干政策措施&quot;, &quot;summary&quot;: &quot;提出实施数字产业集群发展工程，聚焦人工智能大模型、数据标注、数据流通、数据安全等细分领域，加大对数字经济创新型企业支持力度，安排资金对相关企业给予奖补，加快推进全省数字经济高质量发展。&quot;, &quot;issuer&quot;: &quot;四川省人民政府相关部门&quot;, &quot;date&quot;: &quot;2026-01-09&quot;}, {&quot;title&quot;: &quot;南京市2026年优化营商环境行动方案&quot;, &quot;summary&quot;: &quot;提出推行“人工智能+政务服务”，依托南京政务大模型底座，打造政务服务智能体，运用智能导办、边聊边办、虚拟窗口、智能匹配等技术，提升证照审批智能化水平，深化“高效办成一件事”改革，优化政策“免申即享”。&quot;, &quot;issuer&quot;: &quot;南京市人民政府&quot;, &quot;date&quot;: &quot;2026-02-24&quot;}]" onclick="openDimensionPopup(this)">[来源：政策资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>周期总结与前瞻性判断</h4>
+<p>本半年度人工智能领域政策环境相对温和，处于政策培育期。
+展望下半年，政策可能进入消化和执行期，建议企业关注政策落地效果，将重心从政策跟踪转向业务转化。
+</p></div>
+</div>
+    </div>
+  </div>
+
+  <div class="trend-panel" id="trend-industry">
+    <div class="card">
+      <h3>行业洞察</h3>
+      <div class="chart-row">
+        <div class="chart-box">
+          <div class="chart-title">行业资讯月度趋势</div>
+          <svg width="100%" height="220" viewBox="0 0 600 220" style="overflow:visible;">
+  <defs>
+    <linearGradient id="areaGrad-00A870-4388159232" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00A870" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00A870" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="40" y1="180.0" x2="560" y2="180.0" stroke="#eee" stroke-width="1"/><text x="35" y="183.0" font-size="9" fill="#aaa" text-anchor="end">0</text><line x1="40" y1="145.0" x2="560" y2="145.0" stroke="#eee" stroke-width="1"/><text x="35" y="148.0" font-size="9" fill="#aaa" text-anchor="end">1</text><line x1="40" y1="110.0" x2="560" y2="110.0" stroke="#eee" stroke-width="1"/><text x="35" y="113.0" font-size="9" fill="#aaa" text-anchor="end">2</text><line x1="40" y1="75.0" x2="560" y2="75.0" stroke="#eee" stroke-width="1"/><text x="35" y="78.0" font-size="9" fill="#aaa" text-anchor="end">3</text><line x1="40" y1="40.0" x2="560" y2="40.0" stroke="#eee" stroke-width="1"/><text x="35" y="43.0" font-size="9" fill="#aaa" text-anchor="end">4</text>
+  <path d="M40.0,110.0 L144.0,180.0 L248.0,145.0 L352.0,145.0 L456.0,145.0 L560.0,180.0 L560.0,180.0 L40.0,180.0 Z" fill="url(#areaGrad-00A870-4388159232)" stroke="none"/>
+  <path d="M40.0,110.0 L144.0,180.0 L248.0,145.0 L352.0,145.0 L456.0,145.0 L560.0,180.0" fill="none" stroke="#00A870" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40.0" cy="110.0" r="3" fill="#00A870" stroke="#fff" stroke-width="1.5"/><text x="40.0" y="102.0" font-size="10" fill="#666" text-anchor="middle">2</text><circle cx="144.0" cy="180.0" r="3" fill="#00A870" stroke="#fff" stroke-width="1.5"/><text x="144.0" y="172.0" font-size="10" fill="#666" text-anchor="middle">0</text><circle cx="248.0" cy="145.0" r="3" fill="#00A870" stroke="#fff" stroke-width="1.5"/><text x="248.0" y="137.0" font-size="10" fill="#666" text-anchor="middle">1</text><circle cx="352.0" cy="145.0" r="3" fill="#00A870" stroke="#fff" stroke-width="1.5"/><text x="352.0" y="137.0" font-size="10" fill="#666" text-anchor="middle">1</text><circle cx="456.0" cy="145.0" r="3" fill="#00A870" stroke="#fff" stroke-width="1.5"/><text x="456.0" y="137.0" font-size="10" fill="#666" text-anchor="middle">1</text><circle cx="560.0" cy="180.0" r="3" fill="#00A870" stroke="#fff" stroke-width="1.5"/><text x="560.0" y="172.0" font-size="10" fill="#666" text-anchor="middle">0</text>
+  <text x="40.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-01</text><text x="144.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-02</text><text x="248.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-03</text><text x="352.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-04</text><text x="456.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-05</text><text x="560.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-06</text>
+</svg>
+        </div>
+      </div>
+      <div class="analysis-content">
+<div class="dim-block"><h4>行业整体规模与走势</h4>
+<p>本半年度共监测到人工智能领域行业资讯<strong>5条</strong>，月均<strong>0.8条</strong>。
+整体走势呈<strong>显著波动</strong>，半年来资讯量增长-100.0%，
+显示市场关注度有所回落，行业可能进入调整期或淡季。
+</p></div>
+<div class="dim-block"><h4>季节波动与节奏特征</h4>
+<p>行业资讯存在<strong>显著季节性</strong>波动。2026-01为资讯高峰（2条），2026-02为低谷（0条），
+
+显示该领域受政策周期或项目周期驱动明显，资讯发布集中在特定月份。
+</p></div>
+<div class="dim-block"><h4>细分赛道迁移与分化</h4>
+<p>人工智能领域作为本报告的核心监测赛道，半年内资讯量<strong>5条</strong>，属于相对冷门的细分赛道。
+行业资讯密度较低，可能该领域处于早期探索阶段或市场教育期。
+<span class="source-tag" data-source="industry" data-dimension="赛道热度迁移" data-samples="[{&quot;title&quot;: &quot;IDC《中国政务大模型及应用市场份额，2024》：浪潮位居中国政务大模型市场第一&quot;, &quot;summary&quot;: &quot;IDC正式发布《中国政务大模型及应用市场份额，2024：规模化在即》。报告显示，浪潮位居中国政务大模型市场第一位。2024年中国政务大模型及应用市场整体规模达20.8亿元人民币，迎来爆发式增长。政务应用正依托大模型能力与平台实现重构，逐步发展为政府数字化的基础性能力。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-01-30&quot;}, {&quot;title&quot;: &quot;全球政务大模型行业报告：2025年中国政务大模型市场爆发式增长&quot;, &quot;summary&quot;: &quot;中研智业研究院发布的《全球及中国政务大模型行业运营现状与前景趋势分析报告2026-2031年》显示，截至2026年第一季度，全国已有超过240个地级市政府部门部署或试点政务大模型，覆盖智慧办公、政策咨询、舆情分析、行政审批等场景。政务大模型从示范项目过渡到生产系统常态化运行阶段。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-04-09&quot;}, {&quot;title&quot;: &quot;全球政务与法律大模型行业：2025年中国市场规模6.1亿美元，同比增长89.4%&quot;, &quot;summary&quot;: &quot;2025年全球政务与法律大模型市场规模达到47.3亿美元，中国政务与法律大模型市场在2025年实现爆发式增长，市场规模达到6.1亿美元，同比增长89.4%。其中政务应用领域占比63.7%，法律应用占比36.3%。预计到2030年，全球市场规模将突破210亿美元。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-05-29&quot;}, {&quot;title&quot;: &quot;赛迪顾问预测2026年中国人工智能市场规模接近6000亿元&quot;, &quot;summary&quot;: &quot;赛迪顾问《2024-2025年中国人工智能市场研究年度报告》指出，2026年中国人工智能市场规模预计接近6000亿元。市场结构中，互联网、金融和制造三大领域合计占比超过50%；政务、零售、电信等领域呈稳健增长态势，教育、医疗、交通等新兴应用场景增速显著。AI市场正从单一行业向多领域协同拓展。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-01-24&quot;}, {&quot;title&quot;: &quot;中商情报网：2026年中国数字人智能体市场规模预计达36亿元&quot;, &quot;summary&quot;: &quot;中商产业研究院报告显示，中国数字人智能体行业市场规模将从2021年的5亿元增加至2024年的20亿元，复合年增长率55.8%。2025年市场规模约为24亿元，2026年预计达到36亿元。2026年政府工作报告明确深化拓展人工智能+，加快智能体推广。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-03-19&quot;}]" onclick="openDimensionPopup(this)">[来源：行业资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>技术主线与概念热点</h4>
+<p>基于资讯热度判断，人工智能领域市场关注度正在培育中，技术主线尚未完全清晰，需持续关注其商业化进展。
+
+<span class="source-tag" data-source="industry" data-dimension="核心技术发展主线" data-samples="[{&quot;title&quot;: &quot;IDC《中国政务大模型及应用市场份额，2024》：浪潮位居中国政务大模型市场第一&quot;, &quot;summary&quot;: &quot;IDC正式发布《中国政务大模型及应用市场份额，2024：规模化在即》。报告显示，浪潮位居中国政务大模型市场第一位。2024年中国政务大模型及应用市场整体规模达20.8亿元人民币，迎来爆发式增长。政务应用正依托大模型能力与平台实现重构，逐步发展为政府数字化的基础性能力。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-01-30&quot;}, {&quot;title&quot;: &quot;全球政务与法律大模型行业：2025年中国市场规模6.1亿美元，同比增长89.4%&quot;, &quot;summary&quot;: &quot;2025年全球政务与法律大模型市场规模达到47.3亿美元，中国政务与法律大模型市场在2025年实现爆发式增长，市场规模达到6.1亿美元，同比增长89.4%。其中政务应用领域占比63.7%，法律应用占比36.3%。预计到2030年，全球市场规模将突破210亿美元。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-05-29&quot;}, {&quot;title&quot;: &quot;全球政务大模型行业报告：2025年中国政务大模型市场爆发式增长&quot;, &quot;summary&quot;: &quot;中研智业研究院发布的《全球及中国政务大模型行业运营现状与前景趋势分析报告2026-2031年》显示，截至2026年第一季度，全国已有超过240个地级市政府部门部署或试点政务大模型，覆盖智慧办公、政策咨询、舆情分析、行政审批等场景。政务大模型从示范项目过渡到生产系统常态化运行阶段。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-04-09&quot;}, {&quot;title&quot;: &quot;赛迪顾问预测2026年中国人工智能市场规模接近6000亿元&quot;, &quot;summary&quot;: &quot;赛迪顾问《2024-2025年中国人工智能市场研究年度报告》指出，2026年中国人工智能市场规模预计接近6000亿元。市场结构中，互联网、金融和制造三大领域合计占比超过50%；政务、零售、电信等领域呈稳健增长态势，教育、医疗、交通等新兴应用场景增速显著。AI市场正从单一行业向多领域协同拓展。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-01-24&quot;}, {&quot;title&quot;: &quot;中商情报网：2026年中国数字人智能体市场规模预计达36亿元&quot;, &quot;summary&quot;: &quot;中商产业研究院报告显示，中国数字人智能体行业市场规模将从2021年的5亿元增加至2024年的20亿元，复合年增长率55.8%。2025年市场规模约为24亿元，2026年预计达到36亿元。2026年政府工作报告明确深化拓展人工智能+，加快智能体推广。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-03-19&quot;}]" onclick="openDimensionPopup(this)">[来源：行业资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>增量市场机会识别</h4>
+<p>市场活跃度较低，增量机会有限，建议采取保守策略，关注政策催化可能带来的拐点。
+<span class="source-tag" data-source="industry" data-dimension="增量市场机会" data-samples="[{&quot;title&quot;: &quot;IDC《中国政务大模型及应用市场份额，2024》：浪潮位居中国政务大模型市场第一&quot;, &quot;summary&quot;: &quot;IDC正式发布《中国政务大模型及应用市场份额，2024：规模化在即》。报告显示，浪潮位居中国政务大模型市场第一位。2024年中国政务大模型及应用市场整体规模达20.8亿元人民币，迎来爆发式增长。政务应用正依托大模型能力与平台实现重构，逐步发展为政府数字化的基础性能力。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-01-30&quot;}, {&quot;title&quot;: &quot;赛迪顾问预测2026年中国人工智能市场规模接近6000亿元&quot;, &quot;summary&quot;: &quot;赛迪顾问《2024-2025年中国人工智能市场研究年度报告》指出，2026年中国人工智能市场规模预计接近6000亿元。市场结构中，互联网、金融和制造三大领域合计占比超过50%；政务、零售、电信等领域呈稳健增长态势，教育、医疗、交通等新兴应用场景增速显著。AI市场正从单一行业向多领域协同拓展。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-01-24&quot;}, {&quot;title&quot;: &quot;中商情报网：2026年中国数字人智能体市场规模预计达36亿元&quot;, &quot;summary&quot;: &quot;中商产业研究院报告显示，中国数字人智能体行业市场规模将从2021年的5亿元增加至2024年的20亿元，复合年增长率55.8%。2025年市场规模约为24亿元，2026年预计达到36亿元。2026年政府工作报告明确深化拓展人工智能+，加快智能体推广。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-03-19&quot;}, {&quot;title&quot;: &quot;全球政务大模型行业报告：2025年中国政务大模型市场爆发式增长&quot;, &quot;summary&quot;: &quot;中研智业研究院发布的《全球及中国政务大模型行业运营现状与前景趋势分析报告2026-2031年》显示，截至2026年第一季度，全国已有超过240个地级市政府部门部署或试点政务大模型，覆盖智慧办公、政策咨询、舆情分析、行政审批等场景。政务大模型从示范项目过渡到生产系统常态化运行阶段。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-04-09&quot;}, {&quot;title&quot;: &quot;全球政务与法律大模型行业：2025年中国市场规模6.1亿美元，同比增长89.4%&quot;, &quot;summary&quot;: &quot;2025年全球政务与法律大模型市场规模达到47.3亿美元，中国政务与法律大模型市场在2025年实现爆发式增长，市场规模达到6.1亿美元，同比增长89.4%。其中政务应用领域占比63.7%，法律应用占比36.3%。预计到2030年，全球市场规模将突破210亿美元。&quot;, &quot;issuer&quot;: &quot;行业媒体&quot;, &quot;date&quot;: &quot;2026-05-29&quot;}]" onclick="openDimensionPopup(this)">[来源：行业资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>对竞争格局的影响</h4>
+<p>市场尚处培育期，格局未定，早期参与者有望建立先发优势。
+</p></div>
+</div>
+    </div>
+  </div>
+
+  <div class="trend-panel" id="trend-competitor">
+    <div class="card">
+      <h3>竞品追踪</h3>
+      <div class="chart-row">
+        <div class="chart-box">
+          <div class="chart-title">竞品动态月度趋势</div>
+          <svg width="100%" height="220" viewBox="0 0 600 220" style="overflow:visible;">
+  <defs>
+    <linearGradient id="areaGrad-FF6B6B-4388307008" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF6B6B" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FF6B6B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="40" y1="180.0" x2="560" y2="180.0" stroke="#eee" stroke-width="1"/><text x="35" y="183.0" font-size="9" fill="#aaa" text-anchor="end">0</text><line x1="40" y1="156.7" x2="560" y2="156.7" stroke="#eee" stroke-width="1"/><text x="35" y="159.7" font-size="9" fill="#aaa" text-anchor="end">5</text><line x1="40" y1="133.3" x2="560" y2="133.3" stroke="#eee" stroke-width="1"/><text x="35" y="136.3" font-size="9" fill="#aaa" text-anchor="end">10</text><line x1="40" y1="110.0" x2="560" y2="110.0" stroke="#eee" stroke-width="1"/><text x="35" y="113.0" font-size="9" fill="#aaa" text-anchor="end">15</text><line x1="40" y1="86.7" x2="560" y2="86.7" stroke="#eee" stroke-width="1"/><text x="35" y="89.7" font-size="9" fill="#aaa" text-anchor="end">20</text>
+  <path d="M40.0,175.3 L144.0,175.3 L248.0,138.0 L352.0,133.3 L456.0,156.7 L560.0,58.7 L560.0,180.0 L40.0,180.0 Z" fill="url(#areaGrad-FF6B6B-4388307008)" stroke="none"/>
+  <path d="M40.0,175.3 L144.0,175.3 L248.0,138.0 L352.0,133.3 L456.0,156.7 L560.0,58.7" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40.0" cy="175.3" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="40.0" y="167.3" font-size="10" fill="#666" text-anchor="middle">1</text><circle cx="144.0" cy="175.3" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="144.0" y="167.3" font-size="10" fill="#666" text-anchor="middle">1</text><circle cx="248.0" cy="138.0" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="248.0" y="130.0" font-size="10" fill="#666" text-anchor="middle">9</text><circle cx="352.0" cy="133.3" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="352.0" y="125.3" font-size="10" fill="#666" text-anchor="middle">10</text><circle cx="456.0" cy="156.7" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="456.0" y="148.7" font-size="10" fill="#666" text-anchor="middle">5</text><circle cx="560.0" cy="58.7" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="560.0" y="50.7" font-size="10" fill="#666" text-anchor="middle">26</text>
+  <text x="40.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-01</text><text x="144.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-02</text><text x="248.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-03</text><text x="352.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-04</text><text x="456.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-05</text><text x="560.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-06</text>
+</svg>
+        </div>
+        <div class="chart-box">
+          <div class="chart-title">活跃厂商（Top10）</div>
+          <div class="bar-row"><span class="bar-label">南威软件</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#FF6B6B"></div></div><span class="bar-value">8</span></div>
+<div class="bar-row"><span class="bar-label">浩鲸科技</span><div class="bar-track"><div class="bar-fill" style="width:87.5%;background:#FF6B6B"></div></div><span class="bar-value">7</span></div>
+<div class="bar-row"><span class="bar-label">拓尔思</span><div class="bar-track"><div class="bar-fill" style="width:75.0%;background:#FF6B6B"></div></div><span class="bar-value">6</span></div>
+<div class="bar-row"><span class="bar-label">泛微</span><div class="bar-track"><div class="bar-fill" style="width:75.0%;background:#FF6B6B"></div></div><span class="bar-value">6</span></div>
+<div class="bar-row"><span class="bar-label">360智语</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#FF6B6B"></div></div><span class="bar-value">4</span></div>
+<div class="bar-row"><span class="bar-label">致远互联</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#FF6B6B"></div></div><span class="bar-value">4</span></div>
+<div class="bar-row"><span class="bar-label">开普云</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#FF6B6B"></div></div><span class="bar-value">4</span></div>
+<div class="bar-row"><span class="bar-label">浪潮软件</span><div class="bar-track"><div class="bar-fill" style="width:37.5%;background:#FF6B6B"></div></div><span class="bar-value">3</span></div>
+<div class="bar-row"><span class="bar-label">国泰新点</span><div class="bar-track"><div class="bar-fill" style="width:37.5%;background:#FF6B6B"></div></div><span class="bar-value">3</span></div>
+<div class="bar-row"><span class="bar-label">蓝信</span><div class="bar-track"><div class="bar-fill" style="width:37.5%;background:#FF6B6B"></div></div><span class="bar-value">3</span></div>
+        </div>
+      </div>
+      <div class="analysis-content">
+<div class="dim-block"><h4>竞品活跃度与层级分布</h4>
+<p>本半年度共监测到人工智能领域竞品动态<strong>52条</strong>，涉及<strong>14家</strong>活跃厂商，月均<strong>8.7条</strong>。
+竞品活跃度较高，市场多方参与、竞争激烈。
+活跃厂商数量多，表明该领域市场吸引力强，各方均在积极布局。
+</p></div>
+<div class="dim-block"><h4>竞品月度波动与关键事件</h4>
+<p>竞品动态呈<strong>显著波动</strong>态势。2026-06为动态高峰（26条），2026-01为低谷（1条）。
+竞品活跃度逐月提升，表明竞争对手正在加速市场动作，可能预示重大产品发布或市场策略调整。
+竞品活跃月份与政策/行业热点月份重合度高，表明竞品善于借势营销和热点跟进。
+</p></div>
+<div class="dim-block"><h4>行业集中度与头部效应</h4>
+<p>行业集中度（CR3）为<strong>40.4%</strong>，HHI指数为<strong>9.8</strong>，竞争格局呈<strong>分散竞争</strong>状态。
+Top3厂商（南威软件、浩鲸科技、拓尔思）市场份额合计40.4%，头部效应初步显现，但市场仍有一定竞争空间。
+</p></div>
+<div class="dim-block"><h4>竞品战略动向与聚焦领域</h4>
+<p>头部竞品持续高频发声，战略聚焦明确，在人工智能领域保持积极投入姿态。
+竞品在2026-06活跃度显著提升，可能存在集中发布、市场活动或产品上新等战略动作。
+竞品动态总量呈上升趋势，竞争对手正在加大该领域的资源投入，市场竞争将加剧。
+<span class="source-tag" data-source="competitor" data-dimension="战略动向变化" data-samples="[{&quot;title&quot;: &quot;南威软件2026年5月7日涨停分析：AI政务布局+项目储备足+技术专利多&quot;, &quot;summary&quot;: &quot;公司已完成AI+政务、智算中心的初步战略布局，政务AI产品落地，智算中心首批算力商用。2026年一季度末在建项目总规模超23亿元。&quot;, &quot;issuer&quot;: &quot;南威软件&quot;, &quot;date&quot;: &quot;2026-05-07&quot;}, {&quot;title&quot;: &quot;南威软件MWC 2026之行：携手华为共推全球政务服务智能化转型&quot;, &quot;summary&quot;: &quot;MWC 2026期间，南威软件作为华为核心合作伙伴，参与国家政务服务高峰论坛。华为发起全球政务服务生态联盟成立，南威软件为联盟核心成员。南威与华为联合发布Public Service AI Agent Solution，推出1+1+N架构：一个智能数字底座、一个政务智能体平台、N项场景化应用。&quot;, &quot;issuer&quot;: &quot;南威软件&quot;, &quot;date&quot;: &quot;2026-03-05&quot;}, {&quot;title&quot;: &quot;智新品·绘政务·赢中枢——2026致远互联生态伙伴大会政务分论坛成功举办&quot;, &quot;summary&quot;: &quot;致远互联生态伙伴大会政务分论坛在合肥举办。会上正式发布更懂数智机关的一站式AI助手问办通，并宣布2026年致远政务战略主张：ALL IN AI，通过产品智能化改造、开箱即用智能体（基于CoMi智能中台推出20+款政务场景智能体）、双模定制三条路径深化产品方案。&quot;, &quot;issuer&quot;: &quot;致远互联&quot;, &quot;date&quot;: &quot;2026-03-24&quot;}, {&quot;title&quot;: &quot;浩鲸科技MWC2026大放异彩：AI赋能，助力全球产业升级与增长&quot;, &quot;summary&quot;: &quot;MWC2026在巴塞罗那举办，浩鲸科技以激活智能生产力，驱动持续增长新引擎为主题参展，展示AI驱动的运营商开放平台、基于LocalGPT平台的近20款运营商AI智能体体系（覆盖客服、营销、网络规划等全流程），以及三融智算供给方案。&quot;, &quot;issuer&quot;: &quot;浩鲸科技&quot;, &quot;date&quot;: &quot;2026-03-04&quot;}, {&quot;title&quot;: &quot;浩鲸科技与上海数据集团、阿里云深化战略合作，聚焦数据要素与AI大模型&quot;, &quot;summary&quot;: &quot;浩鲸科技与上海数据集团、阿里云围绕数据要素建设、AI大模型技术创新等核心议题深化战略合作，浩鲸科技凭借二十余年政企服务经验，深度参与智慧城市、公共数据授权运营等项目，成为连接技术与场景的关键数智化全栈能力提供商。&quot;, &quot;issuer&quot;: &quot;浩鲸科技&quot;, &quot;date&quot;: &quot;2026-03-13&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>产品布局与技术路线差异</h4>
+<p>基于竞品活跃度分布，各头部厂商在该领域均有持续布局，产品路线可能趋同，差异化竞争将成为关键。
+
+<span class="source-tag" data-source="competitor" data-dimension="产品技术路线" data-samples="[{&quot;title&quot;: &quot;蓝信发布2026全栈AI新品，打造100%国产化政企智能办公新范式&quot;, &quot;summary&quot;: &quot;蓝信发布三款核心AI产品：LanEcho听蓝AI录音卡、LanSphere蓝域智能体平台、KnowAct知行AI超级助理。同时开源官方CLI及Skills能力接口，并联合AI产业链核心力量成立政企智能办公生态联盟，发布全栈国产化政企智能办公生态联合解决方案，实现从底层芯片、大模型到上层应用的100%...&quot;, &quot;issuer&quot;: &quot;蓝信&quot;, &quot;date&quot;: &quot;2026-06-03&quot;}, {&quot;title&quot;: &quot;浪潮软件发布一网通办4.0，边聊边办智能体正式上线&quot;, &quot;summary&quot;: &quot;浪潮软件正式发布一网通办4.0版本，核心升级边聊边办智能体，支持自然语言对话办理政务事项，覆盖企业开办、社保查询、公积金提取等200+高频事项。同时推出智能审批助手，实现材料自动预审、审批要点智能提示。&quot;, &quot;issuer&quot;: &quot;浪潮软件&quot;, &quot;date&quot;: &quot;2026-06-20&quot;}, {&quot;title&quot;: &quot;企业微信发布5.0.9版本，AI助力业务经营与办公提效&quot;, &quot;summary&quot;: &quot;企业微信5.0.9版本发布，上线AI服务总结、智能助理“大圆”、智能表格、智能文档等功能，支持政务版专属部署，为政府机构提供专属通讯办公工具，保障数字安全的前提下开展网格员基层治理、政务服务等工作。&quot;, &quot;issuer&quot;: &quot;企业微信&quot;, &quot;date&quot;: &quot;2026-06-23&quot;}, {&quot;title&quot;: &quot;拓尔思政务AI业务2026年新技术突破与项目进展解析&quot;, &quot;summary&quot;: &quot;2026年以来，拓尔思政务AI业务延续技术迭代+场景落地双轮驱动。1月签署的3省海策大模型政务平台合作协议（合计金额超1.2亿元）是2026年首个重大政务AI项目。截至3月，平台已在3省的10余个地市上线，智能政务咨询场景群众满意度达92%，公文智能编审处理效率提升40%。&quot;, &quot;issuer&quot;: &quot;拓尔思&quot;, &quot;date&quot;: &quot;2026-03-11&quot;}, {&quot;title&quot;: &quot;南威软件MWC 2026之行：携手华为共推全球政务服务智能化转型&quot;, &quot;summary&quot;: &quot;MWC 2026期间，南威软件作为华为核心合作伙伴，参与国家政务服务高峰论坛。华为发起全球政务服务生态联盟成立，南威软件为联盟核心成员。南威与华为联合发布Public Service AI Agent Solution，推出1+1+N架构：一个智能数字底座、一个政务智能体平台、N项场景化应用。&quot;, &quot;issuer&quot;: &quot;南威软件&quot;, &quot;date&quot;: &quot;2026-03-05&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>新入局者与跨界威胁</h4>
+<p>本半年度监测到<strong>4家</strong>仅出现1次的新入局者（钉钉、龙讯、企业微信、蓝凌），
+表明该领域正在吸引新玩家进入，跨界竞争威胁不容忽视。
+建议密切关注新入局者的后续动作，评估其技术路线和客户定位是否构成直接威胁。
+</p></div>
+<div class="dim-block"><h4>市场合作与生态布局</h4>
+<p>各厂商积极构建生态合作网络，通过战略联盟、合资公司、渠道合作等方式巩固市场地位。生态能力正成为竞争关键要素。
+头部厂商通过高频合作建立生态壁垒，新进入者需寻找差异化切入路径。
+<span class="source-tag" data-source="competitor" data-dimension="市场合作生态" data-samples="[{&quot;title&quot;: &quot;南威软件MWC 2026之行：携手华为共推全球政务服务智能化转型&quot;, &quot;summary&quot;: &quot;MWC 2026期间，南威软件作为华为核心合作伙伴，参与国家政务服务高峰论坛。华为发起全球政务服务生态联盟成立，南威软件为联盟核心成员。南威与华为联合发布Public Service AI Agent Solution，推出1+1+N架构：一个智能数字底座、一个政务智能体平台、N项场景化应用。&quot;, &quot;issuer&quot;: &quot;南威软件&quot;, &quot;date&quot;: &quot;2026-03-05&quot;}, {&quot;title&quot;: &quot;新点软件亮相华为澳门科技日2026，携手共建澳门智慧政务新生态&quot;, &quot;summary&quot;: &quot;6月9日，华为澳门科技日2026在澳门举办，新点软件作为华为重要生态合作伙伴受邀参会，展示AI+智慧政务领域的技术积淀与落地成果。会上，华为携手新点软件等十余家头部企业正式成立AI CITY城市智能生态联盟，新点软件生态合作部总经理殷利明出席联盟揭牌仪式。新点软件将依托自身技术能力与行业经验，助力澳...&quot;, &quot;issuer&quot;: &quot;国泰新点&quot;, &quot;date&quot;: &quot;2026-06-11&quot;}, {&quot;title&quot;: &quot;浩鲸科技受邀参加2026年中国移动中资出海数智赋能合作会议&quot;, &quot;summary&quot;: &quot;浩鲸科技与中移国际保持深度战略协同，携手共建全球云联盟，在云网、AI、算力、数据中心等核心领域展开全方位合作。公司LPC方案已在沙特、印尼、南非等多国落地，并演进至主权AI智算云。&quot;, &quot;issuer&quot;: &quot;浩鲸科技&quot;, &quot;date&quot;: &quot;2026-04-07&quot;}, {&quot;title&quot;: &quot;蓝信发布2026全栈AI新品，打造100%国产化政企智能办公新范式&quot;, &quot;summary&quot;: &quot;蓝信发布三款核心AI产品：LanEcho听蓝AI录音卡、LanSphere蓝域智能体平台、KnowAct知行AI超级助理。同时开源官方CLI及Skills能力接口，并联合AI产业链核心力量成立政企智能办公生态联盟，发布全栈国产化政企智能办公生态联合解决方案，实现从底层芯片、大模型到上层应用的100%...&quot;, &quot;issuer&quot;: &quot;蓝信&quot;, &quot;date&quot;: &quot;2026-06-03&quot;}, {&quot;title&quot;: &quot;南威软件受邀参展华为中国合作伙伴大会2026，携手华为共筑政务数智化新高度&quot;, &quot;summary&quot;: &quot;华为中国合作伙伴大会2026在深圳举办，南威软件入驻数字政府展区，展示一句话办事智能体（实现智能问答-情形引导-自动填报-预审合规全链路闭环）和智启·慧审AI大模型审校助手（对公文进行政治风险、敏感词、文本细节及格式全方位智能检查）。&quot;, &quot;issuer&quot;: &quot;南威软件&quot;, &quot;date&quot;: &quot;2026-03-23&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>客户与项目中标动态</h4>
+<p>竞品在市场拓展方面活跃度高，多个厂商频繁中标或签约，客户争夺激烈。
+头部厂商中标频次高，客户关系稳固；新入局者需通过差异化方案或价格优势突破。
+<span class="source-tag" data-source="competitor" data-dimension="客户项目中标" data-samples="[{&quot;title&quot;: &quot;拓尔思政务AI业务2026年新技术突破与项目进展解析&quot;, &quot;summary&quot;: &quot;2026年以来，拓尔思政务AI业务延续技术迭代+场景落地双轮驱动。1月签署的3省海策大模型政务平台合作协议（合计金额超1.2亿元）是2026年首个重大政务AI项目。截至3月，平台已在3省的10余个地市上线，智能政务咨询场景群众满意度达92%，公文智能编审处理效率提升40%。&quot;, &quot;issuer&quot;: &quot;拓尔思&quot;, &quot;date&quot;: &quot;2026-03-11&quot;}, {&quot;title&quot;: &quot;AI智能体+信创+年报增长泛微网络触及涨停&quot;, &quot;summary&quot;: &quot;据2025年年度报告，泛微推出大模型+小模型+智能体架构的泛微数智大脑Xiaoe.AI，覆盖全业务场景；E10平台实现全栈信创适配，已交付众多党政机关及央国企数字化项目，并联合华为推出DeepSeek&amp;amp;Xiaoe.AI数智办公一体机国产化方案。2025年归母净利2.89亿元，同比增长42.25%。&quot;, &quot;issuer&quot;: &quot;泛微&quot;, &quot;date&quot;: &quot;2026-03-31&quot;}, {&quot;title&quot;: &quot;2026企业舆情监测服务商真实力：拓尔思以自研+大模型为核心驱动&quot;, &quot;summary&quot;: &quot;拓尔思以自研+大模型为核心驱动，2024年发布拓天舆情大模型及TRS网察V6.0平台，融入AI问答助手与AI报告助手。截至2025年AIGC舆情智能应用已服务33个行业领域，在政务与金融领域根基深厚。2026年某央企舆情数据服务采购项目以97.99万元中标。&quot;, &quot;issuer&quot;: &quot;拓尔思&quot;, &quot;date&quot;: &quot;2026-04-28&quot;}, {&quot;title&quot;: &quot;南威软件2026年5月7日涨停分析：AI政务布局+项目储备足+技术专利多&quot;, &quot;summary&quot;: &quot;公司已完成AI+政务、智算中心的初步战略布局，政务AI产品落地，智算中心首批算力商用。2026年一季度末在建项目总规模超23亿元。&quot;, &quot;issuer&quot;: &quot;南威软件&quot;, &quot;date&quot;: &quot;2026-05-07&quot;}, {&quot;title&quot;: &quot;南威软件受邀出席华为中国行，深度分享AI赋能政务创新应用&quot;, &quot;summary&quot;: &quot;南威软件作为华为核心生态伙伴，在华为中国行活动中与榆林市数据局等负责人探讨AI技术在政务领域的应用。南威软件展示了ALL IN AI发展战略和全栈产品体系，包括AI赋能政务数字化创新应用案例。其核心产品WellWork智能体操作系统及底座-平台-应用三位一体产品矩阵获得关注，强调南威在AI应用落地和...&quot;, &quot;issuer&quot;: &quot;南威软件&quot;, &quot;date&quot;: &quot;2026-06-13&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>周期总结与前瞻</h4>
+<p>本半年度人工智能领域竞品竞争烈度较高，多方角逐、格局未定，属于典型的成长期竞争特征。
+展望下半年，预计竞品投入将持续增加，企业需强化差异化能力和客户黏性，同时关注跨界玩家的潜在威胁。
+</p></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>宏观分析</h2>
+
+  <div class="card">
+    <h3>PESTEL分析</h3>
+    <div class="pestel-grid">
+      <div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon p">P</div>
+    <div><div class="pestel-title">政治 Political</div><div class="pestel-subtitle">政策导向与监管环境</div></div>
+  </div>
+  <div class="pestel-body"><h5>政策密度对项目机会的影响</h5>
+<p>本半年度23条人工智能相关政策（国家级2条），浙江、天津、河北等地密集出台配套文件。政策主题聚焦<strong>人工智能+、政务大模型、智能审批</strong>等方向，直接带动AI+政务专项预算、科技创新专项资金的释放。对企业而言，这意味着<strong>可直接参与的项目数量显著增加</strong>——每个人工智能+政策背后通常对应明确的政府预算投入和采购需求。建议企业建立"人工智能+-项目映射表"，将每条政策拆解为潜在商机，优先对接2条国家级政策对应的部委/省级项目，重点关注政府信息中心、政务平台运营方的人工审核耗时需求。</p>
+<h5>监管导向对合规成本的影响</h5>
+<p>人工智能政策密集期通常伴随监管细则的明确化，企业在方案设计中需预留合规成本。但监管清晰化也意味着<strong>竞争规则趋于公平</strong>，减少非标操作空间，有利于合规能力强的企业中标。浙江、天津、河北等地已率先出台配套标准，企业可优先对齐其要求，降低跨区域交付的适配成本。</p></div>
+</div>
+<div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon e">E</div>
+    <div><div class="pestel-title">经济 Economic</div><div class="pestel-subtitle">市场规模与投入趋势</div></div>
+  </div>
+  <div class="pestel-body"><h5>市场规模对企业营收的影响</h5>
+<p>人工智能行业资讯5条，市场热度相对平稳。政府信息中心、政务平台运营方的采购需求释放较慢。对企业而言，该领域<strong>增量项目有限</strong>，不宜大规模扩张人工智能团队。建议以存量客户续约和增购为主，控制获客成本，将销售资源向更高热度的领域倾斜。</p>
+<h5>采购趋势对项目节奏的影响</h5>
+<p>低热度市场中，客户预算收紧，人工智能采购决策链条延长。企业需做好<strong>6个月以上的项目周期预期</strong>，并设计分期交付方案降低政府信息中心、政务平台运营方一次性投入压力，通过AI审批通过率的阶段性改善赢得客户信任。</p></div>
+</div>
+<div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon s">S</div>
+    <div><div class="pestel-title">社会 Social</div><div class="pestel-subtitle">用户需求与数字化接受度</div></div>
+  </div>
+  <div class="pestel-body"><h5>客户需求变化对产品功能的影响</h5>
+<p>行业资讯量有限，政府信息中心、政务平台运营方需求增长缓慢。对企业而言，这意味着<strong>人工智能产品创新投入需谨慎</strong>——应优先维护现有核心功能稳定性，人工审核耗时、政策咨询量大、公文写作效率低、数据洞察不足的解决方式应以"够用"为主，避免过度功能堆砌增加成本。同时在私有化大模型部署、知识库RAG、智能审批引擎等方向做轻量级预研，保持竞争力。</p>
+<h5>用户行为对服务模式的导向</h5>
+<p>政府信息中心、政务平台运营方对价格敏感度高于服务敏感度，更关注成本效益。企业可考虑推出<strong>轻量级服务包</strong>（如远程培训、自助知识库），在控制成本的同时满足基础服务需求。</p></div>
+</div>
+<div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon t">T</div>
+    <div><div class="pestel-title">技术 Technological</div><div class="pestel-subtitle">技术演进与基础设施成熟度</div></div>
+  </div>
+  <div class="pestel-body"><h5>技术迭代对产品竞争力的影响</h5>
+<p>行业资讯量有限，人工智能技术演进缓慢。对企业而言，这意味着<strong>技术竞争压力较小</strong>，现有人工智能产品技术方案可维持2-3年竞争力。私有化大模型部署、知识库RAG、智能审批引擎等方向暂无颠覆性变化。建议将研发资源从"技术创新"转向"功能优化和成本压缩"，通过提升交付效率来增强竞争力，同时关注私有化大模型部署的渐进式优化机会。</p>
+<h5>技术趋势对研发方向和成本结构的影响</h5>
+<p>人工智能技术稳定期有利于控制研发成本——人员流动对项目影响小，技术栈维护成本低。建议利用这一时期<strong>偿还技术债务、完善文档和测试覆盖</strong>，为下一波技术迭代做准备。</p></div>
+</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>交叉影响分析</h3>
+    <table class="cross-table">
+<thead><tr><th>交叉维度</th><th>影响机制</th><th>对企业的影响</th><th>影响方向</th></tr></thead>
+<tbody>
+<tr><td>P+E</td><td>人工智能政策23条密集但行业热度5条尚未完全匹配。人工智能+政策先行意味着项目预算已释放，但政府信息中心、政务平台运营方选型可能滞后。</td><td>正向：企业需提前准备人工智能方案和产品演示，抢占浙江、天津、河北等地的人工智能+响应窗口期，待政府信息中心、政务平台运营方热度起来时快速转化。</td><td><span class="arrow-up">↑ 正向</span></td></tr><tr><td>P+S</td><td>人工智能政策23条推动政府信息中心、政务平台运营方对人工智能+的认知和接受度加速提升。人工智能+、政务大模型、智能审批政策文件本身就是最好的"客户教育材料"。人工审核耗时、政策咨询量大、公文写作效率低、数据洞察不足等痛点在政策推动下加速释放。</td><td>正向：企业可将人工智能+政策文件转化为政府信息中心、政务平台运营方沟通素材，用"政策要求"推动政府信息中心、政务平台运营方立项，降低人工智能销售说服成本。</td><td><span class="arrow-up">↑ 正向</span></td></tr><tr><td>P+T</td><td>人工智能政策对私有化大模型部署、知识库RAG、智能审批引擎等技术演进有一定引导，但尚未形成强制标准。企业人工智能技术路线仍有一定自主空间。</td><td>中性：企业应保持人工智能技术路线灵活性，将60%研发资源投入政策鼓励方向（如私有化大模型部署、知识库RAG、智能审批引擎），40%保留给创新探索。</td><td><span>→ 中性</span></td></tr><tr><td>E+S</td><td>人工智能行业5条资讯表明需求低位，政府信息中心、政务平台运营方预算紧张。人工智能经济与社会需求均处于低位。</td><td>反向：企业需推出人工智能轻量化、低成本版本产品，降低政府信息中心、政务平台运营方首次采购门槛，先建立合作再逐步升级。</td><td><span class="arrow-down">↓ 反向</span></td></tr><tr><td>E+T</td><td>人工智能行业5条+竞品52条双低，市场与人工智能技术双冷。政府信息中心、政务平台运营方对新技术的付费意愿低，人工智能技术投入回报周期长。</td><td>反向：企业应优先引入成熟开源技术或第三方组件到人工智能产品中，减少人工智能自研投入，降低人工智能技术成本结构。</td><td><span class="arrow-down">↓ 反向</span></td></tr><tr><td>S+T</td><td>人工智能行业5条资讯有限，政府信息中心、政务平台运营方对人工智能技术体验的要求尚未成为购买决策关键。</td><td>中性：企业不必过度追求人工智能技术体验，优先确保人工智能功能完整性和稳定性，将人工智能技术投入控制在合理范围。</td><td><span>→ 中性</span></td></tr>
+</tbody>
+</table>
+  </div>
+
+  <div class="card">
+    <h3>SWOT 战略矩阵</h3>
+    <div class="swot-grid">
+<div class="swot-card s"><h4><span class="badge">S</span> 优势 Strengths</h4><ul><li>人工智能政策覆盖优势：本半年度23条人工智能+、政务大模型、智能审批相关政策为企业提供了明确的政府信息中心、政务平台运营方参与入口，人工智能+红利期竞争对手尚未完全占位</li><li>政务领域知识库积累与行业Know-how</li><li>政务服务场景理解深度优于通用AI厂商</li><li>与一网通办/一网协同产品线的协同效应</li></ul></div>
+<div class="swot-card w"><h4><span class="badge">W</span> 劣势 Weaknesses</h4><ul><li>底层大模型能力依赖外部供应商</li><li>AI产品研发人才储备相对不足</li><li>部分AI场景成熟度不够，客户接受度待提升</li><li>人工智能市场声量不足：行业5条资讯而竞品52条动态，企业在人工智能的市场可见度低于竞品，影响政府信息中心、政务平台运营方自发询盘量</li><li>人工智能差异化定位不清晰：14家竞品在5条资讯的高热度人工智能市场中竞争，企业人工智能产品差异化优势不明显，存在同质化风险</li></ul></div>
+<div class="swot-card o"><h4><span class="badge">O</span> 机会 Opportunities</h4><ul><li>人工智能政策窗口期机会：23条人工智能+政策密集出台，对应政府采购项目即将释放，企业应提前准备资质和方案</li><li>AI+政务政策密集出台，预算明确释放</li><li>政务大模型私有化部署刚需</li><li>智能审批/智能客服场景落地加速</li><li>AI辅助公文写作/报告生成市场打开</li></ul></div>
+<div class="swot-card t"><h4><span class="badge">T</span> 威胁 Threats</h4><ul><li>百度/阿里/腾讯等通用AI大厂快速进入政务市场</li><li>大模型技术迭代快，产品窗口期短</li><li>AI安全合规要求趋严，增加产品合规成本</li></ul></div>
+</div>
+    <div class="swot-derivation">
+      <h4>SWOT 战略矩阵推导</h4>
+      <div class="derivation-item so"><div class="derivation-label">SO</div><div class="derivation-text"><h5>优势+机会 → 增长型战略</h5>借助人工智能政策东风，加速人工智能+产品布局。23条人工智能政策密集出台，意味着政府采购窗口即将打开。企业应：1）针对2条国家级人工智能+政策方向，快速开发或升级对应人工智能产品模块；2）提前准备资质文件和投标方案，确保人工智能+政策落地后第一时间参与投标；3）在浙江、天津、河北等已出政策区域建立人工智能示范案例，重点解决政府信息中心、政务平台运营方的人工审核耗时痛点。</div></div>
+  <div class="derivation-item wo"><div class="derivation-label">WO</div><div class="derivation-text"><h5>劣势+机会 → 扭转型战略</h5>以人工智能政策为杠杆，弥补人工智能+竞争劣势。南威软件、浩鲸科技、拓尔思等竞品活跃，直接竞争难度大。但23条人工智能政策为企业提供了差异化切入点：1）将人工智能+要求转化为人工智能产品特色（如"人工智能+合规内置""政务大模型一键对接"），避开与竞品的功能同质化竞争；2）联合浙江、天津、河北等地已合作的政府信息中心、政务平台运营方，共同申报人工智能+试点项目，借助政府信息中心、政务平台运营方资质降低自身准入门槛；3）通过人工智能政策培训服务切入政府信息中心、政务平台运营方，建立信任后再推动人工智能产品销售。</div></div>
+  <div class="derivation-item st"><div class="derivation-label">ST</div><div class="derivation-text"><h5>优势+威胁 → 防御型战略</h5>强化人工智能客户绑定，巩固存量市场。人工智能竞品52条动态表明竞争活跃。企业应：1）为存量政府信息中心、政务平台运营方提供人工智能免费升级或增值服务，提升政府信息中心、政务平台运营方满意度和续约率；2）建立政府信息中心、政务平台运营方使用数据监控体系，提前识别可能被竞品撬动的政府信息中心、政务平台运营方并主动介入；3）将已有人工智能项目经验转化为标准化解决方案，提高新政府信息中心、政务平台运营方的信任度。</div></div>
+  <div class="derivation-item wt"><div class="derivation-label">WT</div><div class="derivation-text"><h5>劣势+威胁 → 规避型战略</h5>人工智能防守反击，优先改善关键短板。人工智能竞品压力大且企业存在劣势。应：1）识别人工智能最关键的1-2个短板（如人工智能交付能力不足或人工智能产品功能缺失），通过外包或合作快速补齐；2）避免在竞品强势区域正面竞争人工智能，转向浙江、天津、河北等竞品覆盖薄弱区域；3）推出"基础版+增值版"的人工智能产品组合，基础版低价保政府信息中心、政务平台运营方，增值版盈利。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>市场机会排序 TOP 5</h2>
+  <div class="card">
+  <table class="opp-table">
+    <thead><tr><th>排名</th><th>战略机会</th><th>影响度</th><th>紧迫性</th><th>综合得分</th><th>影响度进度条</th><th>核心依据</th><th>建议行动</th></tr></thead>
+    <tbody>
+    <tr style="background:#f0f7ff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">1</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">政务大模型私有化部署与场景定制</div><div style="font-size:12px;color:#888;">私有化部署 / 知识库定制 / 场景微调 / 安全合规</div></td>
+      <td style="text-align:center;font-weight:600;">8</td>
+      <td style="text-align:center;font-weight:600;">8</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">64</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#00A870;width:64%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">政务领域对数据安全要求极高，私有化大模型+垂直场景定制是刚需；政策密集推动AI+政务；本周期监测到23条政策（国家级2条），政策窗口期明确。浙江、天津、河北等地政策密度最高。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">加速标杆案例复制，重点突破浙江、天津、河北等TOP区域的私有化部署场景，组建专项团队快速落地。</td>
+    </tr>
+    <tr style="background:#f8f9fa">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">2</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">智能客服与政策咨询机器人</div><div style="font-size:12px;color:#888;">智能客服 / 政策咨询 / 7×24应答 / 多轮对话</div></td>
+      <td style="text-align:center;font-weight:600;">7</td>
+      <td style="text-align:center;font-weight:600;">8</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">56</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:56%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">政务热线/咨询量持续增长，人工坐席压力大；大模型客服可显著降低运营成本；浙江、天津、河北等地政策密集，区域示范效应明显。地方级政策21条，区域差异化需求旺盛。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">以浙江为标杆，建立区域复制模板，快速向同类型城市/区县推广智能客服方案。</td>
+    </tr>
+    <tr style="background:#fff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">3</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">AI辅助公文写作与报告生成</div><div style="font-size:12px;color:#888;">公文辅助 / 报告生成 / 会议纪要 / 智能摘要</div></td>
+      <td style="text-align:center;font-weight:600;">7</td>
+      <td style="text-align:center;font-weight:600;">7</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">49</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:49%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">政府机关公文写作需求量大，AI辅助可提升效率；报告生成、会议纪要等场景成熟；政策密集下沉，基层数字化需求释放。竞品厂商14家，竞争趋于集中，需差异化切入。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">设计轻量化、低成本的标准化产品包，适配基层预算和人员能力，通过渠道伙伴快速覆盖公文辅助场景。</td>
+    </tr>
+    <tr style="background:#fff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">4</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">数据智能分析与决策洞察</div><div style="font-size:12px;color:#888;">智能分析 / 趋势预测 / 异常预警 / 决策报告</div></td>
+      <td style="text-align:center;font-weight:600;">7</td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">42</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:42%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">政府数据汇聚后分析需求爆发，AI+BI结合提供决策洞察能力；数据要素政策推动；政策方向明确，长期需求确定。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">将智能分析能力打包为增值服务模块，嵌入现有客户续约和增购方案，实现存量客户价值深挖。</td>
+    </tr>
+    <tr style="background:#fff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">5</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">AI赋能智能审批与材料审核</div><div style="font-size:12px;color:#888;">智能审批 / 材料审核 / 表单填写 / 智能核验</div></td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">36</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:36%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">AI辅助审批可大幅缩短办理时间，材料自动审核准确率持续提升；多地试点AI审批；行业资讯5条，市场热度平稳。竞品动态52条，头部厂商(南威软件)加速布局。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">聚焦智能审批和材料审核两大细分场景，优先对接已有客户需求的试点项目。</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="opp-note">
+    <strong>分析说明：</strong>按"影响度(1-10) × 紧迫性(1-10)"矩阵评分排序，影响度评估基于对大汉软件营收规模和战略地位的预期影响；紧迫性评估基于政策窗口期、市场增速和竞争格局变化速率。本领域平均综合得分 49.4，建议采取<strong>稳健增长</strong>策略。
+  </div>
+</div>
+</section>
+
+</div>
+
+<!-- 来源浮窗 -->
+<div class="source-popup-overlay" id="sourcePopupOverlay" onclick="closeSourcePopup(event)">
+  <div class="source-popup" onclick="event.stopPropagation()">
+    <div class="source-popup-header">
+      <h3 id="sourcePopupTitle">数据来源</h3>
+      <button class="source-popup-close" onclick="closeSourcePopup()">&times;</button>
+    </div>
+    <div class="source-popup-body">
+      <div class="source-popup-intro" id="sourcePopupIntro"></div>
+      <div id="sourcePopupSamples"></div>
+    </div>
+    <div class="source-popup-footer">
+      <a href="data-人工智能.html" class="source-popup-btn" id="sourcePopupBtn" onclick="event.preventDefault(); openDataOverlay(this.href);">查看完整原始数据列表 &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTrend(btn, panelId) {
+  var panels = document.querySelectorAll('.trend-panel');
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].classList.remove('active');
+  }
+  var btns = document.querySelectorAll('.trend-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  document.getElementById(panelId).classList.add('active');
+  btn.classList.add('active');
+}
+
+// 各来源类型的完整数据链接
+var sourceDataUrls = {"policy": "data-人工智能.html?type=policy&domain=人工智能&start=2026-01&end=2026-06", "industry": "data-人工智能.html?type=industry&domain=人工智能&start=2026-01&end=2026-06", "competitor": "data-人工智能.html?type=competitor&domain=人工智能&start=2026-01&end=2026-06"};
+
+// 按维度打开来源浮窗
+function openDimensionPopup(el) {
+  var sourceType = el.getAttribute('data-source');
+  var dimension = el.getAttribute('data-dimension') || '';
+  var samplesJson = el.getAttribute('data-samples') || '[]';
+  var samples = JSON.parse(samplesJson);
+  
+  var labels = {policy: '政策资料合集', industry: '行业资料合集', competitor: '竞品资料合集'};
+  var label = labels[sourceType] || '资料合集';
+  
+  document.getElementById('sourcePopupTitle').textContent = '来源：' + label;
+  document.getElementById('sourcePopupIntro').innerHTML = 
+    '<strong>' + dimension + '</strong> 维度的代表性资料（取自<strong>' + label + '</strong>，共 ' + samples.length + ' 条匹配）。';
+  
+  var samplesHtml = '';
+  samples.forEach(function(item, idx) {
+    var meta = '';
+    if (item.date) meta += '<span>' + item.date + '</span>';
+    if (item.issuer) meta += '<span>' + item.issuer + '</span>';
+    if (meta) meta = '<div class="source-sample-meta">' + meta + '</div>';
+    samplesHtml += '<div class="source-sample-item">' +
+      '<div class="source-sample-title">' + (idx + 1) + '. ' + item.title + '</div>' +
+      '<div class="source-sample-summary">' + item.summary + '</div>' + meta +
+      '</div>';
+  });
+  if (!samplesHtml) {
+    samplesHtml = '<div style="color:#999;padding:20px;text-align:center;">暂无匹配资料</div>';
+  }
+  document.getElementById('sourcePopupSamples').innerHTML = samplesHtml;
+  
+  var btn = document.getElementById('sourcePopupBtn');
+  btn.href = sourceDataUrls[sourceType] || '#';
+  if (!sourceDataUrls[sourceType] || sourceDataUrls[sourceType] === '#') btn.style.display = 'none';
+  else btn.style.display = 'inline-block';
+  
+  document.getElementById('sourcePopupOverlay').classList.add('active');
+}
+
+function closeSourcePopup(e) {
+  if (!e || e.target.id === 'sourcePopupOverlay') {
+    document.getElementById('sourcePopupOverlay').classList.remove('active');
+  }
+}
+
+// ESC键关闭
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSourcePopup();
+});
+</script>
+
+<!-- 内嵌数据列表遮罩 -->
+<div class="data-overlay" id="dataOverlay">
+  <div class="data-overlay-inner">
+    <div class="data-overlay-header">
+      <h3 id="dataOverlayTitle">完整原始数据列表</h3>
+      <button class="data-overlay-close" onclick="closeDataOverlay()">&times;</button>
+    </div>
+    <div class="data-overlay-body">
+      <iframe id="dataOverlayIframe" src=""></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+// 内嵌数据列表遮罩功能
+function openDataOverlay(url) {
+  var overlay = document.getElementById('dataOverlay');
+  var iframe = document.getElementById('dataOverlayIframe');
+  iframe.src = url;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDataOverlay() {
+  var overlay = document.getElementById('dataOverlay');
+  var iframe = document.getElementById('dataOverlayIframe');
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+  setTimeout(function() { iframe.src = ''; }, 300);
+}
+
+// 点击遮罩背景关闭
+document.getElementById('dataOverlay').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeDataOverlay();
+  }
+});
+
+// ESC 键关闭
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeDataOverlay();
+  }
+});
+</script>
+
+</body>
+</html>
