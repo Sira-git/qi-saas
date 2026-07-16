@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 
 // 用户端路由
@@ -220,7 +220,7 @@ const adminRoutes = [
 const routes = [...userRoutes, ...adminRoutes]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 
