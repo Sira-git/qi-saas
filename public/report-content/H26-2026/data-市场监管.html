@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>市场监管 - 原始数据列表</title>
+<style>
+:root { --primary: #0052D9; --bg: #F5F7FA; --card-bg: #fff; --text: #1A1A1A; --border: #E8E8E8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 22px; font-weight: 600; }
+.header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+.back-link { display: inline-block; margin-bottom: 16px; color: #0052D9; text-decoration: none; font-size: 14px; }
+.back-link:hover { text-decoration: underline; }
+
+/* 标签页样式 */
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #E8E8E8; }
+.tab-btn { padding: 12px 24px; border: none; background: transparent; font-size: 15px; font-weight: 500; color: #666; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+.tab-btn:hover { color: #0052D9; }
+.tab-btn.active { color: #0052D9; border-bottom-color: #0052D9; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.data-item { background: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 10px; border: 1px solid var(--border); }
+.data-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 4px; }
+.data-meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+.data-summary { font-size: 13px; color: #666; line-height: 1.5; max-height: 4.5em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.count-badge { display: inline-block; font-size: 12px; color: #fff; background: #0052D9; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
+.empty { color: #999; font-size: 13px; padding: 16px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="report-市场监管.html" class="back-link">&larr; 返回报告</a>
+<div class="header">
+<h1>市场监管 - 原始数据列表</h1>
+<p>本页面展示该领域半年内收集的全部代表性原始数据</p>
+</div>
+
+<!-- 标签页导航 -->
+<div class="tabs">
+<button class="tab-btn active" data-tab="policy" onclick="switchTab('policy')">政策资料合集 <span class="count-badge">2条</span></button>
+<button class="tab-btn" data-tab="industry" onclick="switchTab('industry')">行业资料合集 <span class="count-badge">0条</span></button>
+<button class="tab-btn" data-tab="competitor" onclick="switchTab('competitor')">竞品资料合集 <span class="count-badge">3条</span></button>
+</div>
+
+<!-- 标签页内容 -->
+<div class="tab-content active" id="tab-policy">
+<div class="data-item"><div class="data-title">河北省推进“双盲”评审智慧升级 深化政务服务集成改革相关政策</div><div class="data-meta">2026-02-27 | 河北省人民政府相关部门</div><div class="data-summary">提出深化政务服务集成改革，以“高效办成一件事”改革为牵引，推行材料自动调用、智能预审等智慧服务，实施数据赋能“人工智能+”行动，谋划发布100个以上数据赋能“人工智能+”应用场景，深化京津冀晋“信用代证”改革。</div></div>
+<div class="data-item"><div class="data-title">南京市2026年优化营商环境行动方案</div><div class="data-meta">2026-02-24 | 南京市人民政府</div><div class="data-summary">提出推行“人工智能+政务服务”，依托南京政务大模型底座，打造政务服务智能体，运用智能导办、边聊边办、虚拟窗口、智能匹配等技术，提升证照审批智能化水平，深化“高效办成一件事”改革，优化政策“免申即享”。</div></div>
+
+</div>
+
+<div class="tab-content" id="tab-industry">
+<div class="empty">暂无行业数据</div>
+</div>
+
+<div class="tab-content" id="tab-competitor">
+<div class="data-item"><div class="data-title">浪潮软件股份有限公司2025年年度报告摘要</div><div class="data-meta">2026-04-18 | 浪潮软件</div><div class="data-summary">公司依托人工智能+、数据要素等政策契机，打造一网通办、一网统管、一网监管、一网协同、智能大厅等场景。报告期内发布浪潮人工智能政务服务平台(ECGAP5.0)，推出事项智理、智能问答、边聊边办等六大场景；在市场监管领域打造问答式边聊边办、智能维权机器人等AI应用，三度蝉联中国AI+市场监管解决方案市场份额第一。</div></div>
+<div class="data-item"><div class="data-title">浪潮软件发布2026年一季报，中标山东省市场监督管理局采购项目</div><div class="data-meta">2026-05-02 | 浪潮软件</div><div class="data-summary">2026年一季报显示营业总收入1.33亿元，同比增长24.95%。2026年4月13日公司中标山东省市场监督管理局采购项目，中标金额179.80万元，属于市场监管领域。</div></div>
+<div class="data-item"><div class="data-title">南威软件发布市场监管AI智能体解决方案</div><div class="data-meta">2026-06-18 | 南威软件</div><div class="data-summary">南威软件发布面向市场监管领域的AI智能体解决方案，涵盖企业开办智能导办、食品安全风险预警、企业信用智能画像、投诉举报智能分析等场景，已在福建、江西等地市场监管部门试点应用。</div></div>
+
+</div>
+
+</div>
+
+<script>
+// 标签页切换
+function switchTab(tabName) {
+  // 隐藏所有标签内容
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) {
+    contents[i].classList.remove('active');
+  }
+  // 移除所有标签按钮的激活状态
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  // 显示选中的标签内容
+  document.getElementById('tab-' + tabName).classList.add('active');
+  // 激活选中的标签按钮
+  var activeBtn = document.querySelector('.tab-btn[data-tab="' + tabName + '"]');
+  if (activeBtn) activeBtn.classList.add('active');
+}
+
+// 页面加载时读取URL参数，自动选中对应标签
+window.addEventListener('DOMContentLoaded', function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var type = urlParams.get('type');
+  if (type && ['policy', 'industry', 'competitor'].indexOf(type) !== -1) {
+    switchTab(type);
+  }
+});
+</script>
+</body>
+</html>

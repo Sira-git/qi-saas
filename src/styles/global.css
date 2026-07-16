@@ -1,0 +1,225 @@
+/* 企情察 - 全局样式（白色主题） */
+
+:root {
+  /* 主色调 */
+  --primary: #1677ff;
+  --primary-dark: #0958d9;
+  --primary-light: #1677ff;
+
+  /* 渐变色 */
+  --gradient-blue: linear-gradient(135deg, #1677ff 0%, #5b8def 100%);
+  --gradient-hero: linear-gradient(180deg, #ffffff 0%, #f0f5ff 100%);
+
+  /* 文字 */
+  --text-white: #1a202c;
+  --text-gray: #64748b;
+  --text-dark: #1a202c;
+
+  /* 背景 */
+  --bg-dark: #f5f7ff;
+  --bg-page: #f5f7ff;
+  --bg-card: rgba(255, 255, 255, 0.98);
+  --bg-card-hover: rgba(255, 255, 255, 1);
+
+  /* 边框 */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* 阴影 */
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-btn: 0 2px 12px rgba(22, 119, 255, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 背景渐变容器 */
+.gradient-bg {
+  background: var(--gradient-hero);
+  min-height: 100vh;
+}
+
+/* 渐变背景网格 */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(22, 119, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 119, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* 毛玻璃卡片 → 白色卡片 */
+.glass-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(22, 119, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(22, 119, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 主按钮 */
+.btn-primary {
+  background: var(--gradient-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(22, 119, 255, 0.3);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(22, 119, 255, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* 次要按钮（描边） */
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background: rgba(22, 119, 255, 0.06);
+}
+
+/* 输入框 */
+.input-field {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--text-dark);
+  padding: 10px 16px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--text-gray);
+}
+
+/* 页面容器 */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 徽章 */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-blue {
+  background: rgba(22, 119, 255, 0.1);
+  color: #1677ff;
+}
+
+.badge-orange {
+  background: rgba(250, 139, 48, 0.1);
+  color: #ea6a10;
+}
+
+.badge-purple {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+}
+
+.badge-green {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+/* 三栏布局 */
+.three-col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .three-col-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text-gray);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, #1677ff 0%, #5b8def 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

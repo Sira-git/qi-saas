@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>门户网站 - 原始数据列表</title>
+<style>
+:root { --primary: #0052D9; --bg: #F5F7FA; --card-bg: #fff; --text: #1A1A1A; --border: #E8E8E8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 22px; font-weight: 600; }
+.header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+.back-link { display: inline-block; margin-bottom: 16px; color: #0052D9; text-decoration: none; font-size: 14px; }
+.back-link:hover { text-decoration: underline; }
+
+/* 标签页样式 */
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #E8E8E8; }
+.tab-btn { padding: 12px 24px; border: none; background: transparent; font-size: 15px; font-weight: 500; color: #666; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+.tab-btn:hover { color: #0052D9; }
+.tab-btn.active { color: #0052D9; border-bottom-color: #0052D9; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.data-item { background: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 10px; border: 1px solid var(--border); }
+.data-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 4px; }
+.data-meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+.data-summary { font-size: 13px; color: #666; line-height: 1.5; max-height: 4.5em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.count-badge { display: inline-block; font-size: 12px; color: #fff; background: #0052D9; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
+.empty { color: #999; font-size: 13px; padding: 16px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="report-门户网站.html" class="back-link">&larr; 返回报告</a>
+<div class="header">
+<h1>门户网站 - 原始数据列表</h1>
+<p>本页面展示该领域半年内收集的全部代表性原始数据</p>
+</div>
+
+<!-- 标签页导航 -->
+<div class="tabs">
+<button class="tab-btn active" data-tab="policy" onclick="switchTab('policy')">政策资料合集 <span class="count-badge">0条</span></button>
+<button class="tab-btn" data-tab="industry" onclick="switchTab('industry')">行业资料合集 <span class="count-badge">0条</span></button>
+<button class="tab-btn" data-tab="competitor" onclick="switchTab('competitor')">竞品资料合集 <span class="count-badge">10条</span></button>
+</div>
+
+<!-- 标签页内容 -->
+<div class="tab-content active" id="tab-policy">
+<div class="empty">暂无政策数据</div>
+</div>
+
+<div class="tab-content" id="tab-industry">
+<div class="empty">暂无行业数据</div>
+</div>
+
+<div class="tab-content" id="tab-competitor">
+<div class="data-item"><div class="data-title">蓝凌输了！153万元，泛微中标信创OA大单</div><div class="data-meta">2026-03-10 | 蓝凌</div><div class="data-summary">2026年3月9日，中信保诚人寿保险有限公司办公平台信创国产化项目中标结果公示，泛微网络中标（153万元），蓝凌软件位列第二中标候选人，北京慧点科技为第三。</div></div>
+<div class="data-item"><div class="data-title">广东石油化工学院办公自动化（OA）系统信创项目的中标公告</div><div class="data-meta">2026-03-18 | 蓝凌</div><div class="data-summary">广东石油化工学院OA系统信创项目中标公告中，蓝凌软件位列第二中标候选人（综合得分89.06），中国移动通信集团广东有限公司茂名分公司为第一中标候选人（91.16）。项目包括办公自动化系统信创适配改造。</div></div>
+<div class="data-item"><div class="data-title">浪潮软件：2026年度提质增效重回报行动方案</div><div class="data-meta">2026-04-30 | 浪潮软件</div><div class="data-summary">公司作为国内领先的数字政府方案与服务提供商，已形成涵盖一网通办、一网统管、一网监管、政府数脑等于一体的政府数字化转型全面解决方案，客户覆盖全国29个省份135个地市、800多个区县。IDC报告显示公司位居中国数字政府IT解决方案市场份额及增速双第一。</div></div>
+<div class="data-item"><div class="data-title">致远互联中标：北京市2026年电子公文系统维护项目</div><div class="data-meta">2026-05-24 | 致远互联</div><div class="data-summary">2026年5月21日，北京致远互联软件股份有限公司中标北京市城市管理委员会2026年电子公文系统维护项目，中标金额37.9万元。</div></div>
+<div class="data-item"><div class="data-title">吉林省政务服务和数字化建设服务中心政务信息化统一建设项目中标公告</div><div class="data-meta">2026-06-12 | 浪潮软件</div><div class="data-summary">依据吉林省财政厅政府采购投诉处理决定，原中标结果无效，采购人确定重新赋分后得分最高的浪潮软件股份有限公司为本包中标供应商。中标金额为359.8万元，项目为吉林省档案馆数字档案馆信息系统，服务期限3年（1年建设期，2年运行保障期）。</div></div>
+<div class="data-item"><div class="data-title">2026最新科普：什么是信创协同，致远互联信创办公方案落地指南</div><div class="data-meta">2026-06-25 | 致远互联</div><div class="data-summary">2026年信创协同已从基础替代进入深度应用阶段，致远互联基于AI-COP协同运营平台打造全栈信创解决方案，覆盖公文管理、流程审批、移动办公等全场景，已完成从国产芯片、操作系统、数据库到中间件的全栈适配，通过等保2.0三级、分保与公文国标测评。</div></div>
+<div class="data-item"><div class="data-title">2026年信创OA怎么选？蓝凌深度解析</div><div class="data-meta">2026-06-30 | 蓝凌</div><div class="data-summary">蓝凌在信创适配方面投入较大，产品全面通过信创适配认证，入选国家信创产业目录，支持国产主流软硬件深度适配。其优势在于云原生低代码平台、交付模块化时间短、知识管理集成度高、流程扩展灵活，且与钉钉EKP深度绑定，在金融、高校、知识密集型国企领域具有竞争力。</div></div>
+<div class="data-item"><div class="data-title">蓝凌携手华为云升级AI+KM方案，加速企业级智能体落地</div><div class="data-meta">2026-06-12 | 蓝凌</div><div class="data-summary">蓝凌智能携手华为云发布AI+KM融合方案，提出“长脑、长手、成人”三重进化路径，搭建企业知识大脑，将AI能力嵌入采购、行政等核心业务流程，打造“一件事”全链路智能闭环，赋能政务、央国企等组织AI进化。</div></div>
+<div class="data-item"><div class="data-title">拓尔思中标北京市政府门户网站AI升级项目</div><div class="data-meta">2026-06-25 | 拓尔思</div><div class="data-summary">拓尔思中标北京市政府门户网站智能化升级项目，将基于TRS-GPT大模型为市政府门户提供智能搜索、AI问答、政策解读、办事导引等智能化服务，提升政府信息公开和政民互动体验。</div></div>
+<div class="data-item"><div class="data-title">拓尔思：以“垂直深耕+场景价值”实践智能体的深度业务赋能</div><div class="data-meta">2026-06-01 | 拓尔思</div><div class="data-summary">拓尔思依托自研拓天政务大模型，在云南和贵州落地政务智能体，打造政务服务“智能导办员”，实现一站式检索、政策深度解读与公文智能分发，推动政务服务从被动响应转向主动精准服务，树立政务智能体应用标杆。</div></div>
+
+</div>
+
+</div>
+
+<script>
+// 标签页切换
+function switchTab(tabName) {
+  // 隐藏所有标签内容
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) {
+    contents[i].classList.remove('active');
+  }
+  // 移除所有标签按钮的激活状态
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  // 显示选中的标签内容
+  document.getElementById('tab-' + tabName).classList.add('active');
+  // 激活选中的标签按钮
+  var activeBtn = document.querySelector('.tab-btn[data-tab="' + tabName + '"]');
+  if (activeBtn) activeBtn.classList.add('active');
+}
+
+// 页面加载时读取URL参数，自动选中对应标签
+window.addEventListener('DOMContentLoaded', function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var type = urlParams.get('type');
+  if (type && ['policy', 'industry', 'competitor'].indexOf(type) !== -1) {
+    switchTab(type);
+  }
+});
+</script>
+</body>
+</html>

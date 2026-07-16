@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人工智能 - 原始数据列表</title>
+<style>
+:root { --primary: #0052D9; --bg: #F5F7FA; --card-bg: #fff; --text: #1A1A1A; --border: #E8E8E8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 22px; font-weight: 600; }
+.header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+.back-link { display: inline-block; margin-bottom: 16px; color: #0052D9; text-decoration: none; font-size: 14px; }
+.back-link:hover { text-decoration: underline; }
+
+/* 标签页样式 */
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 2px solid #E8E8E8; }
+.tab-btn { padding: 12px 24px; border: none; background: transparent; font-size: 15px; font-weight: 500; color: #666; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+.tab-btn:hover { color: #0052D9; }
+.tab-btn.active { color: #0052D9; border-bottom-color: #0052D9; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.data-item { background: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 10px; border: 1px solid var(--border); }
+.data-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 4px; }
+.data-meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+.data-summary { font-size: 13px; color: #666; line-height: 1.5; max-height: 4.5em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.count-badge { display: inline-block; font-size: 12px; color: #fff; background: #0052D9; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
+.empty { color: #999; font-size: 13px; padding: 16px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="report-人工智能.html" class="back-link">&larr; 返回报告</a>
+<div class="header">
+<h1>人工智能 - 原始数据列表</h1>
+<p>本页面展示该领域半年内收集的全部代表性原始数据</p>
+</div>
+
+<!-- 标签页导航 -->
+<div class="tabs">
+<button class="tab-btn active" data-tab="policy" onclick="switchTab('policy')">政策资料合集 <span class="count-badge">23条</span></button>
+<button class="tab-btn" data-tab="industry" onclick="switchTab('industry')">行业资料合集 <span class="count-badge">5条</span></button>
+<button class="tab-btn" data-tab="competitor" onclick="switchTab('competitor')">竞品资料合集 <span class="count-badge">52条</span></button>
+</div>
+
+<!-- 标签页内容 -->
+<div class="tab-content active" id="tab-policy">
+<div class="data-item"><div class="data-title">北京市全面深化“一网通办”推进政务服务数智化发展行动计划(2026—2027年)</div><div class="data-meta">2026-01-29 | 北京市人民政府办公厅</div><div class="data-summary">明确提出强化全市政务领域大模型顶层设计，搭建模型矩阵应用支撑、大模型数据中枢、大模型应用评测管理平台，整合政务服务、辅助决策等领域智慧体服务入口，加强数字政务高质量数据集建设，安全稳妥有序推进大模型在政务服务领域中的应用。</div></div>
+<div class="data-item"><div class="data-title">天津市深化智慧城市建设 推进城市治理和数字化转型总体方案</div><div class="data-meta">2026-01-23 | 天津市数据局</div><div class="data-summary">构建“1183”智慧城市建设总体架构，即打造1个数据基础底座，建设1个城市“智管中心”，部署8项重点任务，健全3大保障体系；到2027年，高水平建成并运营一体化数据平台和城市“智管中心”，“高效处置一件事”覆盖城市运行重点事件，“高效办成一件事”覆盖高频民生事项；到2030年底，实现城市治理数字化全面突破，形成敏捷高效、韧性安全的现代化城市治理新格局。</div></div>
+<div class="data-item"><div class="data-title">天津市深化智慧城市建设 推进城市治理和数字化转型总体方案</div><div class="data-meta">2026-01-22 | 天津市数据局</div><div class="data-summary">强调充分发挥数据要素价值和人工智能创新引擎作用，明确“统一规划设计、统一基础平台、统一标准规范、统一建设运维”的建设原则，到2027年高水平建成一体化数据平台和城市“智管中心”，“高效办成一件事”覆盖高频民生事项。</div></div>
+<div class="data-item"><div class="data-title">《江西省“人工智能+”行动方案》相关内容</div><div class="data-meta">2026-01-16 | 江西省人民政府</div><div class="data-summary">明确建设数字政府多模态模型底座，为政务服务、部门履职、辅助决策等提供共性能力支撑，建设“小赣事”智能体平台，作为全省“人工智能+政务服务”的“总枢纽”“总入口”，避免地方和部门重复建设。</div></div>
+<div class="data-item"><div class="data-title">四川省关于支持数字经济高质量发展的若干政策措施</div><div class="data-meta">2026-01-09 | 四川省人民政府相关部门</div><div class="data-summary">提出实施数字产业集群发展工程，聚焦人工智能大模型、数据标注、数据流通、数据安全等细分领域，加大对数字经济创新型企业支持力度，安排资金对相关企业给予奖补，加快推进全省数字经济高质量发展。</div></div>
+<div class="data-item"><div class="data-title">河北省推进“双盲”评审智慧升级 深化政务服务集成改革相关政策</div><div class="data-meta">2026-02-27 | 河北省人民政府相关部门</div><div class="data-summary">提出深化政务服务集成改革，以“高效办成一件事”改革为牵引，推行材料自动调用、智能预审等智慧服务，实施数据赋能“人工智能+”行动，谋划发布100个以上数据赋能“人工智能+”应用场景，深化京津冀晋“信用代证”改革。</div></div>
+<div class="data-item"><div class="data-title">黑龙江省“人工智能+”政务深化应用工作方案</div><div class="data-meta">2026-02-25 | 黑龙江省政务服务数据管理局</div><div class="data-summary">聚焦政务数据从“汇数”到“智用”的转变，推进政务智能体建设，创新政务数据目录“五级三十同”编制标准，构建数据目录知识图谱，以100个智能体应用场景为“小切口”，推动政务数据汇聚治理，构建高质量数据集和知识库。</div></div>
+<div class="data-item"><div class="data-title">南京市2026年优化营商环境行动方案</div><div class="data-meta">2026-02-24 | 南京市人民政府</div><div class="data-summary">提出推行“人工智能+政务服务”，依托南京政务大模型底座，打造政务服务智能体，运用智能导办、边聊边办、虚拟窗口、智能匹配等技术，提升证照审批智能化水平，深化“高效办成一件事”改革，优化政策“免申即享”。</div></div>
+<div class="data-item"><div class="data-title">2026年河北省数据和政务服务系统工作会议召开</div><div class="data-meta">2026-02-24 | 河北省数据和政务服务局</div><div class="data-summary">2026年河北将系统推进数据要素市场化配置改革，持续扩大高质量公共数据供给，推动海量数据优势加快转化为发展竞争优势；全面开展公共数据授权运营，制定场景审核、收益分配等制度，支持开发易落地数据产品；建设省级数据产权登记平台，探索登记凭证在金融、税务等领域的应用；打造“人工智能+政务”场景，提升行政效能；国务院部署的“高效办成一件事”重点事项将全部在河北省落地，并向“一类事”升级。</div></div>
+<div class="data-item"><div class="data-title">济南市大数据局2026年度工作计划</div><div class="data-meta">2026-03-31 | 济南市大数据局</div><div class="data-summary">以“人工智能+”和“数据要素×”为双轮驱动，持续提升数字政府建设水平；优化“数智公务员”一体化管理服务平台，精简办文、办会、办事流程；持续优化政务服务“一网通办”总门户，拓展“一件事”集成服务场景，迭代升级“爱山东”济南分厅70个民生“关键小事”；升级“泉心泉意”政务服务大模型，新增6项以上智能助手应用场景。</div></div>
+<div class="data-item"><div class="data-title">长三角政务服务“一网通办”相关合作规定</div><div class="data-meta">2026-03-26 | 浙江省人民政府相关部门</div><div class="data-summary">明确与上海、江苏、安徽集约建设长三角政务服务“一网通办”线上平台，强化长三角政务数据共享协调机制，安全稳妥有序推进人工智能等数智技术在长三角政务服务“一网通办”中的应用，加强高质量数据集和语料库、可信知识库建设。</div></div>
+<div class="data-item"><div class="data-title">汤飞帆:敢闯敢干推动数字政府2.0建设走向纵深</div><div class="data-meta">2026-03-18 | 宁波市数据局</div><div class="data-summary">宁波以智能化场景应用为牵引，抓住国家垂类大模型试点机遇，推动大模型技术与政务场景深度融合；以数据要素价值化为核心，规范有序推动公共数据开放与授权运营，推进国家数据产业集聚区建设试点；以普惠化数字服务为重点，深化“高效办成一件事”改革，迭代优化浙里办宁波频道；以一体化底座建设为支撑，推进城市可信数据空间建设、城市智能中枢建设。</div></div>
+<div class="data-item"><div class="data-title">苏州市数据局2025年工作总结和2026年工作计划</div><div class="data-meta">2026-03-01 | 苏州市数据局</div><div class="data-summary">2026年苏州将深化数智化改革，出台“十五五”数字苏州建设专项规划，统筹推进数字政府、数字经济、数字社会建设；深化数据要素市场化配置改革，高标准运营国家数据发展研究院高质量数据集实验室，深化公共数据开发利用；常态化推进“高效办成一件事”改革，优化企业综合服务线上平台功能；加快“人工智能+”城市建设，打造数智化应用推广场景。</div></div>
+<div class="data-item"><div class="data-title">甘肃省数字政府建设相关政策内容</div><div class="data-meta">2026-04-29 | 甘肃省人民政府办公厅</div><div class="data-summary">提出高质量推进数字政府建设，加快省级部门、市州自建业务系统与全省一体化政务服务平台深度对接，提升“一网通办”水平，创新本地化特色“一件事”，推进城市智慧高效治理项目建设，提升城市数字化治理能力水平。</div></div>
+<div class="data-item"><div class="data-title">广西壮族自治区国民经济和社会发展第十五个五年规划纲要</div><div class="data-meta">2026-04-27 | 广西壮族自治区人民政府</div><div class="data-summary">提出培育跨境数据交易市场，建设面向东盟的人工智能数据标注基地，推动数据确权、定价和交易标准化，规范实施数据资产评估，探索数据资产入表新路径，推进投资审批“一网通办”，大力发展人工智能，深入推进数智广西建设。</div></div>
+<div class="data-item"><div class="data-title">人工智能拟人化互动服务管理暂行办法</div><div class="data-meta">2026-04-10 | 国家互联网信息办公室、国家发展和改革委员会、工业和信息化部、公安部、国家市场监督管理总局</div><div class="data-summary">为规范人工智能拟人化互动服务，促进人工智能健康发展，维护国家安全、社会公共利益和他人合法权益，根据相关法律法规，制定本办法。自2026年7月15日起施行，对人工智能拟人化互动服务的服务规范、算法备案、用户权益保护、监督管理等方面做出明确规定。</div></div>
+<div class="data-item"><div class="data-title">市委改革办(市营商环境建设局)关于市十六届人大六次会议第248号建议的答复</div><div class="data-meta">2026-05-28 | 宁波市人民政府</div><div class="data-summary">宁波12345热线打造智能座席赋能话务接听，健全政务知识库维护体系，常规政策99%由话务员直接解答；企业综合服务平台建设“惠企千问”智能问答工具和AI检索应用，接入国内领先大模型，融合8大专业领域数据，提供互动问答、服务引导、政策解读、事项导航四大核心服务，实现7x24小时全天候咨询应答；迭代升级AI检索应用，实现政务服务办事事项“一键直达”。</div></div>
+<div class="data-item"><div class="data-title">全方位打造数智强省，河南出台18条举措</div><div class="data-meta">2026-05-23 | 河南省人民政府办公厅</div><div class="data-summary">推进数字（智）河南建设，全方位打造数智强省；加快推动数据要素市场化配置改革，大力推进数字产业发展，全方位促进数实深度融合；推进开发区数字化转型平台建设，鼓励发放“数字化转型服务券”；深化“一网通办”改革，推进政务服务数智化升级；打造“人工智能+政务”场景，提升行政效能。</div></div>
+<div class="data-item"><div class="data-title">河南省推进数字经济高质量发展若干政策措施</div><div class="data-meta">2026-05-23 | 河南省人民政府办公厅</div><div class="data-summary">提出深入实施“人工智能+”行动，谋划建设人工智能重大应用场景，持续实施“数据要素×”行动，全域推进城市数字化转型，支持有条件的地方申请开展国家试点，鼓励各地统筹利用各类资金，布局建设城市数字化共性基础设施。</div></div>
+<div class="data-item"><div class="data-title">2026年数字经济发展工作要点</div><div class="data-meta">2026-05-20 | 国家数据局</div><div class="data-summary">对2026年推进数字经济高质量发展重点工作作出部署，提出8个方面重点任务，包括深化数据要素市场化配置改革、强化数据赋能人工智能发展、提升数字化治理与服务能力等，明确提出推进数字经济促进法立法进程，持续推进数据安全管理。</div></div>
+<div class="data-item"><div class="data-title">上海深化“一网通办”改革 打造“高效办成一件事”最佳体验地</div><div class="data-meta">2026-05-15 | 上海市人民政府相关部门</div><div class="data-summary">提出升级惠企政策全流程服务，稳妥推进人工智能与政务服务深度融合，升级“一网通办”平台和“随申办”服务能级，打造智能政务助理，探索“边聊边办”新模式，深化长三角政务服务协同发展。</div></div>
+<div class="data-item"><div class="data-title">杭州市数据资源管理局关于市政协十二届四次会议409号提案的办理意见</div><div class="data-meta">2026-06-23 | 杭州市数据资源管理局</div><div class="data-summary">杭州建成全国首个政务垂域模型训练场，构建覆盖“数据管理、模型训练、推理应用”的全生命周期标准规范体系，打造“知识数据、模型训练、智能编排、模型评测、应用发布、模型安全”六大能力中心，形成“拎数入场、提智赋能”的模型训练生产路径，同时探索高质量、多模态、跨领域的语料供给体系，激活政务数据价值释放。</div></div>
+<div class="data-item"><div class="data-title">数智济南建设2026年工作要点</div><div class="data-meta">2026-06-18 | 济南市大数据局</div><div class="data-summary">组建数智政务联合创新中心，统筹推进政务领域人工智能平台建设、资源整合、场景应用；统筹建设全市政务知识库管理体系，制定知识构建、检索、管理与安全技术标准；深化机关办会数智化转型，优化数智会务系统；升级“泉心泉意”政务服务大模型，2026年新增6项以上智能助手应用场景；深化“一网通办”改革，拓展“一件事”集成服务场景，迭代升级“爱山东”济南分厅70个民生“关键小事”。</div></div>
+
+</div>
+
+<div class="tab-content" id="tab-industry">
+<div class="data-item"><div class="data-title">IDC《中国政务大模型及应用市场份额，2024》：浪潮位居中国政务大模型市场第一</div><div class="data-meta">2026-01-30 | 行业媒体</div><div class="data-summary">IDC正式发布《中国政务大模型及应用市场份额，2024：规模化在即》。报告显示，浪潮位居中国政务大模型市场第一位。2024年中国政务大模型及应用市场整体规模达20.8亿元人民币，迎来爆发式增长。政务应用正依托大模型能力与平台实现重构，逐步发展为政府数字化的基础性能力。</div></div>
+<div class="data-item"><div class="data-title">赛迪顾问预测2026年中国人工智能市场规模接近6000亿元</div><div class="data-meta">2026-01-24 | 行业媒体</div><div class="data-summary">赛迪顾问《2024-2025年中国人工智能市场研究年度报告》指出，2026年中国人工智能市场规模预计接近6000亿元。市场结构中，互联网、金融和制造三大领域合计占比超过50%；政务、零售、电信等领域呈稳健增长态势，教育、医疗、交通等新兴应用场景增速显著。AI市场正从单一行业向多领域协同拓展。</div></div>
+<div class="data-item"><div class="data-title">中商情报网：2026年中国数字人智能体市场规模预计达36亿元</div><div class="data-meta">2026-03-19 | 行业媒体</div><div class="data-summary">中商产业研究院报告显示，中国数字人智能体行业市场规模将从2021年的5亿元增加至2024年的20亿元，复合年增长率55.8%。2025年市场规模约为24亿元，2026年预计达到36亿元。2026年政府工作报告明确深化拓展人工智能+，加快智能体推广。</div></div>
+<div class="data-item"><div class="data-title">全球政务大模型行业报告：2025年中国政务大模型市场爆发式增长</div><div class="data-meta">2026-04-09 | 行业媒体</div><div class="data-summary">中研智业研究院发布的《全球及中国政务大模型行业运营现状与前景趋势分析报告2026-2031年》显示，截至2026年第一季度，全国已有超过240个地级市政府部门部署或试点政务大模型，覆盖智慧办公、政策咨询、舆情分析、行政审批等场景。政务大模型从示范项目过渡到生产系统常态化运行阶段。</div></div>
+<div class="data-item"><div class="data-title">全球政务与法律大模型行业：2025年中国市场规模6.1亿美元，同比增长89.4%</div><div class="data-meta">2026-05-29 | 行业媒体</div><div class="data-summary">2025年全球政务与法律大模型市场规模达到47.3亿美元，中国政务与法律大模型市场在2025年实现爆发式增长，市场规模达到6.1亿美元，同比增长89.4%。其中政务应用领域占比63.7%，法律应用占比36.3%。预计到2030年，全球市场规模将突破210亿美元。</div></div>
+
+</div>
+
+<div class="tab-content" id="tab-competitor">
+<div class="data-item"><div class="data-title">中国政务大模型市场，浪潮第一！</div><div class="data-meta">2026-01-30 | 浪潮软件</div><div class="data-summary">IDC报告显示浪潮位居中国政务大模型市场份额第一。浪潮围绕一网通办推出智能问答、边聊边办、智能审批等六大智能体，已打造贵州贵人智办、青岛数字张大为等典型案例。</div></div>
+<div class="data-item"><div class="data-title">周鸿祎预测2026年将迎来百亿智能体时代，360将发布短剧智能体工具</div><div class="data-meta">2026-02-21 | 360智语</div><div class="data-summary">360集团创始人周鸿祎在2026崇礼论坛发表主题演讲，预测2026年全球将迎来百亿智能体时代。他提出五力模型，强调智能体是将通用算力转化为专用智力的枢纽。360将发布短剧智能体。</div></div>
+<div class="data-item"><div class="data-title">拓尔思政务AI业务2026年新技术突破与项目进展解析</div><div class="data-meta">2026-03-11 | 拓尔思</div><div class="data-summary">2026年以来，拓尔思政务AI业务延续技术迭代+场景落地双轮驱动。1月签署的3省海策大模型政务平台合作协议（合计金额超1.2亿元）是2026年首个重大政务AI项目。截至3月，平台已在3省的10余个地市上线，智能政务咨询场景群众满意度达92%，公文智能编审处理效率提升40%。</div></div>
+<div class="data-item"><div class="data-title">南威软件MWC 2026之行：携手华为共推全球政务服务智能化转型</div><div class="data-meta">2026-03-05 | 南威软件</div><div class="data-summary">MWC 2026期间，南威软件作为华为核心合作伙伴，参与国家政务服务高峰论坛。华为发起全球政务服务生态联盟成立，南威软件为联盟核心成员。南威与华为联合发布Public Service AI Agent Solution，推出1+1+N架构：一个智能数字底座、一个政务智能体平台、N项场景化应用。</div></div>
+<div class="data-item"><div class="data-title">重磅发布！南威GovClaw正式上线打造政务专属AI Agent OS</div><div class="data-meta">2026-03-20 | 南威软件</div><div class="data-summary">南威软件正式发布GovClaw政务专属AI Agent OS及首款落地应用OAClaw政务协同版。GovClaw内置十大安全机制，首发50+原子技能，覆盖流程通用、收文管理、发文管理、出差管理、请假管理、会议协同等十大业务模块，全栈国产化适配。</div></div>
+<div class="data-item"><div class="data-title">南威软件受邀参展华为中国合作伙伴大会2026，携手华为共筑政务数智化新高度</div><div class="data-meta">2026-03-23 | 南威软件</div><div class="data-summary">华为中国合作伙伴大会2026在深圳举办，南威软件入驻数字政府展区，展示一句话办事智能体（实现智能问答-情形引导-自动填报-预审合规全链路闭环）和智启·慧审AI大模型审校助手（对公文进行政治风险、敏感词、文本细节及格式全方位智能检查）。</div></div>
+<div class="data-item"><div class="data-title">AI智能体+信创+年报增长泛微网络触及涨停</div><div class="data-meta">2026-03-31 | 泛微</div><div class="data-summary">据2025年年度报告，泛微推出大模型+小模型+智能体架构的泛微数智大脑Xiaoe.AI，覆盖全业务场景；E10平台实现全栈信创适配，已交付众多党政机关及央国企数字化项目，并联合华为推出DeepSeek&amp;Xiaoe.AI数智办公一体机国产化方案。2025年归母净利2.89亿元，同比增长42.25%。</div></div>
+<div class="data-item"><div class="data-title">智新品·绘政务·赢中枢——2026致远互联生态伙伴大会政务分论坛成功举办</div><div class="data-meta">2026-03-24 | 致远互联</div><div class="data-summary">致远互联生态伙伴大会政务分论坛在合肥举办。会上正式发布更懂数智机关的一站式AI助手问办通，并宣布2026年致远政务战略主张：ALL IN AI，通过产品智能化改造、开箱即用智能体（基于CoMi智能中台推出20+款政务场景智能体）、双模定制三条路径深化产品方案。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技MWC2026大放异彩：AI赋能，助力全球产业升级与增长</div><div class="data-meta">2026-03-04 | 浩鲸科技</div><div class="data-summary">MWC2026在巴塞罗那举办，浩鲸科技以激活智能生产力，驱动持续增长新引擎为主题参展，展示AI驱动的运营商开放平台、基于LocalGPT平台的近20款运营商AI智能体体系（覆盖客服、营销、网络规划等全流程），以及三融智算供给方案。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技与上海数据集团、阿里云深化战略合作，聚焦数据要素与AI大模型</div><div class="data-meta">2026-03-13 | 浩鲸科技</div><div class="data-summary">浩鲸科技与上海数据集团、阿里云围绕数据要素建设、AI大模型技术创新等核心议题深化战略合作，浩鲸科技凭借二十余年政企服务经验，深度参与智慧城市、公共数据授权运营等项目，成为连接技术与场景的关键数智化全栈能力提供商。</div></div>
+<div class="data-item"><div class="data-title">钉钉发布AI原生工作平台“悟空”，让AI从“助手”变成“员工”</div><div class="data-meta">2026-03-22 | 钉钉</div><div class="data-summary">钉钉发布全球首个企业级AI原生工作平台“悟空”，重写底层代码实现全面CLI化改造，让AI Agent能够原生操作钉钉上千项能力，实现“沟通即执行”，覆盖政务、企业等多场景，支持私有化部署满足合规需求。</div></div>
+<div class="data-item"><div class="data-title">开普云：2025年年度报告</div><div class="data-meta">2026-04-24 | 开普云</div><div class="data-summary">报告回顾2025年业务：AI大模型与算力业务收入大幅增长，发布开悟智核智能体一体机，政务大数据覆盖80%以上省级政府。在政务领域以开悟行业大模型赋能政策查询与解读、政务智能数字人等应用，推出新一代AI内容安全风控产品鸠摩智。</div></div>
+<div class="data-item"><div class="data-title">开普云受邀出席2026吴文俊人工智能创新大会，分享可信任AI治理实践</div><div class="data-meta">2026-04-03 | 开普云</div><div class="data-summary">开普云受邀出席2026吴文俊人工智能创新大会，提出“技术可信、过程可信、结果可信”三位一体可信任AI体系，推动治理能力模块化、产品化，在政务、广电、消防等场景落地可信任AI应用，打造政务AI安全合规标杆。</div></div>
+<div class="data-item"><div class="data-title">2026企业舆情监测服务商真实力：拓尔思以自研+大模型为核心驱动</div><div class="data-meta">2026-04-28 | 拓尔思</div><div class="data-summary">拓尔思以自研+大模型为核心驱动，2024年发布拓天舆情大模型及TRS网察V6.0平台，融入AI问答助手与AI报告助手。截至2025年AIGC舆情智能应用已服务33个行业领域，在政务与金融领域根基深厚。2026年某央企舆情数据服务采购项目以97.99万元中标。</div></div>
+<div class="data-item"><div class="data-title">浪潮软件股份有限公司2025年年度报告摘要</div><div class="data-meta">2026-04-18 | 浪潮软件</div><div class="data-summary">公司依托人工智能+、数据要素等政策契机，打造一网通办、一网统管、一网监管、一网协同、智能大厅等场景。报告期内发布浪潮人工智能政务服务平台(ECGAP5.0)，推出事项智理、智能问答、边聊边办等六大场景；在市场监管领域打造问答式边聊边办、智能维权机器人等AI应用，三度蝉联中国AI+市场监管解决方案市场份额第一。</div></div>
+<div class="data-item"><div class="data-title">再上榜！360智语连续两年入选全国企业人工智能+行动创新案例TOP100</div><div class="data-meta">2026-04-09 | 360智语</div><div class="data-summary">360智语凭借与大庆华术合作的政务AI数据治理项目入选。该项目针对政务数据治理中的系统孤岛、调用低效、服务滞后痛点，通过AI实现场景化数据标注、智能分析挖掘，落地惠企政策推送（匹配准确率95%+）、扫码执法监控、智能数据调用三大场景。</div></div>
+<div class="data-item"><div class="data-title">360智语连续两年入选全国“人工智能+”行动创新案例TOP100</div><div class="data-meta">2026-04-09 | 360智语</div><div class="data-summary">360智语凭借政务AI数据治理项目入选2026全国企业“人工智能+”行动创新案例TOP100，此前曾以地级市人工智能服务底座项目入选，实现从AI服务底座搭建到政务场景深度赋能的进阶，聚焦政务数据治理、智能公文、智能客服等场景。</div></div>
+<div class="data-item"><div class="data-title">一网通办一网统管一网协同：2026政务服务五大跃升</div><div class="data-meta">2026-04-13 | 致远互联</div><div class="data-summary">文章阐述一网通办、一网统管、一网协同的融合趋势。致远互联定位为AI-COP智能运营中枢服务商，产品包含G6/G9政务产品线，已完成DeepSeek-V4大模型适配。赛迪顾问2026年数据显示其AI协同运营平台市占率28.1%、智能公文管理市占率25.4%，均为全国第一。</div></div>
+<div class="data-item"><div class="data-title">致远互联亮相2026数字中国建设峰会，发布行业数字员工平台</div><div class="data-meta">2026-04-30 | 致远互联</div><div class="data-summary">致远互联亮相2026数字中国建设峰会，携手中国电信发布行业数字员工平台及中小企业信息化智能中枢，依托智能运营中枢核心能力，打造具备感知、分析、决策、执行能力的政务“数字大脑”，覆盖政务协同、项目审批、国资监管等场景。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技受邀参加2026年中国移动中资出海数智赋能合作会议</div><div class="data-meta">2026-04-07 | 浩鲸科技</div><div class="data-summary">浩鲸科技与中移国际保持深度战略协同，携手共建全球云联盟，在云网、AI、算力、数据中心等核心领域展开全方位合作。公司LPC方案已在沙特、印尼、南非等多国落地，并演进至主权AI智算云。</div></div>
+<div class="data-item"><div class="data-title">国泰新点软件2025年年度报告摘要，深化政务AI与数据要素布局</div><div class="data-meta">2026-04-11 | 国泰新点</div><div class="data-summary">国泰新点软件2025年年报披露，一网通办业务从能办向“好办、易办、智办”全面升级，政务热线通过大模型+数据+运营实现提效；一网协同业务推出智能公文、会议管理、知识库助手等AI应用；数据要素业务推进省级数据目录治理和“数字资源一本帐”智能体建设，探索政务数据运营商业化路径。</div></div>
+<div class="data-item"><div class="data-title">国家标准项目《数字政府 智能政务 第2部分：政务服务智能体建设规范》公示</div><div class="data-meta">2026-05-22 | 国泰新点</div><div class="data-summary">该标准规定了政务服务智能体的建设要求，适用于各级政务部门开展智能体的规划、设计、开发、部署与运营。国泰新点软件股份有限公司为主要起草单位之一，参与制定政务服务智能体建设规范。</div></div>
+<div class="data-item"><div class="data-title">南威软件2026年5月7日涨停分析：AI政务布局+项目储备足+技术专利多</div><div class="data-meta">2026-05-07 | 南威软件</div><div class="data-summary">公司已完成AI+政务、智算中心的初步战略布局，政务AI产品落地，智算中心首批算力商用。2026年一季度末在建项目总规模超23亿元。</div></div>
+<div class="data-item"><div class="data-title">南威软件两连板，智算运营相关AI业务占比不足1%</div><div class="data-meta">2026-05-10 | 南威软件</div><div class="data-summary">公司持续重仓AI赛道，2025年研发总投入约1.16亿元，研发费率升至13.82%。2026年3月正式发布GovClaw政务专属AI Agent OS及OAClaw政务协同版。公司公告称智算运营相关AI业务收入不足1%，对当期业绩不构成重大影响。</div></div>
+<div class="data-item"><div class="data-title">南威软件“南威智启大模型算法”成功通过国家网信办算法备案</div><div class="data-meta">2026-05-08 | 南威软件</div><div class="data-summary">南威软件研发的“南威智启大模型算法”正式通过国家互联网信息服务算法备案，精准覆盖政策咨询、政策解读、办事指引三大核心政务场景，通过大小模型协同，实现口语化精准解析、带原文引用生成、结构化文件解析等能力。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技聚焦大模型与智能体落地实践，发布鲸智MaaS平台</div><div class="data-meta">2026-05-11 | 浩鲸科技</div><div class="data-summary">浩鲸科技发布鲸智MaaS平台，整合算力调度、数据治理、模型开发、推理部署全链路能力，智能体开发平台支持多模式编排，推出鲸智慧笔、大模型知识中心等AI工具，已在政务、电信、能源等多行业实现规模化落地。</div></div>
+<div class="data-item"><div class="data-title">新点软件亮相华为澳门科技日2026，携手共建澳门智慧政务新生态</div><div class="data-meta">2026-06-11 | 国泰新点</div><div class="data-summary">6月9日，华为澳门科技日2026在澳门举办，新点软件作为华为重要生态合作伙伴受邀参会，展示AI+智慧政务领域的技术积淀与落地成果。会上，华为携手新点软件等十余家头部企业正式成立AI CITY城市智能生态联盟，新点软件生态合作部总经理殷利明出席联盟揭牌仪式。新点软件将依托自身技术能力与行业经验，助力澳门夯实数字底座、拓展AI应用场景，推动技术创新与本地产业深度融合。</div></div>
+<div class="data-item"><div class="data-title">AGIBOT WORLD CHALLENGE 2026线下决赛，开普云KP-Robot团队获新锐科技团队奖</div><div class="data-meta">2026-06-01 | 开普云</div><div class="data-summary">2026年6月，AGIBOT WORLD CHALLENGE 2026线下决赛在奥地利维也纳举行。开普云KP-Robot团队在决赛中获得Reasoning to Action赛道第五名及Whole Body Control赛道第四名，并获颁新锐科技团队奖。开普云采用统一的开悟具身大模型参赛，该模型未针对分赛题单独微调，在各项任务中执行成功率排名稳定保持前四，并展现出较强的鲁棒性。</div></div>
+<div class="data-item"><div class="data-title">开普云响应实景实训专项行动，推动具身智能走向真实应用</div><div class="data-meta">2026-06-18 | 开普云</div><div class="data-summary">开普云紧跟工信部、国资委专项行动要求，依托开悟大模型，布局具身智能模型算法、数据工具链、智能体工程化与场景应用能力，探索具身智能从训练场到生产场景的能力迁移路径，聚焦政务、消防等行业落地。</div></div>
+<div class="data-item"><div class="data-title">拓尔思：拓天大模型及智能体在政务领域已取得显著进展</div><div class="data-meta">2026-06-15 | 拓尔思</div><div class="data-summary">6月15日，拓尔思在互动平台回答投资者提问时表示，在政务领域落地方面，公司积极响应政策号召，拓天大模型及智能体在政务领域已取得显著进展。舆情智能体已在自然资源部、住房和城乡建设部、海关总署、贵州省等政府机构深度应用，数字办公和政务服务智能体在贵州、云南、深圳等地成功落地。公司依托覆盖底座、平台、应用三层的全栈人工智能技术体系，持续深化在数字政府等优势领域的融合创新。</div></div>
+<div class="data-item"><div class="data-title">拓尔思发布TRS-GPT 2.0政务大模型，六大场景全面升级</div><div class="data-meta">2026-06-12 | 拓尔思</div><div class="data-summary">拓尔思正式发布TRS-GPT 2.0政务大模型，在政策问答、智能审批、公文写作、舆情分析、知识检索、智能客服六大场景实现全面升级。模型支持私有化部署，已完成与华为昇腾、海光等国产芯片的适配。</div></div>
+<div class="data-item"><div class="data-title">拓尔思中标北京市政府门户网站AI升级项目</div><div class="data-meta">2026-06-25 | 拓尔思</div><div class="data-summary">拓尔思中标北京市政府门户网站智能化升级项目，将基于TRS-GPT大模型为市政府门户提供智能搜索、AI问答、政策解读、办事导引等智能化服务，提升政府信息公开和政民互动体验。</div></div>
+<div class="data-item"><div class="data-title">拓尔思：以“垂直深耕+场景价值”实践智能体的深度业务赋能</div><div class="data-meta">2026-06-01 | 拓尔思</div><div class="data-summary">拓尔思依托自研拓天政务大模型，在云南和贵州落地政务智能体，打造政务服务“智能导办员”，实现一站式检索、政策深度解读与公文智能分发，推动政务服务从被动响应转向主动精准服务，树立政务智能体应用标杆。</div></div>
+<div class="data-item"><div class="data-title">南威软件受邀出席华为中国行，深度分享AI赋能政务创新应用</div><div class="data-meta">2026-06-13 | 南威软件</div><div class="data-summary">南威软件作为华为核心生态伙伴，在华为中国行活动中与榆林市数据局等负责人探讨AI技术在政务领域的应用。南威软件展示了ALL IN AI发展战略和全栈产品体系，包括AI赋能政务数字化创新应用案例。其核心产品WellWork智能体操作系统及底座-平台-应用三位一体产品矩阵获得关注，强调南威在AI应用落地和项目实施方面的实力。</div></div>
+<div class="data-item"><div class="data-title">南威软件发布市场监管AI智能体解决方案</div><div class="data-meta">2026-06-18 | 南威软件</div><div class="data-summary">南威软件发布面向市场监管领域的AI智能体解决方案，涵盖企业开办智能导办、食品安全风险预警、企业信用智能画像、投诉举报智能分析等场景，已在福建、江西等地市场监管部门试点应用。</div></div>
+<div class="data-item"><div class="data-title">2026最新AI榜单：泛微300+场景能做什么？Top5推荐</div><div class="data-meta">2026-06-18 | 泛微</div><div class="data-summary">2026年6月18日，泛微举办组织的AI范式·数字员工与流程自动AI新生主题大会，发布300+AI应用场景，基于数智大脑Xiaoe.AI核心，展示人+岗位+AI新组织模式。大会演示了数字员工从线索到回款的全程自动协同，调用超过20个数字员工及智能体，覆盖销售、财务、人事等岗位，实现7乘24小时在线响应。</div></div>
+<div class="data-item"><div class="data-title">泛微网络：公司已推出以大模型+小模型+智能体为架构的泛微数智大脑 Xiaoe.AI</div><div class="data-meta">2026-06-22 | 泛微</div><div class="data-summary">泛微网络在投资者互动平台表示，已推出以大模型+小模型+智能体为架构的泛微数智大脑Xiaoe.AI，为业务系统提供智能服务基座。通过通用大模型实现基础推理能力，叠加行业专用小模型（如票据识别、意图识别模型）提升专业度，配合智能体实现业务场景化处理，帮助用户以自然语言对话实现查找资料、语音办理事务等日常工作。</div></div>
+<div class="data-item"><div class="data-title">泛微Xiaoe.AI十大场景评价，优缺点排名Top1</div><div class="data-meta">2026-06-25 | 泛微</div><div class="data-summary">2026年6月，泛微网络于上海举办泛微·数智大脑Xiaoe.AI体验大会，超过千位企业数字化负责人参与。泛微正式推出基于大模型+小模型+智能体构建的数智大脑Xiaoe.AI，引发行业关注。与会者体验了市场、销售、合同、采购等十余种数智化业务场景，每个场景达成全程数智化运营。平台自带50+智能体服务及100+智能业务组件，支持公有云、私有云和混合云部署。</div></div>
+<div class="data-item"><div class="data-title">泛微中标某央企协同办公系统升级项目</div><div class="data-meta">2026-06-28 | 泛微</div><div class="data-summary">泛微网络成功中标某大型央企协同办公系统升级项目，将基于Xiaoe.AI数智大脑为央企提供智能公文、智能审批、智能会议等AI协同办公能力，助力央企数字化转型和信创替代。</div></div>
+<div class="data-item"><div class="data-title">泛微亮相2026鲲鹏昇腾轻量化场景方案发布会，联合发布AI智能办公一体化方案</div><div class="data-meta">2026-06-24 | 泛微</div><div class="data-summary">泛微受邀参加2026鲲鹏昇腾轻量化场景方案发布会，联合华为发布AI智能办公一体化方案，融合数智大脑xiaoe.ai与鲲鹏、昇腾安全可靠算力底座，推出高安全、易落地的AI办公与业务一体化方案，为政企数智协同转型提供创新路径，覆盖政务、金融、制造等领域。</div></div>
+<div class="data-item"><div class="data-title">致远互联携多家用户共获2026金i奖，AI-COP赋能千行百业交出新质答卷</div><div class="data-meta">2026-06-29 | 致远互联</div><div class="data-summary">致远互联凭借AI-COP智能协同运营中枢获管理软件行业2026智能运营价值创新奖，其四大客户案例（豫光集团、贵州磷化、中加基金、中国牧工商）全部获奖。文章重点介绍了致远互联平台+场景共创模式，以AI-COP为底座深入客户业务一线，实现AI能力与行业Know-how深度融合。</div></div>
+<div class="data-item"><div class="data-title">蓝信发布2026全栈AI新品，打造100%国产化政企智能办公新范式</div><div class="data-meta">2026-06-03 | 蓝信</div><div class="data-summary">蓝信发布三款核心AI产品：LanEcho听蓝AI录音卡、LanSphere蓝域智能体平台、KnowAct知行AI超级助理。同时开源官方CLI及Skills能力接口，并联合AI产业链核心力量成立政企智能办公生态联盟，发布全栈国产化政企智能办公生态联合解决方案，实现从底层芯片、大模型到上层应用的100%国产自主可控。</div></div>
+<div class="data-item"><div class="data-title">蓝信亮相2026天津智博会，展示全栈AI办公新品</div><div class="data-meta">2026-06-12 | 蓝信</div><div class="data-summary">蓝信携全栈AI新品亮相2026天津智博会，展示LanSphere蓝域智能体平台、KnowAct知行AI超级助理等产品，现场演示智能公文写作、AI会议纪要、智能审批等政务办公场景，吸引众多政府和企业客户关注。</div></div>
+<div class="data-item"><div class="data-title">蓝信发布2026全栈AI新品，打造100%国产化政企智能办公新范式</div><div class="data-meta">2026-06-04 | 蓝信</div><div class="data-summary">蓝信2026 AI新品发布会发布听蓝AI录音卡、蓝域智能体平台、知行AI超级助理三款原生AI产品，发起成立政企智能办公生态联盟，以全链路、国产化、高安全属性的智能办公体系，定义政企AI办公新范式，服务各级党政机关、企事业单位。</div></div>
+<div class="data-item"><div class="data-title">国内首家！浩鲸科技鲸智大模型Token运营平台获信通院双认证</div><div class="data-meta">2026-06-18 | 浩鲸科技</div><div class="data-summary">浩鲸科技鲸智大模型Token运营平台获中国信通院双认证，将多年来在通信、政务、能源等行业沉淀融入标准。平台构建了接入、管控、安全、运营四位一体的企业级Token全生命周期智能管理架构，已落地广东、宁夏等地通信、政务、能源各类场景，支撑客户实现AI资源的高效管控和价值释放。</div></div>
+<div class="data-item"><div class="data-title">聚焦Token精细化运营，浩鲸科技重塑AI商业价值</div><div class="data-meta">2026-06-26 | 浩鲸科技</div><div class="data-summary">浩鲸科技依托20年电信、政务、能源等行业数字化经验、200+场景Agent实践及全球渠道优势，构建完整的Token运营体系，集成全球算力统一纳管调度、模型训练推理、Token全生命周期管理、行业垂直模型应用四大核心能力。该平台已作为国内首个平台通过中国信通院·可信AI-Token服务评估认证。</div></div>
+<div class="data-item"><div class="data-title">浩鲸科技参加MWC上海2026，展示政务AI智能体方案</div><div class="data-meta">2026-06-24 | 浩鲸科技</div><div class="data-summary">浩鲸科技参加MWC上海2026世界移动通信大会，展示基于鲸智大模型的政务AI智能体解决方案，包括智能客服、政策问答、办事导引等场景，已在上海、广东等地政务项目中落地应用。</div></div>
+<div class="data-item"><div class="data-title">浪潮软件发布一网通办4.0，边聊边办智能体正式上线</div><div class="data-meta">2026-06-20 | 浪潮软件</div><div class="data-summary">浪潮软件正式发布一网通办4.0版本，核心升级边聊边办智能体，支持自然语言对话办理政务事项，覆盖企业开办、社保查询、公积金提取等200+高频事项。同时推出智能审批助手，实现材料自动预审、审批要点智能提示。</div></div>
+<div class="data-item"><div class="data-title">360智语发布政企安全大模型，聚焦政务数据安全治理</div><div class="data-meta">2026-06-15 | 360智语</div><div class="data-summary">360智语发布政企安全大模型360-SecGPT，聚焦政务数据安全治理、敏感信息识别、合规风险检测等场景。模型已通过国家网络安全等级保护三级认证，支持私有化部署和信创环境适配。</div></div>
+<div class="data-item"><div class="data-title">龙讯全新场景亮相！合肥本土AI“合慧答”正式上线</div><div class="data-meta">2026-06-23 | 龙讯</div><div class="data-summary">龙讯研发的合肥本土AI“合慧答”正式上线，聚焦政务服务场景，打造AI智能问答、智能办事助手，依托本地化大模型能力，为合肥政务服务提供智能化支撑，此前已有“咸小律”AI智能法律助手等政务AI项目落地。</div></div>
+<div class="data-item"><div class="data-title">企业微信发布5.0.9版本，AI助力业务经营与办公提效</div><div class="data-meta">2026-06-23 | 企业微信</div><div class="data-summary">企业微信5.0.9版本发布，上线AI服务总结、智能助理“大圆”、智能表格、智能文档等功能，支持政务版专属部署，为政府机构提供专属通讯办公工具，保障数字安全的前提下开展网格员基层治理、政务服务等工作。</div></div>
+<div class="data-item"><div class="data-title">蓝凌携手华为云升级AI+KM方案，加速企业级智能体落地</div><div class="data-meta">2026-06-12 | 蓝凌</div><div class="data-summary">蓝凌智能携手华为云发布AI+KM融合方案，提出“长脑、长手、成人”三重进化路径，搭建企业知识大脑，将AI能力嵌入采购、行政等核心业务流程，打造“一件事”全链路智能闭环，赋能政务、央国企等组织AI进化。</div></div>
+
+</div>
+
+</div>
+
+<script>
+// 标签页切换
+function switchTab(tabName) {
+  // 隐藏所有标签内容
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < contents.length; i++) {
+    contents[i].classList.remove('active');
+  }
+  // 移除所有标签按钮的激活状态
+  var btns = document.querySelectorAll('.tab-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  // 显示选中的标签内容
+  document.getElementById('tab-' + tabName).classList.add('active');
+  // 激活选中的标签按钮
+  var activeBtn = document.querySelector('.tab-btn[data-tab="' + tabName + '"]');
+  if (activeBtn) activeBtn.classList.add('active');
+}
+
+// 页面加载时读取URL参数，自动选中对应标签
+window.addEventListener('DOMContentLoaded', function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var type = urlParams.get('type');
+  if (type && ['policy', 'industry', 'competitor'].indexOf(type) !== -1) {
+    switchTab(type);
+  }
+});
+</script>
+</body>
+</html>

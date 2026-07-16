@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企情察 - 业务架构图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 32px;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 16px;
+            color: #64748b;
+        }
+        .header .tag {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0284c7;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        .arch-section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 18px;
+            color: #1e293b;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 4px solid #3b82f6;
+        }
+        .diagram {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 30px;
+            overflow-x: auto;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏢 企情察 - 企业情报智能洞察 SaaS 平台</h1>
+            <div class="subtitle">业务架构图 v1.0</div>
+            <div class="tag">Vue 3 + Vite 5 + Ant Design Vue + Pinia</div>
+        </div>
+
+        <!-- 总体业务架构 -->
+        <div class="arch-section">
+            <div class="section-title">📐 总体业务架构</div>
+            <div class="diagram">
+                <div class="mermaid">
+graph TB
+    subgraph USER["👤 用户角色层"]
+        UE["企业用户<br/>（决策者/运营者）"]
+        SA["子账号<br/>（协作成员）"]
+        AM["平台管理员<br/>（运营/客服）"]
+    end
+
+    subgraph PORTAL["🌐 访问门户层"]
+        UF["用户端<br/>Web 应用"]
+        AD["管理端<br/>后台系统"]
+    end
+
+    subgraph FEATURE["⚡ 核心功能层"]
+        subgraph USER_FEATURE["用户端功能"]
+            RPT["📊 报告管理<br/>日报/周报/月报"]
+            POL["📰 政策速递<br/>订阅/推送/分析"]
+            IND["📈 行业动态<br/>趋势/洞察"]
+            COM["🔍 友商监测<br/>竞品动态追踪"]
+            BID["🏆 中标数据<br/>商机发现"]
+            ESP["🏢 企业空间<br/>多空间/套餐/子账号"]
+            MSG["🔔 消息通知<br/>报告提醒/系统通知"]
+        end
+
+        subgraph ADMIN_FEATURE["管理端功能"]
+            UMG["👥 用户管理<br/>账号/权限/日志"]
+            EMG["🏭 企业管理<br/>空间/套餐/权益"]
+            CMG["📋 内容管理<br/>政策/行业/友商"]
+            DSMG["📊 数据统计<br/>用户/报告分析"]
+            SYSG["⚙️ 系统设置<br/>权限/配置"]
+        end
+    end
+
+    subgraph SERVICE["🔧 服务支撑层"]
+        AI["🤖 AI 分析引擎<br/>数据整合/智能分析"]
+        RGS["报告生成服务<br/>自动/手动生成"]
+        SRS["订阅推送服务<br/>策略匹配/实时推送"]
+        MON["监控预警服务<br/>异常检测/告警"]
+    end
+
+    subgraph DATA["💾 数据资源层"]
+        POLICY["📜 政策数据库<br/>100万+ 条"]
+        INDUSTRY["🏭 行业数据库<br/>500万+ 条"]
+        COMPET["🏢 友商数据库<br/>50万+ 条"]
+        BIDDB["🏆 中标数据库<br/>200万+ 条"]
+        USERDB["👤 用户数据库<br/>10万+ 用户"]
+        ENTDB["🏢 企业数据库<br/>5万+ 企业"]
+    end
+
+    subgraph EXTERNAL["🌍 外部数据源"]
+        GOV["政府公开数据<br/>政策/招投标"]
+        NEWS["新闻媒体<br/>行业/竞品动态"]
+        API3RD["第三方 API<br/>数据服务"]
+    end
+
+    USER --> UF
+    USER --> AD
+    SA --> UF
+    AM --> AD
+
+    UF --> USER_FEATURE
+    AD --> ADMIN_FEATURE
+
+    RPT --> AI
+    RPT --> RGS
+    POL --> SRS
+    IND --> AI
+    COM --> MON
+    BID --> AI
+
+    AI --> POLICY
+    AI --> INDUSTRY
+    RGS --> USERDB
+    RGS --> ENTDB
+    SRS --> POLICY
+    MON --> COMPET
+
+    CMG --> POLICY
+    CMG --> INDUSTRY
+    CMG --> COMPET
+    UMG --> USERDB
+    EMG --> ENTDB
+
+    POLICY -.-> GOV
+    INDUSTRY -.-> NEWS
+    BIDDB -.-> GOV
+    COMPET -.-> API3RD
+    INDUSTRY -.-> API3RD
+
+    classDef roleClass fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    classDef portalClass fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    classDef userFeatureClass fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+    classDef adminFeatureClass fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    classDef serviceClass fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+    classDef dataClass fill:#f1f5f9,stroke:#64748b,stroke-width:2px
+    classDef externalClass fill:#fff7ed,stroke:#f97316,stroke-width:2px
+
+    class USER,SA,AM roleClass
+    class UF,AD portalClass
+    class RPT,POL,IND,COM,BID,ESP,MSG userFeatureClass
+    class UMG,EMG,CMG,DSMG,SYSG adminFeatureClass
+    class AI,RGS,SRS,MON serviceClass
+    class POLICY,INDUSTRY,COMPET,BIDDB,USERDB,ENTDB dataClass
+    class GOV,NEWS,API3RD externalClass
+                </div>
+            </div>
+        </div>
+
+        <!-- 用户端功能架构 -->
+        <div class="arch-section">
+            <div class="section-title">👤 用户端功能架构</div>
+            <div class="diagram">
+                <div class="mermaid">
+graph LR
+    subgraph AUTH["🔐 认证与准入"]
+        REG["手机号注册<br/>验证码+密码"]
+        LOGIN["手机号登录<br/>验证码"]
+        INVITE["邀请加入<br/>Token验证"]
+    end
+
+    subgraph DASHBOARD["📊 工作台"]
+        OVERVIEW["数据概览"]
+        QUICKENTRY["快捷入口<br/>报告/配置/收藏"]
+        LATESTRPT["最新报告"]
+        DATA_PREVIEW["五大模块预览"]
+    end
+
+    subgraph REPORT["📋 报告管理"]
+        RPT_LIST["报告列表<br/>筛选/排序/分页"]
+        RPT_GEN["报告生成<br/>日报/周报/月报"]
+        RPT_SETTING["报告设置<br/>自动/手动规则"]
+        RPT_DETAIL["报告详情<br/>五模块Tab"]
+        FAVORITES["我的收藏"]
+    end
+
+    subgraph INTELLIGENCE["🔍 情报中心"]
+        POLICY_CENTER["政策速递<br/>列表/筛选/订阅"]
+        INDUSTRY_CENTER["行业动态<br/>趋势/分析"]
+        COMPETITOR_CENTER["友商动态<br/>监测/对比"]
+        BID_CENTER["中标数据<br/>商机/追踪"]
+    end
+
+    subgraph SPACE["🏢 企业空间"]
+        SPACE_MGT["空间管理<br/>创建/切换/删除"]
+        COMPANY_PROFILE["企业信息配置<br/>简介/区域/关键词"]
+        SUB_ACCOUNT["子账号管理<br/>邀请/权限"]
+        BENEFITS["权益管理<br/>套餐/用量/续费"]
+    end
+
+    subgraph NOTIFICATION["🔔 消息中心"]
+        NOTIF_LIST["通知列表<br/>报告/系统"]
+        NOTIF_SETTING["通知设置<br/>开关/免打扰"]
+    end
+
+    AUTH --> DASHBOARD
+    DASHBOARD --> REPORT
+    DASHBOARD --> INTELLIGENCE
+    DASHBOARD --> SPACE
+    DASHBOARD --> NOTIFICATION
+
+    classDef authClass fill:#fef2f2,stroke:#ef4444,stroke-width:2px
+    classDef dashClass fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    classDef reportClass fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+    classDef intelClass fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    classDef spaceClass fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    classDef notifClass fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+
+    class REG,LOGIN,INVITE authClass
+    class OVERVIEW,QUICKENTRY,LATESTRPT,DATA_PREVIEW dashClass
+    class RPT_LIST,RPT_GEN,RPT_SETTING,RPT_DETAIL,FAVORITES reportClass
+    class POLICY_CENTER,INDUSTRY_CENTER,COMPETITOR_CENTER,BID_CENTER intelClass
+    class SPACE_MGT,COMPANY_PROFILE,SUB_ACCOUNT,BENEFITS spaceClass
+    class NOTIF_LIST,NOTIF_SETTING notifClass
+                </div>
+            </div>
+        </div>
+
+        <!-- 报告生成业务流程 -->
+        <div class="arch-section">
+            <div class="section-title">📊 报告生成业务流程</div>
+            <div class="diagram">
+                <div class="mermaid">
+graph TD
+    A["用户选择报告类型<br/>日报 / 周报 / 月报"] --> B["用户选择报告周期<br/>日期 / 周 / 月"]
+    B --> C{检查企业信息完整性}
+    C -->|信息完整| D["提交报告生成请求"]
+    C -->|信息不完整| E["⚠️ 提示完善企业信息<br/>跳转配置页"]
+    E --> C
+    D --> F["AI 分析引擎处理"]
+    F --> G["获取政策数据"]
+    F --> H["获取行业数据"]
+    F --> I["获取友商数据"]
+    F --> J["获取中标数据"]
+    G --> K["数据整合与分析"]
+    H --> K
+    I --> K
+    J --> K
+    K --> L["生成报告内容<br/>图表 + 文字分析"]
+    L --> M{生成结果}
+    M -->|成功| N["✅ 报告就绪<br/>通知用户"]
+    M -->|异常| O["❌ 标记异常<br/>管理员可重试"]
+    N --> P["用户查看/收藏/导出"]
+    O --> Q["管理员查看原因"]
+    Q --> R["🔄 手动重新生成"]
+    R --> F
+
+    classDef stepClass fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    classDef checkClass fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    classDef processClass fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    classDef successClass fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+    classDef errorClass fill:#fef2f2,stroke:#ef4444,stroke-width:2px
+
+    class A,B,P stepClass
+    class C,E checkClass
+    class D,F,G,H,I,J,K,L processClass
+    class N successClass
+    class O,Q,R errorClass
+                </div>
+            </div>
+        </div>
+
+        <!-- 套餐与权益架构 -->
+        <div class="arch-section">
+            <div class="section-title">💎 套餐与权益架构</div>
+            <div class="diagram">
+                <div class="mermaid">
+graph TD
+    subgraph PLANS["📦 套餐体系"]
+        FREE["🆓 免费版<br/>¥0/月"]
+        BASIC["📗 基础版<br/>¥399/月"]
+        ADVANCED["📘 高级版<br/>¥899/月"]
+    end
+
+    subgraph QUOTA["📏 权益配额"]
+        SUB_ACCT["子账号数量"]
+        COMP_MON["竞品监控数量"]
+        ALERT_LVL["预警等级"]
+        AI_ANALYSIS["AI智能分析"]
+    end
+
+    FREE --> FREE_SUB["1 个子账号"]
+    FREE --> FREE_COMP["3 个竞品监控"]
+    FREE --> FREE_ALERT["基础功能"]
+
+    BASIC --> BASIC_SUB["3 个子账号"]
+    BASIC --> BASIC_COMP["10 个竞品监控"]
+    BASIC --> BASIC_ALERT["基础预警"]
+
+    ADVANCED --> ADV_SUB["10 个子账号"]
+    ADVANCED --> ADV_COMP["50 个竞品监控"]
+    ADVANCED --> ADV_ALERT["高级预警"]
+    ADVANCED --> ADV_AI["AI智能分析"]
+
+    FREE_SUB -.-> SUB_ACCT
+    FREE_COMP -.-> COMP_MON
+    FREE_ALERT -.-> ALERT_LVL
+    BASIC_SUB -.-> SUB_ACCT
+    BASIC_COMP -.-> COMP_MON
+    BASIC_ALERT -.-> ALERT_LVL
+    ADV_SUB -.-> SUB_ACCT
+    ADV_COMP -.-> COMP_MON
+    ADV_ALERT -.-> ALERT_LVL
+    ADV_AI -.-> AI_ANALYSIS
+
+    subgraph RULES["⚙️ 套餐规则"]
+        UPGRADE["升级：立即生效<br/>补差价 - 按剩余天数"]
+        DOWNGRADE["降级：不允许<br/>等过期后重新订阅"]
+        RENEWAL["续费：到期前手动续费"]
+        EXPIRE["过期：降级到免费版<br/>历史数据保留"]
+    end
+
+    PLANS --> RULES
+
+    classDef freeClass fill:#f1f5f9,stroke:#64748b,stroke-width:2px
+    classDef basicClass fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+    classDef advClass fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    classDef quotaClass fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    classDef ruleClass fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+
+    class FREE freeClass
+    class BASIC basicClass
+    class ADVANCED advClass
+    class FREE_SUB,FREE_COMP,FREE_ALERT,BASIC_SUB,BASIC_COMP,BASIC_ALERT,ADV_SUB,ADV_COMP,ADV_ALERT,ADV_AI quotaClass
+    class UPGRADE,DOWNGRADE,RENEWAL,EXPIRE ruleClass
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据流架构 -->
+        <div class="arch-section">
+            <div class="section-title">🔄 数据流转架构</div>
+            <div class="diagram">
+                <div class="mermaid">
+graph LR
+    subgraph SOURCES["🌍 数据源"]
+        GOV["政府公开数据"]
+        MEDIA["新闻媒体"]
+        BID_PLATFORM["招投标平台"]
+        THIRD["第三方数据服务"]
+    end
+
+    subgraph ETL["🔧 数据采集与处理"]
+        CRAWL["数据采集/爬取"]
+        CLEAN["数据清洗"]
+        CLASSIFY["智能分类"]
+        TAG["标签提取"]
+    end
+
+    subgraph STORAGE["💾 数据存储"]
+        POLICY_STORE["政策库<br/>100万+ 条"]
+        INDUSTRY_STORE["行业库<br/>500万+ 条"]
+        COMPETITOR_STORE["友商库<br/>50万+ 条"]
+        BID_STORE["中标库<br/>200万+ 条"]
+        USER_STORE["用户/企业库"]
+        REPORT_STORE["报告库"]
+    end
+
+    subgraph PROCESS["🤖 智能处理"]
+        MATCH["订阅匹配引擎"]
+        ANALYZE["AI 分析引擎"]
+        GEN["报告生成引擎"]
+        ALERT["预警引擎"]
+    end
+
+    subgraph DELIVERY["📡 数据交付"]
+        WEB["Web 端展示"]
+        PUSH["实时推送<br/>微信服务号"]
+        EXPORT["报告导出<br/>PDF/Excel"]
+        DASHBOARD["仪表盘"]
+    end
+
+    GOV --> CRAWL
+    MEDIA --> CRAWL
+    BID_PLATFORM --> CRAWL
+    THIRD --> CRAWL
+
+    CRAWL --> CLEAN --> CLASSIFY --> TAG
+
+    CLEAN --> POLICY_STORE
+    CLEAN --> INDUSTRY_STORE
+    CLEAN --> COMPETITOR_STORE
+    CLEAN --> BID_STORE
+
+    POLICY_STORE --> MATCH --> PUSH
+    POLICY_STORE --> ANALYZE
+    INDUSTRY_STORE --> ANALYZE
+    COMPETITOR_STORE --> ANALYZE
+    BID_STORE --> ANALYZE
+
+    ANALYZE --> GEN
+    ALERT --> PUSH
+    GEN --> REPORT_STORE
+    REPORT_STORE --> WEB
+    REPORT_STORE --> EXPORT
+    REPORT_STORE --> DASHBOARD
+
+    USER_STORE -.-> MATCH
+    USER_STORE -.-> ANALYZE
+
+    classDef sourceClass fill:#fff7ed,stroke:#f97316,stroke-width:2px
+    classDef etlClass fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    classDef storageClass fill:#f1f5f9,stroke:#64748b,stroke-width:2px
+    classDef processClass fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    classDef deliveryClass fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+
+    class GOV,MEDIA,BID_PLATFORM,THIRD sourceClass
+    class CRAWL,CLEAN,CLASSIFY,TAG etlClass
+    class POLICY_STORE,INDUSTRY_STORE,COMPETITOR_STORE,BID_STORE,USER_STORE,REPORT_STORE storageClass
+    class MATCH,ANALYZE,GEN,ALERT processClass
+    class WEB,PUSH,EXPORT,DASHBOARD deliveryClass
+                </div>
+            </div>
+        </div>
+
+        <!-- 技术架构 -->
+        <div class="arch-section">
+            <div class="section-title">🛠️ 技术架构</div>
+            <div class="diagram">
+                <div class="mermaid">
+graph TB
+    subgraph FRONTEND["🖥️ 前端应用"]
+        subgraph USER_WEB["用户端 Web"]
+            VUE3["Vue 3.4"]
+            VUEX["Pinia 状态管理"]
+            ROUTER["Vue Router 4"]
+        end
+        subgraph ADMIN_WEB["管理端 Web"]
+            ANT_DESIGN["Ant Design Vue 4"]
+            ECHARTS["ECharts 6"]
+        end
+        subgraph BUILD["构建工具"]
+            VITE["Vite 5"]
+        end
+    end
+
+    subgraph NETWORK["🌐 网络层"]
+        HTTP["HTTPS"]
+        WEBSOCKET["WebSocket<br/>实时推送"]
+        CROS["跨域配置"]
+    end
+
+    subgraph BACKEND["⚙️ 后端服务"]
+        NODE["Node.js 18+"]
+        EXPRESS["Express"]
+        JWT["JWT 认证"]
+        API["RESTful API"]
+    end
+
+    subgraph DATABASE["💾 数据层"]
+        MYSQL["MySQL 5.7+"]
+        REDIS["Redis 6+<br/>缓存"]
+    end
+
+    subgraph DEPLOY["🚀 部署运维"]
+        Nginx["Nginx 1.20+"]
+        MONITOR["系统监控"]
+        LOG["日志系统"]
+    end
+
+    VUE3 --> ANT_DESIGN
+    VUE3 --> ECHARTS
+    VUEX --> VUE3
+    ROUTER --> VUE3
+    VITE --> VUE3
+    VITE --> ANT_DESIGN
+
+    USER_WEB --> HTTP
+    ADMIN_WEB --> HTTP
+    USER_WEB --> WEBSOCKET
+
+    HTTP --> API
+    WEBSOCKET --> NODE
+
+    API --> JWT
+    API --> MYSQL
+    API --> REDIS
+
+    BACKEND --> MYSQL
+    BACKEND --> REDIS
+
+    FRONTEND --> Nginx
+    BACKEND --> Nginx
+    Nginx --> MONITOR
+    Nginx --> LOG
+
+    classDef feClass fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    classDef netClass fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    classDef beClass fill:#dcfce7,stroke:#22c55e,stroke-width:2px
+    classDef dbClass fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    classDef deployClass fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+
+    class VUE3,VUEX,ROUTER,ANT_DESIGN,ECHARTS,VITE feClass
+    class HTTP,WEBSOCKET,CROS netClass
+    class NODE,EXPRESS,JWT,API beClass
+    class MYSQL,REDIS dbClass
+    class Nginx,MONITOR,LOG deployClass
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据库架构 -->
+        <div class="arch-section">
+            <div class="section-title">🗄️ 数据库核心表架构</div>
+            <div class="diagram">
+                <div class="mermaid">
+erDiagram
+    USERS ||--o{ USER_ENTERPRISE : "绑定"
+    USERS ||--o{ REPORTS : "生成"
+    USERS ||--o{ REPORT_FAVORITES : "收藏"
+    USERS ||--|| NOTIFICATION_SETTINGS : "配置"
+    
+    ENTERPRISES ||--o{ REPORTS : "拥有"
+    ENTERPRISES ||--o{ KEYWORDS : "包含"
+    ENTERPRISES ||--o{ COMPETITORS : "监控"
+    ENTERPRISES ||--o{ USER_ENTERPRISE : "关联"
+    ENTERPRISES ||--o{ PUSH_LOGS : "推送"
+    
+    USERS {
+        string id PK
+        string phone
+        string password_hash
+        string email
+        datetime created_at
+        datetime last_login
+    }
+    
+    ENTERPRISES {
+        string id PK
+        string name
+        string industry
+        string regions
+        string intro
+        string business_scope
+        string status
+        string plan
+        datetime expire_date
+        datetime created_at
+    }
+    
+    USER_ENTERPRISE {
+        string id PK
+        string user_id FK
+        string enterprise_id FK
+        string role
+        datetime joined_at
+    }
+    
+    REPORTS {
+        string id PK
+        string enterprise_id FK
+        string user_id FK
+        string type "daily/weekly/monthly"
+        string period
+        string status
+        datetime generated_at
+    }
+    
+    KEYWORDS {
+        string id PK
+        string enterprise_id FK
+        string keyword
+        string source "manual/AI"
+    }
+    
+    COMPETITORS {
+        string id PK
+        string enterprise_id FK
+        string name
+        string website
+        string industry
+        string region
+    }
+    
+    REPORT_FAVORITES {
+        string id PK
+        string user_id FK
+        string report_id FK
+        datetime created_at
+    }
+    
+    NOTIFICATION_SETTINGS {
+        string user_id PK FK
+        boolean report_alert
+        boolean system_alert
+        boolean do_not_disturb
+        string dnd_start
+        string dnd_end
+    }
+    
+    PUSH_LOGS {
+        string id PK
+        string enterprise_id FK
+        string type
+        string content
+        string status
+        datetime sent_at
+    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 16
+            },
+            fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'
+        });
+    </script>
+</body>
+</html>

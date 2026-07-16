@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大汉软件 · 门户网站 半年度战略监测报告</title>
+<style>
+:root { --primary: #0052D9; --primary-light: #E8F0FE; --secondary: #00A870; --danger: #FF6B6B; --bg: #F5F7FA; --card-bg: #fff; --text: #1A1A1A; --text-secondary: #666; --border: #E8E8E8; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--text); line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding: 20px; }
+
+/* Section */
+.section { margin-bottom: 32px; }
+.section { margin-bottom: 32px; }
+.section > h2 { font-size:20px; font-weight:600; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--primary-light); color: #0052D9; }
+
+/* 卡片 */
+.card { background:var(--card-bg); border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+.card h3 { font-size:16px; margin:0 0 16px; color:var(--primary); font-weight:600; }
+
+/* 图表 */
+.chart-row { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin:16px 0; }
+.chart-box { background:#FAFBFC; border:1px solid var(--border); border-radius:10px; padding:16px; }
+.chart-title { font-size:13px; font-weight:600; color:var(--text-secondary); margin-bottom:10px; }
+
+/* 横向条形图 */
+.bar-row { display:flex; align-items:center; gap:10px; margin:6px 0; font-size:13px; }
+.bar-label { width:100px; text-align:right; color:var(--text-secondary); flex-shrink:0; }
+.bar-track { flex:1; height:8px; background:#eee; border-radius:4px; overflow:hidden; }
+.bar-fill { height:100%; background:var(--primary); border-radius:4px; }
+.bar-value { width:40px; text-align:right; font-size:12px; color:var(--text-secondary); }
+
+/* 来源标注 */
+.source-ref { display:inline-block; font-size:11px; color:#888; background:#f0f0f0; border-radius:4px; padding:2px 6px; margin-top:8px; }
+
+/* PESTEL 六宫格 */
+.pestel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+.pestel-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; transition: all 0.2s; }
+.pestel-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--primary); }
+.pestel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.pestel-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; color: #fff; }
+.pestel-icon.p { background: #0052D9; }
+.pestel-icon.e { background: #00A870; }
+.pestel-icon.s { background: #FF6B6B; }
+.pestel-icon.t { background: #722ED1; }
+.pestel-icon.e2 { background: #13C2C2; }
+.pestel-icon.l { background: #FA8C16; }
+.pestel-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.pestel-subtitle { font-size: 11px; color: #999; }
+.pestel-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+.pestel-body h5 { font-size: 12px; color: #333; margin: 8px 0 4px; font-weight: 600; }
+.pestel-body p { margin-bottom: 6px; }
+.pestel-body ul { margin-left: 14px; margin-bottom: 6px; }
+.pestel-body li { margin-bottom: 3px; }
+
+/* 交叉影响表格 */
+.cross-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+.cross-table thead { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: #fff; }
+.cross-table th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px; }
+.cross-table td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; color: #444; vertical-align: top; }
+.cross-table tbody tr:hover { background: #f8f9fa; }
+.cross-table td:first-child { font-weight: 600; color: var(--primary); width: 100px; }
+.arrow-up { color: #00A870; font-weight: 600; }
+.arrow-down { color: #FF6B6B; font-weight: 600; }
+
+/* SWOT 四象限 */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.swot-card { background: #fff; border-radius: 10px; padding: 16px; }
+.swot-card.s { border: 2px solid #0052D9; border-top: 4px solid #0052D9; }
+.swot-card.w { border: 2px solid #FF6B6B; border-top: 4px solid #FF6B6B; }
+.swot-card.o { border: 2px solid #00A870; border-top: 4px solid #00A870; }
+.swot-card.t { border: 2px solid #c62828; border-top: 4px solid #c62828; }
+.swot-card h4 { font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.swot-card h4 .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; color: #fff; font-weight: 600; }
+.swot-card.s h4 .badge { background: #0052D9; }
+.swot-card.w h4 .badge { background: #FF6B6B; }
+.swot-card.o h4 .badge { background: #00A870; }
+.swot-card.t h4 .badge { background: #c62828; }
+.swot-card ul { padding-left: 16px; font-size: 13px; color: #444; }
+.swot-card li { margin-bottom: 6px; line-height: 1.5; }
+
+.swot-derivation { background: #f5f7fa; border-radius: 12px; padding: 24px; margin-top: 16px; }
+.swot-derivation h4 { font-size: 16px; color: #333; margin-bottom: 20px; font-weight: 600; }
+.derivation-item { display: flex; gap: 16px; margin-bottom: 14px; padding: 18px 20px; border-radius: 10px; background: #fff; align-items: flex-start; }
+.derivation-item:last-child { margin-bottom: 0; }
+.derivation-item.so { border-left: 4px solid #52c41a; }
+.derivation-item.wo { border-left: 4px solid #1890ff; }
+.derivation-item.st { border-left: 4px solid #fa8c16; }
+.derivation-item.wt { border-left: 4px solid #f5222d; }
+.derivation-label { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.derivation-item.so .derivation-label { background: #52c41a; }
+.derivation-item.wo .derivation-label { background: #1890ff; }
+.derivation-item.st .derivation-label { background: #fa8c16; }
+.derivation-item.wt .derivation-label { background: #f5222d; }
+.derivation-text { flex: 1; font-size: 13px; color: #666; line-height: 1.8; }
+.derivation-text h5 { font-size: 14px; color: #333; margin: 0 0 8px 0; font-weight: 600; }
+
+/* 市场机会表格 */
+.opp-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+.opp-table thead { background: linear-gradient(135deg, #0052D9 0%, #003BB5 100%); color: #fff; }
+.opp-table th { padding: 12px 10px; text-align: left; font-weight: 600; font-size: 12px; }
+.opp-table td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; color: #444; vertical-align: top; font-size: 12px; }
+.opp-table tbody tr:hover { background: #f8f9fa; }
+.opp-table td:first-child { font-weight: 700; color: var(--primary); text-align: center; width: 40px; font-size: 16px; }
+.opp-rank-1 { background: #f0f7ff; }
+.opp-rank-2 { background: #f8f9fa; }
+.opp-rank-3 { background: #fff; }
+.opp-score { font-weight: 600; color: var(--primary); font-size: 14px; }
+.opp-bar-track { width: 80px; height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
+.opp-bar-fill { height: 100%; border-radius: 3px; }
+.opp-bar-fill.high { background: #00A870; width: 85%; }
+.opp-bar-fill.mid { background: #0052D9; width: 60%; }
+.opp-bar-fill.low { background: #888; width: 40%; }
+.opp-note { background: #f8f9fa; padding: 12px 16px; border-radius: 8px; margin-top: 12px; font-size: 12px; color: #666; }
+
+/* 分析内容 */
+.analysis-content { margin-top: 16px; }
+.analysis-content .dim-block { background: #FAFBFC; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
+.analysis-content .dim-block h4 { font-size: 14px; font-weight: 600; color: var(--primary); margin: 0 0 10px 0; padding-bottom: 8px; border-bottom: 1px solid var(--primary-light); }
+.analysis-content .dim-block p { font-size: 13px; color: #444; line-height: 1.8; margin: 0; }
+.analysis-content .dim-block strong { color: var(--primary); }
+
+/* 趋势分析区域头部 */
+.trend-section-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 0; padding-bottom: 10px; border-bottom: 2px solid var(--primary-light); }
+.trend-section-header h2 { margin: 0; padding: 0; border-bottom: none; }
+
+/* 趋势分析标签栏 */
+.trend-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.trend-btn { padding: 8px 20px; border: 2px solid var(--border); border-radius: 20px; background: var(--card-bg); color: var(--text-secondary); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+.trend-btn:hover { border-color: var(--primary); color: var(--primary); }
+.trend-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 2px 8px rgba(0,82,217,0.25); }
+.trend-panel { display: none; animation: fadeIn 0.35s ease; }
+.trend-panel.active { display: block; }
+
+/* 来源标签 */
+.source-tag { display: inline-block; font-size: 11px; color: #0052D9; background: #E8F0FE; border-radius: 4px; padding: 2px 8px; margin-left: 6px; cursor: pointer; transition: all 0.2s; }
+.source-tag:hover { background: #0052D9; color: #fff; }
+
+/* 来源浮窗 */
+.source-popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 1000; justify-content: center; align-items: center; }
+.source-popup-overlay.active { display: flex; }
+.source-popup { background: #fff; border-radius: 12px; width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,0.15); animation: popupIn 0.25s ease; }
+@keyframes popupIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.source-popup-header { padding: 16px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.source-popup-header h3 { font-size: 16px; color: #333; margin: 0; }
+.source-popup-close { width: 28px; height: 28px; border-radius: 50%; border: none; background: #f0f0f0; color: #666; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.source-popup-close:hover { background: #e0e0e0; }
+.source-popup-body { padding: 20px; }
+.source-popup-intro { font-size: 13px; color: #666; margin-bottom: 16px; padding: 12px; background: #f5f7fa; border-radius: 8px; line-height: 1.6; }
+.source-popup-intro strong { color: #0052D9; }
+.source-sample-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed #eee; }
+.source-sample-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.source-sample-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 4px; }
+.source-sample-summary { font-size: 12px; color: #666; line-height: 1.5; max-height: 4.5em; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+.source-sample-meta { font-size: 11px; color: #999; margin-top: 4px; }
+.source-popup-footer { padding: 12px 20px 20px; }
+.source-popup-btn { display: inline-block; padding: 8px 16px; background: #0052D9; color: #fff; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 500; transition: all 0.2s; }
+.source-popup-btn:hover { background: #003BB5; }
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .chart-row { grid-template-columns: 1fr; }
+  .pestel-grid { grid-template-columns: 1fr; }
+  .swot-grid { grid-template-columns: 1fr; }
+  .trend-nav { gap: 6px; }
+  .trend-btn { padding: 6px 14px; font-size: 13px; }
+}
+
+/* ===== 内嵌数据列表遮罩 ===== */
+.data-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.data-overlay.show {
+  display: flex;
+}
+.data-overlay-inner {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1200px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+.data-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-shrink: 0;
+}
+.data-overlay-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+.data-overlay-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f5f5f5;
+  color: #666;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.data-overlay-close:hover {
+  background: #e8e8e8;
+  color: #333;
+}
+.data-overlay-body {
+  flex: 1;
+  overflow: hidden;
+}
+.data-overlay-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<section class="section">
+  <div class="trend-section-header">
+    <h2>半年度趋势分析</h2>
+    <div class="trend-nav">
+      <button class="trend-btn active" data-target="trend-policy" onclick="switchTrend(this,'trend-policy')">政策动态</button>
+      <button class="trend-btn" data-target="trend-industry" onclick="switchTrend(this,'trend-industry')">行业洞察</button>
+      <button class="trend-btn" data-target="trend-competitor" onclick="switchTrend(this,'trend-competitor')">竞品追踪</button>
+    </div>
+  </div>
+
+  <div class="trend-panel active" id="trend-policy">
+    <div class="card">
+      <h3>政策动态</h3>
+      <div class="chart-row">
+        <div class="chart-box">
+          <div class="chart-title">政策月度趋势</div>
+          <div style="text-align:center;color:#999;padding:40px 0;">暂无数据</div>
+        </div>
+        <div class="chart-box">
+          <div class="chart-title">政策区域分布（Top10）</div>
+          <p style="color:#999">暂无数据</p>
+        </div>
+      </div>
+      <div class="analysis-content"><p>本半年度未监测到该领域政策数据。</p></div>
+    </div>
+  </div>
+
+  <div class="trend-panel" id="trend-industry">
+    <div class="card">
+      <h3>行业洞察</h3>
+      <div class="chart-row">
+        <div class="chart-box">
+          <div class="chart-title">行业资讯月度趋势</div>
+          <div style="text-align:center;color:#999;padding:40px 0;">暂无数据</div>
+        </div>
+      </div>
+      <div class="analysis-content"><p>本半年度未监测到该领域行业数据。</p></div>
+    </div>
+  </div>
+
+  <div class="trend-panel" id="trend-competitor">
+    <div class="card">
+      <h3>竞品追踪</h3>
+      <div class="chart-row">
+        <div class="chart-box">
+          <div class="chart-title">竞品动态月度趋势</div>
+          <svg width="100%" height="220" viewBox="0 0 600 220" style="overflow:visible;">
+  <defs>
+    <linearGradient id="areaGrad-FF6B6B-4388159168" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF6B6B" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FF6B6B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="40" y1="180.0" x2="560" y2="180.0" stroke="#eee" stroke-width="1"/><text x="35" y="183.0" font-size="9" fill="#aaa" text-anchor="end">0</text><line x1="40" y1="145.0" x2="560" y2="145.0" stroke="#eee" stroke-width="1"/><text x="35" y="148.0" font-size="9" fill="#aaa" text-anchor="end">2</text><line x1="40" y1="110.0" x2="560" y2="110.0" stroke="#eee" stroke-width="1"/><text x="35" y="113.0" font-size="9" fill="#aaa" text-anchor="end">4</text><line x1="40" y1="75.0" x2="560" y2="75.0" stroke="#eee" stroke-width="1"/><text x="35" y="78.0" font-size="9" fill="#aaa" text-anchor="end">6</text><line x1="40" y1="40.0" x2="560" y2="40.0" stroke="#eee" stroke-width="1"/><text x="35" y="43.0" font-size="9" fill="#aaa" text-anchor="end">8</text>
+  <path d="M40.0,180.0 L144.0,180.0 L248.0,145.0 L352.0,162.5 L456.0,162.5 L560.0,75.0 L560.0,180.0 L40.0,180.0 Z" fill="url(#areaGrad-FF6B6B-4388159168)" stroke="none"/>
+  <path d="M40.0,180.0 L144.0,180.0 L248.0,145.0 L352.0,162.5 L456.0,162.5 L560.0,75.0" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40.0" cy="180.0" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="40.0" y="172.0" font-size="10" fill="#666" text-anchor="middle">0</text><circle cx="144.0" cy="180.0" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="144.0" y="172.0" font-size="10" fill="#666" text-anchor="middle">0</text><circle cx="248.0" cy="145.0" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="248.0" y="137.0" font-size="10" fill="#666" text-anchor="middle">2</text><circle cx="352.0" cy="162.5" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="352.0" y="154.5" font-size="10" fill="#666" text-anchor="middle">1</text><circle cx="456.0" cy="162.5" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="456.0" y="154.5" font-size="10" fill="#666" text-anchor="middle">1</text><circle cx="560.0" cy="75.0" r="3" fill="#FF6B6B" stroke="#fff" stroke-width="1.5"/><text x="560.0" y="67.0" font-size="10" fill="#666" text-anchor="middle">6</text>
+  <text x="40.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-01</text><text x="144.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-02</text><text x="248.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-03</text><text x="352.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-04</text><text x="456.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-05</text><text x="560.0" y="212" font-size="10" fill="#888" text-anchor="middle">2026-06</text>
+</svg>
+        </div>
+        <div class="chart-box">
+          <div class="chart-title">活跃厂商（Top10）</div>
+          <div class="bar-row"><span class="bar-label">蓝凌</span><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#FF6B6B"></div></div><span class="bar-value">4</span></div>
+<div class="bar-row"><span class="bar-label">浪潮软件</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#FF6B6B"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">致远互联</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#FF6B6B"></div></div><span class="bar-value">2</span></div>
+<div class="bar-row"><span class="bar-label">拓尔思</span><div class="bar-track"><div class="bar-fill" style="width:50.0%;background:#FF6B6B"></div></div><span class="bar-value">2</span></div>
+        </div>
+      </div>
+      <div class="analysis-content">
+<div class="dim-block"><h4>竞品活跃度与层级分布</h4>
+<p>本半年度共监测到门户网站领域竞品动态<strong>10条</strong>，涉及<strong>4家</strong>活跃厂商，月均<strong>1.7条</strong>。
+竞品活跃度适中，市场竞争格局相对平稳。
+活跃厂商数量有限，可能该领域存在较高壁垒或市场尚处于早期阶段。
+</p></div>
+<div class="dim-block"><h4>竞品月度波动与关键事件</h4>
+<p>竞品动态呈<strong>显著波动</strong>态势。2026-06为动态高峰（6条），2026-01为低谷（0条）。
+竞品活跃度保持平稳，竞争对手维持常规的市场节奏。
+竞品活跃月份与政策/行业热点月份重合度高，表明竞品善于借势营销和热点跟进。
+</p></div>
+<div class="dim-block"><h4>行业集中度与头部效应</h4>
+<p>行业集中度（CR3）为<strong>80.0%</strong>，HHI指数为<strong>28.0</strong>，竞争格局呈<strong>中度集中</strong>状态。
+Top3厂商（蓝凌、浪潮软件、致远互联）占据绝对主导地位，市场呈现明显的头部效应，新进入者面临较高壁垒。
+</p></div>
+<div class="dim-block"><h4>竞品战略动向与聚焦领域</h4>
+<p>头部竞品活跃度一般，市场投入力度有限，可能尚未将该领域作为核心战略方向。
+竞品在2026-06活跃度显著提升，可能存在集中发布、市场活动或产品上新等战略动作。
+
+<span class="source-tag" data-source="competitor" data-dimension="战略动向变化" data-samples="[{&quot;title&quot;: &quot;浪潮软件：2026年度提质增效重回报行动方案&quot;, &quot;summary&quot;: &quot;公司作为国内领先的数字政府方案与服务提供商，已形成涵盖一网通办、一网统管、一网监管、政府数脑等于一体的政府数字化转型全面解决方案，客户覆盖全国29个省份135个地市、800多个区县。IDC报告显示公司位居中国数字政府IT解决方案市场份额及增速双第一。&quot;, &quot;issuer&quot;: &quot;浪潮软件&quot;, &quot;date&quot;: &quot;2026-04-30&quot;}, {&quot;title&quot;: &quot;蓝凌输了！153万元，泛微中标信创OA大单&quot;, &quot;summary&quot;: &quot;2026年3月9日，中信保诚人寿保险有限公司办公平台信创国产化项目中标结果公示，泛微网络中标（153万元），蓝凌软件位列第二中标候选人，北京慧点科技为第三。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-10&quot;}, {&quot;title&quot;: &quot;广东石油化工学院办公自动化（OA）系统信创项目的中标公告&quot;, &quot;summary&quot;: &quot;广东石油化工学院OA系统信创项目中标公告中，蓝凌软件位列第二中标候选人（综合得分89.06），中国移动通信集团广东有限公司茂名分公司为第一中标候选人（91.16）。项目包括办公自动化系统信创适配改造。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-18&quot;}, {&quot;title&quot;: &quot;致远互联中标：北京市2026年电子公文系统维护项目&quot;, &quot;summary&quot;: &quot;2026年5月21日，北京致远互联软件股份有限公司中标北京市城市管理委员会2026年电子公文系统维护项目，中标金额37.9万元。&quot;, &quot;issuer&quot;: &quot;致远互联&quot;, &quot;date&quot;: &quot;2026-05-24&quot;}, {&quot;title&quot;: &quot;吉林省政务服务和数字化建设服务中心政务信息化统一建设项目中标公告&quot;, &quot;summary&quot;: &quot;依据吉林省财政厅政府采购投诉处理决定，原中标结果无效，采购人确定重新赋分后得分最高的浪潮软件股份有限公司为本包中标供应商。中标金额为359.8万元，项目为吉林省档案馆数字档案馆信息系统，服务期限3年（1年建设期，2年运行保障期）。&quot;, &quot;issuer&quot;: &quot;浪潮软件&quot;, &quot;date&quot;: &quot;2026-06-12&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>产品布局与技术路线差异</h4>
+<p>基于竞品活跃度分布，各头部厂商在该领域均有持续布局，产品路线可能趋同，差异化竞争将成为关键。
+
+<span class="source-tag" data-source="competitor" data-dimension="产品技术路线" data-samples="[{&quot;title&quot;: &quot;蓝凌携手华为云升级AI+KM方案，加速企业级智能体落地&quot;, &quot;summary&quot;: &quot;蓝凌智能携手华为云发布AI+KM融合方案，提出“长脑、长手、成人”三重进化路径，搭建企业知识大脑，将AI能力嵌入采购、行政等核心业务流程，打造“一件事”全链路智能闭环，赋能政务、央国企等组织AI进化。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-06-12&quot;}, {&quot;title&quot;: &quot;2026年信创OA怎么选？蓝凌深度解析&quot;, &quot;summary&quot;: &quot;蓝凌在信创适配方面投入较大，产品全面通过信创适配认证，入选国家信创产业目录，支持国产主流软硬件深度适配。其优势在于云原生低代码平台、交付模块化时间短、知识管理集成度高、流程扩展灵活，且与钉钉EKP深度绑定，在金融、高校、知识密集型国企领域具有竞争力。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-06-30&quot;}, {&quot;title&quot;: &quot;拓尔思中标北京市政府门户网站AI升级项目&quot;, &quot;summary&quot;: &quot;拓尔思中标北京市政府门户网站智能化升级项目，将基于TRS-GPT大模型为市政府门户提供智能搜索、AI问答、政策解读、办事导引等智能化服务，提升政府信息公开和政民互动体验。&quot;, &quot;issuer&quot;: &quot;拓尔思&quot;, &quot;date&quot;: &quot;2026-06-25&quot;}, {&quot;title&quot;: &quot;蓝凌输了！153万元，泛微中标信创OA大单&quot;, &quot;summary&quot;: &quot;2026年3月9日，中信保诚人寿保险有限公司办公平台信创国产化项目中标结果公示，泛微网络中标（153万元），蓝凌软件位列第二中标候选人，北京慧点科技为第三。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-10&quot;}, {&quot;title&quot;: &quot;广东石油化工学院办公自动化（OA）系统信创项目的中标公告&quot;, &quot;summary&quot;: &quot;广东石油化工学院OA系统信创项目中标公告中，蓝凌软件位列第二中标候选人（综合得分89.06），中国移动通信集团广东有限公司茂名分公司为第一中标候选人（91.16）。项目包括办公自动化系统信创适配改造。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-18&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>新入局者与跨界威胁</h4>
+<p>本半年度未监测到明显的新入局者，市场参与者以既有厂商为主，竞争格局相对稳定。但需警惕未进入监测范围的跨界玩家。
+</p></div>
+<div class="dim-block"><h4>市场合作与生态布局</h4>
+<p>各厂商积极构建生态合作网络，通过战略联盟、合资公司、渠道合作等方式巩固市场地位。生态能力正成为竞争关键要素。
+
+<span class="source-tag" data-source="competitor" data-dimension="市场合作生态" data-samples="[{&quot;title&quot;: &quot;2026年信创OA怎么选？蓝凌深度解析&quot;, &quot;summary&quot;: &quot;蓝凌在信创适配方面投入较大，产品全面通过信创适配认证，入选国家信创产业目录，支持国产主流软硬件深度适配。其优势在于云原生低代码平台、交付模块化时间短、知识管理集成度高、流程扩展灵活，且与钉钉EKP深度绑定，在金融、高校、知识密集型国企领域具有竞争力。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-06-30&quot;}, {&quot;title&quot;: &quot;蓝凌输了！153万元，泛微中标信创OA大单&quot;, &quot;summary&quot;: &quot;2026年3月9日，中信保诚人寿保险有限公司办公平台信创国产化项目中标结果公示，泛微网络中标（153万元），蓝凌软件位列第二中标候选人，北京慧点科技为第三。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-10&quot;}, {&quot;title&quot;: &quot;广东石油化工学院办公自动化（OA）系统信创项目的中标公告&quot;, &quot;summary&quot;: &quot;广东石油化工学院OA系统信创项目中标公告中，蓝凌软件位列第二中标候选人（综合得分89.06），中国移动通信集团广东有限公司茂名分公司为第一中标候选人（91.16）。项目包括办公自动化系统信创适配改造。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-18&quot;}, {&quot;title&quot;: &quot;浪潮软件：2026年度提质增效重回报行动方案&quot;, &quot;summary&quot;: &quot;公司作为国内领先的数字政府方案与服务提供商，已形成涵盖一网通办、一网统管、一网监管、政府数脑等于一体的政府数字化转型全面解决方案，客户覆盖全国29个省份135个地市、800多个区县。IDC报告显示公司位居中国数字政府IT解决方案市场份额及增速双第一。&quot;, &quot;issuer&quot;: &quot;浪潮软件&quot;, &quot;date&quot;: &quot;2026-04-30&quot;}, {&quot;title&quot;: &quot;致远互联中标：北京市2026年电子公文系统维护项目&quot;, &quot;summary&quot;: &quot;2026年5月21日，北京致远互联软件股份有限公司中标北京市城市管理委员会2026年电子公文系统维护项目，中标金额37.9万元。&quot;, &quot;issuer&quot;: &quot;致远互联&quot;, &quot;date&quot;: &quot;2026-05-24&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>客户与项目中标动态</h4>
+<p>竞品在市场拓展方面活跃度较低，市场拓展空间较大，存在空白区域可切入。
+头部厂商中标频次高，客户关系稳固；新入局者需通过差异化方案或价格优势突破。
+<span class="source-tag" data-source="competitor" data-dimension="客户项目中标" data-samples="[{&quot;title&quot;: &quot;致远互联中标：北京市2026年电子公文系统维护项目&quot;, &quot;summary&quot;: &quot;2026年5月21日，北京致远互联软件股份有限公司中标北京市城市管理委员会2026年电子公文系统维护项目，中标金额37.9万元。&quot;, &quot;issuer&quot;: &quot;致远互联&quot;, &quot;date&quot;: &quot;2026-05-24&quot;}, {&quot;title&quot;: &quot;吉林省政务服务和数字化建设服务中心政务信息化统一建设项目中标公告&quot;, &quot;summary&quot;: &quot;依据吉林省财政厅政府采购投诉处理决定，原中标结果无效，采购人确定重新赋分后得分最高的浪潮软件股份有限公司为本包中标供应商。中标金额为359.8万元，项目为吉林省档案馆数字档案馆信息系统，服务期限3年（1年建设期，2年运行保障期）。&quot;, &quot;issuer&quot;: &quot;浪潮软件&quot;, &quot;date&quot;: &quot;2026-06-12&quot;}, {&quot;title&quot;: &quot;蓝凌输了！153万元，泛微中标信创OA大单&quot;, &quot;summary&quot;: &quot;2026年3月9日，中信保诚人寿保险有限公司办公平台信创国产化项目中标结果公示，泛微网络中标（153万元），蓝凌软件位列第二中标候选人，北京慧点科技为第三。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-10&quot;}, {&quot;title&quot;: &quot;广东石油化工学院办公自动化（OA）系统信创项目的中标公告&quot;, &quot;summary&quot;: &quot;广东石油化工学院OA系统信创项目中标公告中，蓝凌软件位列第二中标候选人（综合得分89.06），中国移动通信集团广东有限公司茂名分公司为第一中标候选人（91.16）。项目包括办公自动化系统信创适配改造。&quot;, &quot;issuer&quot;: &quot;蓝凌&quot;, &quot;date&quot;: &quot;2026-03-18&quot;}, {&quot;title&quot;: &quot;拓尔思中标北京市政府门户网站AI升级项目&quot;, &quot;summary&quot;: &quot;拓尔思中标北京市政府门户网站智能化升级项目，将基于TRS-GPT大模型为市政府门户提供智能搜索、AI问答、政策解读、办事导引等智能化服务，提升政府信息公开和政民互动体验。&quot;, &quot;issuer&quot;: &quot;拓尔思&quot;, &quot;date&quot;: &quot;2026-06-25&quot;}]" onclick="openDimensionPopup(this)">[来源：竞品资料合集]</span>
+</p></div>
+<div class="dim-block"><h4>周期总结与前瞻</h4>
+<p>本半年度门户网站领域竞品竞争烈度较低，市场参与者有限，属于早期探索或利基市场。
+展望下半年，竞品可能进入策略调整期，建议企业把握节奏变化，在竞品收缩的领域加速渗透。
+</p></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>宏观分析</h2>
+
+  <div class="card">
+    <h3>PESTEL分析</h3>
+    <div class="pestel-grid">
+      <div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon p">P</div>
+    <div><div class="pestel-title">政治 Political</div><div class="pestel-subtitle">政策导向与监管环境</div></div>
+  </div>
+  <div class="pestel-body"><h5>政策密度对项目机会的影响</h5>
+<p>本半年度未监测到门户网站领域的专项政策。该领域项目机会主要依赖存量政府网站建设与维护专项预算、政务公开专项资金和政府网站运营人员、办事群众的自发需求释放。对企业而言，这意味着<strong>政策驱动型项目稀缺</strong>，门户网站的销售周期可能延长。建议更多依赖存量客户深挖和续约谈判，同时在政府网站集约化、适老化改造、政务公开等方向做技术预研，等待下一轮政策窗口期。</p>
+<h5>监管导向对合规成本的影响</h5>
+<p>无门户网站专项政策不代表监管宽松，数据安全、网络安全等通用合规要求仍在收紧。企业需确保门户网站产品符合基础合规框架，避免因合规缺失丧失参与资格。</p></div>
+</div>
+<div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon e">E</div>
+    <div><div class="pestel-title">经济 Economic</div><div class="pestel-subtitle">市场规模与投入趋势</div></div>
+  </div>
+  <div class="pestel-body"><h5>市场规模对企业营收的影响</h5>
+<p>门户网站行业资讯0条，市场热度相对平稳。政府网站运营人员、办事群众的采购需求释放较慢。对企业而言，该领域<strong>增量项目有限</strong>，不宜大规模扩张门户网站团队。建议以存量客户续约和增购为主，控制获客成本，将销售资源向更高热度的领域倾斜。</p>
+<h5>采购趋势对项目节奏的影响</h5>
+<p>低热度市场中，客户预算收紧，门户网站采购决策链条延长。企业需做好<strong>6个月以上的项目周期预期</strong>，并设计分期交付方案降低政府网站运营人员、办事群众一次性投入压力，通过网站访问量的阶段性改善赢得客户信任。</p></div>
+</div>
+<div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon s">S</div>
+    <div><div class="pestel-title">社会 Social</div><div class="pestel-subtitle">用户需求与数字化接受度</div></div>
+  </div>
+  <div class="pestel-body"><h5>客户需求变化对产品功能的影响</h5>
+<p>行业资讯量有限，政府网站运营人员、办事群众需求增长缓慢。对企业而言，这意味着<strong>门户网站产品创新投入需谨慎</strong>——应优先维护现有核心功能稳定性，信息分散难查找、适老化不足、政务公开可读性差、多端内容管理复杂的解决方式应以"够用"为主，避免过度功能堆砌增加成本。同时在集约化CMS、智能搜索、AI问答推荐等方向做轻量级预研，保持竞争力。</p>
+<h5>用户行为对服务模式的导向</h5>
+<p>政府网站运营人员、办事群众对价格敏感度高于服务敏感度，更关注成本效益。企业可考虑推出<strong>轻量级服务包</strong>（如远程培训、自助知识库），在控制成本的同时满足基础服务需求。</p></div>
+</div>
+<div class="pestel-card">
+  <div class="pestel-header">
+    <div class="pestel-icon t">T</div>
+    <div><div class="pestel-title">技术 Technological</div><div class="pestel-subtitle">技术演进与基础设施成熟度</div></div>
+  </div>
+  <div class="pestel-body"><h5>技术迭代对产品竞争力的影响</h5>
+<p>行业资讯量有限，门户网站技术演进缓慢。对企业而言，这意味着<strong>技术竞争压力较小</strong>，现有门户网站产品技术方案可维持2-3年竞争力。集约化CMS、智能搜索、AI问答推荐等方向暂无颠覆性变化。建议将研发资源从"技术创新"转向"功能优化和成本压缩"，通过提升交付效率来增强竞争力，同时关注集约化CMS的渐进式优化机会。</p>
+<h5>技术趋势对研发方向和成本结构的影响</h5>
+<p>门户网站技术稳定期有利于控制研发成本——人员流动对项目影响小，技术栈维护成本低。建议利用这一时期<strong>偿还技术债务、完善文档和测试覆盖</strong>，为下一波技术迭代做准备。</p></div>
+</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>交叉影响分析</h3>
+    <table class="cross-table">
+<thead><tr><th>交叉维度</th><th>影响机制</th><th>对企业的影响</th><th>影响方向</th></tr></thead>
+<tbody>
+<tr><td>P+E</td><td>门户网站政策0条、行业0条双低，外部项目驱动力不足。政府网站运营人员、办事群众预算和采购需求均处于低位。</td><td>反向：企业不宜在门户网站投入大量销售资源，建议收缩至1-2个核心政府网站运营人员、办事群众关系维护，静待外部政府网站集约化环境改善。</td><td><span class="arrow-down">↓ 反向</span></td></tr><tr><td>P+S</td><td>政府网站运营人员、办事群众的门户网站数字化需求自然增长，但政府网站集约化政策推动力度弱（仅0条）。政府网站运营人员、办事群众接受度提升主要靠同行示范效应。</td><td>中性：企业需加大门户网站标杆政府网站运营人员、办事群众案例包装，用"同行已做"替代"政策要求"作为政府网站运营人员、办事群众立项驱动力。</td><td><span>→ 中性</span></td></tr><tr><td>P+T</td><td>缺乏门户网站政策技术导向，集约化CMS、智能搜索、AI问答推荐等技术演进依赖市场自发。企业可能面临门户网站技术方向选择风险。</td><td>反向：企业需加强门户网站技术预研能力，通过政府网站运营人员、办事群众POC试点验证技术方向，避免大规模投入后门户网站技术路线被颠覆。</td><td><span class="arrow-down">↓ 反向</span></td></tr><tr><td>E+S</td><td>门户网站行业0条资讯表明需求低位，政府网站运营人员、办事群众预算紧张。门户网站经济与社会需求均处于低位。</td><td>反向：企业需推出门户网站轻量化、低成本版本产品，降低政府网站运营人员、办事群众首次采购门槛，先建立合作再逐步升级。</td><td><span class="arrow-down">↓ 反向</span></td></tr><tr><td>E+T</td><td>门户网站行业0条+竞品10条双低，市场与门户网站技术双冷。政府网站运营人员、办事群众对新技术的付费意愿低，门户网站技术投入回报周期长。</td><td>反向：企业应优先引入成熟开源技术或第三方组件到门户网站产品中，减少门户网站自研投入，降低门户网站技术成本结构。</td><td><span class="arrow-down">↓ 反向</span></td></tr><tr><td>S+T</td><td>门户网站行业0条资讯有限，政府网站运营人员、办事群众对门户网站技术体验的要求尚未成为购买决策关键。</td><td>中性：企业不必过度追求门户网站技术体验，优先确保门户网站功能完整性和稳定性，将门户网站技术投入控制在合理范围。</td><td><span>→ 中性</span></td></tr>
+</tbody>
+</table>
+  </div>
+
+  <div class="card">
+    <h3>SWOT 战略矩阵</h3>
+    <div class="swot-grid">
+<div class="swot-card s"><h4><span class="badge">S</span> 优势 Strengths</h4><ul><li>政府网站集约化平台建设经验</li><li>政务公开与内容管理系统成熟度</li><li>与一网通办/一网协同内容共享的协同优势</li><li>门户网站竞争格局优势：门户网站活跃竞品仅4家，市场尚未固化，企业有较大空间建立差异化定位</li></ul></div>
+<div class="swot-card w"><h4><span class="badge">W</span> 劣势 Weaknesses</h4><ul><li>智能搜索与AI推荐能力相对互联网公司有差距</li><li>融媒体运营生态尚未完全打通</li><li>多端适配（PC/移动端/无障碍）开发成本高</li></ul></div>
+<div class="swot-card o"><h4><span class="badge">O</span> 机会 Opportunities</h4><ul><li>适老化/无障碍改造政策硬性要求，预算明确</li><li>AI赋能政府网站搜索/问答升级</li><li>政务公开从'公开了'向'用得上'深化</li><li>融媒体矩阵运营平台建设需求增长</li></ul></div>
+<div class="swot-card t"><h4><span class="badge">T</span> 威胁 Threats</h4><ul><li>互联网大厂（百度/头条）搜索能力向政务渗透</li><li>政府网站集约化平台被集成商捆绑销售</li><li>部分地区预算收紧，网站建设项目减少</li></ul></div>
+</div>
+    <div class="swot-derivation">
+      <h4>SWOT 战略矩阵推导</h4>
+      <div class="derivation-item so"><div class="derivation-label">SO</div><div class="derivation-text"><h5>优势+机会 → 增长型战略</h5>巩固现有门户网站优势，寻找差异化突破口。门户网站外部环境增量有限，企业应：1）深耕现有政府网站运营人员、办事群众，提升门户网站续约率和增购率；2）在主要区域等已有政府网站运营人员、办事群众区域建立门户网站壁垒，阻止竞品渗透；3）寻找门户网站领域内的细分场景（如政府网站集约化、适老化改造、政务公开等），建立场景壁垒。</div></div>
+  <div class="derivation-item wo"><div class="derivation-label">WO</div><div class="derivation-text"><h5>劣势+机会 → 扭转型战略</h5>聚焦门户网站资源，以点带面改善竞争位势。企业门户网站存在竞争短板但机会有限，应：1）集中80%资源打造1-2个门户网站核心优势点（如政府网站集约化、适老化改造、政务公开等场景或主要区域等区域），避免多线作战；2）与互补型合作伙伴（如本地集成商）联合投标门户网站项目，借外力弥补自身短板；3）通过门户网站 POC试点验证产品能力，以成功案例反向证明竞争力。</div></div>
+  <div class="derivation-item st"><div class="derivation-label">ST</div><div class="derivation-text"><h5>优势+威胁 → 防御型战略</h5>持续强化门户网站优势，形成长期壁垒。门户网站当前威胁可控，但需提前布局。企业应：1）保持门户网站研发投入，确保门户网站产品技术不落后（如集约化CMS、智能搜索、AI问答推荐）；2）建立政府网站运营人员、办事群众反馈快速响应机制，将政府网站运营人员、办事群众问题转化为门户网站产品迭代需求；3）关注潜在技术替代方向（如集约化CMS、智能搜索、AI问答推荐），在威胁出现前完成技术储备。</div></div>
+  <div class="derivation-item wt"><div class="derivation-label">WT</div><div class="derivation-text"><h5>劣势+威胁 → 规避型战略</h5>门户网站稳健经营，控制成本保现金流。门户网站威胁与短板并存，不宜激进扩张。应：1）严控门户网站新项目投入，优先确保存量政府网站运营人员、办事群众的续约和回款；2）将门户网站研发资源从"创新探索"转向"稳定性维护"，减少技术风险；3）等待外部政府网站集约化环境改善信号，再考虑门户网站扩张。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>市场机会排序 TOP 5</h2>
+  <div class="card">
+  <table class="opp-table">
+    <thead><tr><th>排名</th><th>战略机会</th><th>影响度</th><th>紧迫性</th><th>综合得分</th><th>影响度进度条</th><th>核心依据</th><th>建议行动</th></tr></thead>
+    <tbody>
+    <tr style="background:#f0f7ff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">1</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">新媒体矩阵融合运营</div><div style="font-size:12px;color:#888;">融媒体矩阵 / 内容分发 / 舆情监测 / 互动运营</div></td>
+      <td style="text-align:center;font-weight:600;">7</td>
+      <td style="text-align:center;font-weight:600;">7</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">49</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:49%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">政府宣传从“单一网站”向“网站+公众号+短视频”矩阵转型；融媒体运营平台需求增长；基层需求自然增长，市场渗透率仍有空间。竞品厂商4家，竞争格局分散，基层市场仍有进入空间。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">设计轻量化、低成本的标准化产品包，适配基层预算和人员能力，通过渠道伙伴快速覆盖融媒体矩阵场景。</td>
+    </tr>
+    <tr style="background:#f8f9fa">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">2</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">门户网站智能化升级</div><div style="font-size:12px;color:#888;">智能搜索 / 智能问答 / 个性化推荐 / 政务助手</div></td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;font-weight:600;">7</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">42</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:42%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">大模型赋能政府网站搜索、问答、推荐，用户体验从“找得到”向“问得准”升级；主要区域等地政策密集，区域示范效应明显。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">以主要区域为标杆，建立区域复制模板，快速向同类型城市/区县推广智能搜索方案。</td>
+    </tr>
+    <tr style="background:#fff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">3</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">政府网站适老化与无障碍改造</div><div style="font-size:12px;color:#888;">适老化改造 / 无障碍优化 / 智能导览 / 语音交互</div></td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">36</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:36%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">适老化和无障碍改造是政策硬性要求；各地政府网站改造预算明确；行业资讯0条，市场需求持续验证。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">加速标杆案例复制，重点突破主要区域等TOP区域的适老化改造场景，组建专项团队快速落地。</td>
+    </tr>
+    <tr style="background:#fff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">4</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">政府网站集约化与统一平台</div><div style="font-size:12px;color:#888;">集约化平台 / 统一搜索 / 内容管理 / 服务聚合</div></td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">36</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#0052D9;width:36%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">政府网站从分散建设向集约化平台转型；统一内容管理、统一搜索、统一服务；行业资讯0条，市场热度平稳。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">聚焦集约化平台和统一搜索两大细分场景，优先对接已有客户需求的试点项目。</td>
+    </tr>
+    <tr style="background:#fff">
+      <td style="font-weight:700;color:var(--primary);text-align:center;width:40px;font-size:16px;">5</td>
+      <td><div style="font-weight:600;color:#333;margin-bottom:4px;">政务公开与数据开放深化</div><div style="font-size:12px;color:#888;">政务公开 / 数据开放 / 政策图解 / 可视化解读</div></td>
+      <td style="text-align:center;font-weight:600;">6</td>
+      <td style="text-align:center;font-weight:600;">5</td>
+      <td style="text-align:center;"><span style="font-weight:700;color:var(--primary);font-size:16px;">30</span></td>
+      <td><div style="width:80px;height:6px;background:#eee;border-radius:3px;overflow:hidden;"><div style="height:100%;border-radius:3px;background:#888;width:30%;"></div></div></td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">政务公开从“公开了”向“看得懂、用得上”深化；数据开放从目录向应用升级；政策方向明确，长期需求确定。</td>
+      <td style="font-size:13px;color:#444;line-height:1.7;">将政务公开能力打包为增值服务模块，嵌入现有客户续约和增购方案，实现存量客户价值深挖。</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="opp-note">
+    <strong>分析说明：</strong>按"影响度(1-10) × 紧迫性(1-10)"矩阵评分排序，影响度评估基于对大汉软件营收规模和战略地位的预期影响；紧迫性评估基于政策窗口期、市场增速和竞争格局变化速率。本领域平均综合得分 38.6，建议采取<strong>稳健增长</strong>策略。
+  </div>
+</div>
+</section>
+
+</div>
+
+<!-- 来源浮窗 -->
+<div class="source-popup-overlay" id="sourcePopupOverlay" onclick="closeSourcePopup(event)">
+  <div class="source-popup" onclick="event.stopPropagation()">
+    <div class="source-popup-header">
+      <h3 id="sourcePopupTitle">数据来源</h3>
+      <button class="source-popup-close" onclick="closeSourcePopup()">&times;</button>
+    </div>
+    <div class="source-popup-body">
+      <div class="source-popup-intro" id="sourcePopupIntro"></div>
+      <div id="sourcePopupSamples"></div>
+    </div>
+    <div class="source-popup-footer">
+      <a href="data-门户网站.html" class="source-popup-btn" id="sourcePopupBtn" onclick="event.preventDefault(); openDataOverlay(this.href);">查看完整原始数据列表 &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTrend(btn, panelId) {
+  var panels = document.querySelectorAll('.trend-panel');
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].classList.remove('active');
+  }
+  var btns = document.querySelectorAll('.trend-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  document.getElementById(panelId).classList.add('active');
+  btn.classList.add('active');
+}
+
+// 各来源类型的完整数据链接
+var sourceDataUrls = {"policy": "data-门户网站.html?type=policy&domain=门户网站&start=2026-01&end=2026-06", "industry": "data-门户网站.html?type=industry&domain=门户网站&start=2026-01&end=2026-06", "competitor": "data-门户网站.html?type=competitor&domain=门户网站&start=2026-01&end=2026-06"};
+
+// 按维度打开来源浮窗
+function openDimensionPopup(el) {
+  var sourceType = el.getAttribute('data-source');
+  var dimension = el.getAttribute('data-dimension') || '';
+  var samplesJson = el.getAttribute('data-samples') || '[]';
+  var samples = JSON.parse(samplesJson);
+  
+  var labels = {policy: '政策资料合集', industry: '行业资料合集', competitor: '竞品资料合集'};
+  var label = labels[sourceType] || '资料合集';
+  
+  document.getElementById('sourcePopupTitle').textContent = '来源：' + label;
+  document.getElementById('sourcePopupIntro').innerHTML = 
+    '<strong>' + dimension + '</strong> 维度的代表性资料（取自<strong>' + label + '</strong>，共 ' + samples.length + ' 条匹配）。';
+  
+  var samplesHtml = '';
+  samples.forEach(function(item, idx) {
+    var meta = '';
+    if (item.date) meta += '<span>' + item.date + '</span>';
+    if (item.issuer) meta += '<span>' + item.issuer + '</span>';
+    if (meta) meta = '<div class="source-sample-meta">' + meta + '</div>';
+    samplesHtml += '<div class="source-sample-item">' +
+      '<div class="source-sample-title">' + (idx + 1) + '. ' + item.title + '</div>' +
+      '<div class="source-sample-summary">' + item.summary + '</div>' + meta +
+      '</div>';
+  });
+  if (!samplesHtml) {
+    samplesHtml = '<div style="color:#999;padding:20px;text-align:center;">暂无匹配资料</div>';
+  }
+  document.getElementById('sourcePopupSamples').innerHTML = samplesHtml;
+  
+  var btn = document.getElementById('sourcePopupBtn');
+  btn.href = sourceDataUrls[sourceType] || '#';
+  if (!sourceDataUrls[sourceType] || sourceDataUrls[sourceType] === '#') btn.style.display = 'none';
+  else btn.style.display = 'inline-block';
+  
+  document.getElementById('sourcePopupOverlay').classList.add('active');
+}
+
+function closeSourcePopup(e) {
+  if (!e || e.target.id === 'sourcePopupOverlay') {
+    document.getElementById('sourcePopupOverlay').classList.remove('active');
+  }
+}
+
+// ESC键关闭
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSourcePopup();
+});
+</script>
+
+<!-- 内嵌数据列表遮罩 -->
+<div class="data-overlay" id="dataOverlay">
+  <div class="data-overlay-inner">
+    <div class="data-overlay-header">
+      <h3 id="dataOverlayTitle">完整原始数据列表</h3>
+      <button class="data-overlay-close" onclick="closeDataOverlay()">&times;</button>
+    </div>
+    <div class="data-overlay-body">
+      <iframe id="dataOverlayIframe" src=""></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+// 内嵌数据列表遮罩功能
+function openDataOverlay(url) {
+  var overlay = document.getElementById('dataOverlay');
+  var iframe = document.getElementById('dataOverlayIframe');
+  iframe.src = url;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDataOverlay() {
+  var overlay = document.getElementById('dataOverlay');
+  var iframe = document.getElementById('dataOverlayIframe');
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+  setTimeout(function() { iframe.src = ''; }, 300);
+}
+
+// 点击遮罩背景关闭
+document.getElementById('dataOverlay').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeDataOverlay();
+  }
+});
+
+// ESC 键关闭
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeDataOverlay();
+  }
+});
+</script>
+
+</body>
+</html>
