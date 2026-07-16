@@ -221,6 +221,7 @@ const createIndustrySourceProxy = () => {
 }
 
 export default defineConfig({
+  base: './',
   plugins: [vue(), createIndustrySourceProxy()],
   resolve: {
     alias: {
